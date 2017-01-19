@@ -1,0 +1,38 @@
+<?php $panelHelper = $this->helper('mpanel'); ?>
+<?php if (!Mage::registry('current_category')) return ?>
+<?php $_categories = $this->getCurrentChildCategories() ?>
+<?php $_count = is_array($_categories)?count($_categories):$_categories->count(); ?>
+<?php if($_count): ?>
+<div class="collection-grid">
+<div class="row">
+	<ul class="grid">
+	<?php $i = 0; ?>
+	<?php foreach ($_categories as $_category): ?>
+		<?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
+		<?php $i ++; ?>
+		<?php if($_category->getIsActive()): ?>
+		<li class="col-md-4 col-sm-6 col-xs-12 col-sm-half <?php if ($i % 3 == 1): ?>first-row-item<?php endif; ?> <?php if ($i % 2 == 1): ?>row-2sm-first<?php endif; ?>">
+			<div class="grid-item">
+				<div class="grid-img">
+					<?php if($_category->getThumbnail()!=''): ?>
+						<a href="<?php echo $this->getCategoryUrl($_category) ?>">
+							<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>catalog/category/<?php echo $_category->getThumbnail() ?>" alt="<?php echo $this->escapeHtml($_category->getName()) ?>" class="img-responsive"/>
+						</a>
+					<?php endif ?>
+					<span class="total-products h5"><?php echo $this->__('%s products',$_category->getProductCount()) ?></span>
+				</div>
+				<div class="grid-content">
+					<p><a class="grid-name h4" href="<?php echo $this->getCategoryUrl($_category) ?>"><?php echo $this->escapeHtml($_category->getName()) ?></a></p>
+					<p><?php echo $_category->getDescription(); ?></p>
+					<div class="view-more button-colour-white">
+						<button type="button" onclick="setLocation('<?php echo $this->getCategoryUrl($_category) ?>')" class="btn btn-lg btn-default"><?php echo $this->__('Shop Now') ?></button>
+					</div>
+				</div>
+			</div>
+		</li>
+		<?php endif; ?>
+	<?php endforeach ?>
+	</ul>
+</div>
+</div>
+<?php endif; ?>

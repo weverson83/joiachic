@@ -1,0 +1,210 @@
+<?php $helper = $this->helper('mpanel') ?>
+<?php $posts = $this->getRecent() ?>
+<?php if (count($posts)>0): ?>
+	<div class="widget-latest">
+		<?php if($this->getTitle() && $this->getTitle()!=''): ?>
+			<div class="title-content">
+				<h3><?php echo $this->getTitle(); ?></h3>
+			</div>
+		<?php endif ?>
+		<?php if($this->getViewMode()=='grid'): ?>
+			<?php if($this->getSlider()==1): ?>
+				<div class="row">
+					<div class="owl-carousel latest-post-carousel" id="latest-post-carousel" data-plugin-options='{"items": 1, "autoHeight": true}'>
+						<?php $i=0; foreach ($posts as $post): ?>
+							<div class="item">
+								<div class="row">
+									<div class="col-md-6 col-sm-6 col-xs-12 col-xs-half">
+										<div class="latest-post-img">
+											<?php if ($post->getFeaturedImage() != ''): ?>
+												<a class="blog_link_img" href="<?php echo $post->getAddress(); ?>" >
+													<img class="img-responsive" alt="" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'blog/' . $post->getFeaturedImage(); ?>"/>
+												</a>
+											<?php endif ?>
+										</div>
+									</div>
+									<div class="col-md-6 col-sm-6 col-xs-12 padding-left10 col-xs-half">	
+										<div class="latest-post-decs">
+											<div class="post-info h6">
+												<span class="day-desc">
+													<span class="icon fa fa-calendar"></span>
+													<span class="day"><?php echo date('d', strtotime($post->getCreatedTime())) ?></span>
+													<span class="month"><?php echo date('M', strtotime($post->getCreatedTime())) ?></span>
+												</span>
+												<span class="user-author">
+													<span class="icon fa fa-user"></span>
+													<span class="name"><?php echo $post->getUser(); ?></span>
+												</span>
+												<?php if ($this->getCommentsEnabled()): ?>
+													<?php $num = $post->getCommentCount(); ?>
+													<?php 	if($num > 1){ 
+																$many_string = "s";
+															}elseif($num == 1){ 
+																$many_string = "";
+															}else {
+																$many_string = "";
+																$num = 0;
+															} ?>
+													<?php $fomart_string =  "%s Comment%s";?>
+													<span class="comments-post">
+														<span class="icon fa fa-comment"></span>
+														<a class="comments" href="<?php echo $post->getAddress(); ?>#commentBox" ><?php echo sprintf($fomart_string, $num, $many_string); ?></a></span>
+													</span>
+												<?php endif; ?>
+											</div>
+											<div class="latest-name">
+												<h5 class="text-uppercase"><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h5>
+											</div>
+											<?php if($post->getShortContent()): ?>
+												<p class="short-content">
+													<?php if($this->getCharacterCount()!=''): ?>
+														<?php echo Mage::helper('core/string')->truncate(strip_tags($post->getShortContent()), $this->getCharacterCount()); ?>
+													<?php else: ?>
+														<?php echo strip_tags($post->getShortContent()); ?>
+													<?php endif ?>
+												</p>
+											<?php endif ?>
+											<a href="<?php echo $post->getAddress(); ?>" class="btn btn-default btn-lg read-more"><?php echo Mage::helper('blog')->__('View Detail'); ?></a>
+										</div>
+									</div>
+								</div>
+							</div>
+						<?php endforeach; ?>
+					</div>
+				</div>
+				<script type="text/javascript">
+					initSliderBanner('latest-post-carousel', <?php echo $this->getColumn() ?>, <?php echo $this->getAutoPlay()?>, <?php echo $this->getStopHover()?>, <?php echo $this->getNavigation()?>, <?php echo $this->getPagination()?>, <?php echo $helper->rightToLeftOwl(); ?>);
+				</script>
+			<?php else: ?>
+				<?php $panelHelper = $this->helper('mpanel'); ?>
+				<?php $col =  $this->getColumn(); ?>
+				<?php $col = $panelHelper->convertColRowCustom($col); ?>
+				<div class="latest-post-container latest-post-grid row">
+					<?php $i=0; foreach ($posts as $post): ?>
+							<div class="item col-md-<?php echo $col ?> col-sm-6 col-xs-12 blog-view-container">
+								<div class="row">
+									<div class="col-md-6 col-sm-6 col-xs-12 col-xs-half">
+										<div class="latest-post-img">
+											<?php if ($post->getFeaturedImage() != ''): ?>
+												<a class="blog_link_img" href="<?php echo $post->getAddress(); ?>" >
+													<img class="img-responsive" alt="" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'blog/' . $post->getFeaturedImage(); ?>"/>
+												</a>
+											<?php endif ?>
+										</div>
+									</div>
+									<div class="col-md-6 col-sm-6 col-xs-12 col-xs-half padding-left10">	
+										<div class="latest-post-decs">
+											<div class="post-info h6">
+												<span class="day-desc">
+													<span class="icon fa fa-calendar"></span>
+													<span class="day"><?php echo date('d', strtotime($post->getCreatedTime())) ?></span>
+													<span class="month"><?php echo date('M', strtotime($post->getCreatedTime())) ?></span>
+												</span>
+												<span class="user-author">
+													<span class="icon fa fa-user"></span>
+													<span class="name"><?php echo $post->getUser(); ?></span>
+												</span>
+												<?php if ($this->getCommentsEnabled()): ?>
+													<?php $num = $post->getCommentCount(); ?>
+													<?php 	if($num > 1){ 
+																$many_string = "s";
+															}elseif($num == 1){ 
+																$many_string = "";
+															}else {
+																$many_string = "";
+																$num = 0;
+															} ?>
+													<?php $fomart_string =  "%s Comment%s";?>
+													<span class="comments-post">
+														<span class="icon fa fa-comment"></span>
+														<a class="comments" href="<?php echo $post->getAddress(); ?>#commentBox" ><?php echo sprintf($fomart_string, $num, $many_string); ?></a></span>
+													</span>
+												<?php endif; ?>
+											</div>
+											<div class="latest-name">
+												<h5 class="text-uppercase"><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h5>
+											</div>
+											<?php if($post->getShortContent()): ?>
+												<p class="short-content">
+													<?php if($this->getCharacterCount()!=''): ?>
+														<?php echo Mage::helper('core/string')->truncate(strip_tags($post->getShortContent()), $this->getCharacterCount()); ?>
+													<?php else: ?>
+														<?php echo strip_tags($post->getShortContent()); ?>
+													<?php endif ?>
+												</p>
+											<?php endif ?>
+											<a href="<?php echo $post->getAddress(); ?>" class="btn btn-default btn-lg read-more"><?php echo Mage::helper('blog')->__('View Detail'); ?></a>
+										</div>
+									</div>
+								</div>
+							</div>
+					<?php endforeach; ?>
+				</div>
+			<?php endif ?>
+		<?php else: ?>
+			<div class="latest-post-list">
+				<?php $i=0; foreach ($posts as $post): ?>
+					<div class="row item">
+						<div class="col-md-3 col-sm-6 col-xs-12">
+							<div class="latest-post-img">
+								<?php if ($post->getFeaturedImage() != ''): ?>
+									<a class="blog_link_img" href="<?php echo $post->getAddress(); ?>" >
+										<img class="img-responsive" alt="" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'blog/' . $post->getFeaturedImage(); ?>"/>
+									</a>
+								<?php endif ?>
+							</div>
+						</div>
+						<div class="col-md-9 col-sm-6 col-xs-12 padding-left10">	
+							<div class="latest-post-decs">
+								<div class="post-info h6">
+									<span class="day-desc">
+										<span class="icon fa fa-calendar"></span>
+										<span class="day"><?php echo date('d', strtotime($post->getCreatedTime())) ?></span>
+										<span class="month"><?php echo date('M', strtotime($post->getCreatedTime())) ?></span>
+									</span>
+									<span class="user-author">
+										<span class="icon fa fa-user"></span>
+										<span class="name"><?php echo $post->getUser(); ?></span>
+									</span>
+									<?php if ($this->getCommentsEnabled()): ?>
+										<?php $num = $post->getCommentCount(); ?>
+										<?php 	if($num > 1){ 
+													$many_string = "s";
+												}elseif($num == 1){ 
+													$many_string = "";
+												}else {
+													$many_string = "";
+													$num = 0;
+												} ?>
+										<?php $fomart_string =  "%s Comment%s";?>
+										<span class="comments-post">
+											<span class="icon fa fa-comment"></span>
+											<a class="comments" href="<?php echo $post->getAddress(); ?>#commentBox" ><?php echo sprintf($fomart_string, $num, $many_string); ?></a></span>
+										</span>
+									<?php endif; ?>
+								</div>
+								<div class="latest-name">
+									<h5 class="text-uppercase"><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h5>
+								</div>
+								<?php if($post->getShortContent()): ?>
+									<p class="short-content">
+										<?php if($this->getCharacterCount()!=''): ?>
+											<?php echo Mage::helper('core/string')->truncate(strip_tags($post->getShortContent()), $this->getCharacterCount()); ?>
+										<?php else: ?>
+											<?php echo strip_tags($post->getShortContent()); ?>
+										<?php endif ?>
+									</p>
+								<?php endif ?>
+								<a href="<?php echo $post->getAddress(); ?>" class="btn btn-default btn-lg read-more"><?php echo Mage::helper('blog')->__('View Detail'); ?></a>
+							</div>
+						</div>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		<?php endif ?>
+	</div>
+<?php else: ?>
+	<div class="alert alert-danger">
+		<p><?php echo $this->__('There are no posts matching the selection.') ?></p>
+	</div>
+<?php endif; ?>

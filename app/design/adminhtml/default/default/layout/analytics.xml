@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout>
+<default>
+    <reference name="head">
+        <action method="addCss">
+            <name>analytics/custom.css</name>
+        </action>
+    </reference>
+    <reference name="head">
+        <action method="addJs"><script>navegg/analytics/adminhtml/admin.js</script></action>
+    </reference>
+<!--     <reference name="data">
+        <block type="centinel/adminhtml_validation" as="card_validation" name="card_validation" template="sales/order/create/abstract.phtml">
+            <block type="centinel/adminhtml_validation_form" template="centinel/validation/form.phtml" name="form" />
+        </block>
+    </reference> -->
+</default>
+</layout>

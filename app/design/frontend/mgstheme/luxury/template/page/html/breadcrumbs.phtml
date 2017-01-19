@@ -1,0 +1,77 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php if($crumbs && is_array($crumbs)): ?>
+
+	<?php
+		$bg_image = $this->getLayout()->createBlock('cms/block')->setBlockId('luxury-background-breadcrumbs')->toHtml();
+		preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $bg_image, $matches);		
+	?>
+<div class="breadcrumbs" <?php if($matches[1][0] !=''): ?>style="background-image:url(<?php echo $matches[1][0]?>);"<?php endif;?>>
+<?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
+            <?php if($_crumbInfo['last']): ?>
+                    
+                    <div class="container">
+                            <h1 class="text-center text-uppercase"><?php echo $this->escapeHtml($_crumbInfo['label']) ?></h1>
+                    </div>
+            
+            <?php endif; ?>
+    <?php endforeach; ?>
+<div class="container">
+    <div class="col-md-12">
+        <ul>
+            <?php foreach($crumbs as $_crumbName=>$_crumbInfo): ?>
+                <li class="<?php echo $_crumbName ?>" <?php if(Mage::getStoreConfig('mgs_theme/general/snippets') == 1): ?> itemscope itemtype="http://data-vocabulary.org/Breadcrumb" <?php endif ?>>
+                <?php if($_crumbInfo['link']): ?>
+                    <a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->escapeHtml($_crumbInfo['title']) ?>" <?php if(Mage::getStoreConfig('mgs_theme/general/snippets') == 1): ?> itemprop="url" <?php endif ?>><span <?php if(Mage::getStoreConfig('mgs_theme/general/snippets') == 1): ?> itemprop="title" <?php endif ?>><?php echo $this->escapeHtml($_crumbInfo['label']) ?></span></a>
+                <?php else: ?>
+                    <strong><span <?php if(Mage::getStoreConfig('mgs_theme/general/snippets') == 1): ?> itemprop="title" <?php endif ?>><?php echo $this->escapeHtml($_crumbInfo['label']) ?></span></strong>
+                <?php endif; ?>
+                <?php if(!$_crumbInfo['last']): ?>
+                    <span>| </span>
+                <?php endif; ?>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
+</div>
+<?php if(Mage::getStoreConfig('mgs_theme/general/header') != 'header2'): ?>
+<div class="top-search-content">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="top-search">
+					<?php echo $this->getChildHtml('topSearchContent')?>
+				</div>				
+			</div>
+		</div>
+	</div>
+	
+</div>
+<?php endif;?>
+<?php endif; ?>
+<?php echo $this->getChildHtml('additional_info') ?>

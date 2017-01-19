@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Promocode>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Promocode>
+    </modules>
+</config>

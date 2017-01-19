@@ -1,0 +1,306 @@
+<?php
+/* * ****************************************************
+ * Package   : ProductQuestions
+ * Author    : http://www.arrowhitech.com
+ * Copyright : (c) 2013 - ArrowHiTech.Com
+ * ***************************************************** */
+?>
+<div class="title-block">
+	<h4><span><?php echo $this->__('Customer Question') ?></span></h4>
+</div>
+<?php if (!$this->getRequest()->getParam('query')): ?>
+    <?php if (Mage::helper('productquestions')->allowAccordition()): ?>
+        <?php $parentTopics = $this->getParentTopics(); ?>
+        <?php if (count($parentTopics)): ?>
+            <div class="panel-group" id="accordion-product-questions">
+                <?php foreach ($parentTopics as $parentTopic): ?>
+                    <div id="panel-topic-<?php echo $parentTopic->getId(); ?>" class="panel panel-default">
+                        <div class="panel-heading">
+                            <p class="panel-title">
+								<i class="fa fa-question-circle faq-icon"></i>
+                                <?php if ($parentTopic->haveQuestions()): ?>
+                                    <?php $result = $this->getQuestionByTopicId($parentTopic->getId()); ?>
+                                    <a data-toggle="collapse" data-parent="#accordion-product-questions" href="#collapseTopic<?php echo $parentTopic->getId(); ?>">
+                                        <?php echo $parentTopic->getTitle(); ?><?php echo $this->__(' - %s question(s)', count($result)) ?>
+                                    </a>                                    
+                                <?php else: ?>
+                                    <a data-toggle="collapse" data-parent="#accordion-product-questions" href="#collapseTopic<?php echo $parentTopic->getId(); ?>">
+                                        <?php echo $parentTopic->getTitle(); ?><?php echo $this->__(' - 0 question(s)') ?>
+                                    </a>                                    
+                                <?php endif; ?>
+                            </p>
+                        </div>
+						<a data-toggle="collapse" data-parent="#accordion-product-questions" href="#collapseTopic<?php echo $parentTopic->getId(); ?>"><i class="fa fa-caret-down"></i></a>
+                        <div id="collapseTopic<?php echo $parentTopic->getId(); ?>" class="panel-collapse collapse out">
+                            <div class="panel-body">
+                                <?php if ($parentTopic->haveQuestions()): ?>
+                                    <?php $questions = $this->getQuestionByTopicId($parentTopic->getId()); ?>
+                                    <?php if (count($questions)): ?>
+                                        <ul class="question-list">
+                                            <?php foreach ($questions as $question): ?>
+                                                <li class="item">
+                                                    <div><?php echo $question->getContent(); ?></div>
+                                                    <div class="faq-question-by"><?php echo $this->__('Question by: ') . $question->getCustomerName() . ' on ' . Mage::helper('core')->formatDate($question->getCreatedAt(), 'medium', true); ?></div>
+                                                    <?php if ($question->haveAnswers()): ?>
+                                                        <?php $answers = $this->getAnswersByQuestionId($question->getId()); ?>
+                                                        <ul class="answer-list">
+                                                            <?php foreach ($answers as $answer): ?>
+                                                                <li class="item">
+                                                                    <div><?php echo $answer->getAContent(); ?></div>
+                                                                    <div class="answer-by"><?php echo $this->__('Answer by: ') . $answer->getACustomerName() . ' on ' . Mage::helper('core')->formatDate($answer->getACreatedAt(), 'medium', true); ?></div>                                                            
+                                                                </li>
+                                                            <?php endforeach; ?>
+                                                        </ul>
+                                                    <?php endif; ?>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php else: ?>
+                                        <?php echo $this->__('Have no questions.') ?>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <?php echo $this->__('Have no questions.') ?>
+                                <?php endif; ?>                                
+                            </div>
+                        </div>
+                    </div>
+					<script type="text/javascript">
+						mgsjQuery(document).ready(function() {
+							mgsjQuery( "#panel-topic-<?php echo $parentTopic->getId(); ?> a" ).click(function() {
+								if(mgsjQuery('#panel-topic-<?php echo $parentTopic->getId(); ?> a .fa').hasClass('fa-caret-down')){
+									if(mgsjQuery('#accordion-product-questions a .fa').hasClass('fa-caret-up')){
+										mgsjQuery('#accordion-product-questions a .fa').removeClass( "fa-caret-up" );
+										mgsjQuery('#accordion-product-questions a .fa').addClass( "fa-caret-down" );
+									}
+									mgsjQuery( "#panel-topic-<?php echo $parentTopic->getId(); ?> a .fa").removeClass( "fa-caret-down" );
+									mgsjQuery( "#panel-topic-<?php echo $parentTopic->getId(); ?> a .fa").addClass( "fa-caret-up" );
+								}else{
+									mgsjQuery( "#panel-topic-<?php echo $parentTopic->getId(); ?> a .fa").removeClass( "fa-caret-up" );
+									mgsjQuery( "#panel-topic-<?php echo $parentTopic->getId(); ?> a .fa").addClass( "fa-caret-down" );
+								}
+							});
+						});
+					</script>
+                <?php endforeach; ?>   
+            </div>            
+        <?php else: ?>
+            <p class="note-msg"><?php echo $this->__('Have no topics.') ?></p>
+        <?php endif; ?> 
+    <?php else: ?>
+        <?php $parentTopics = $this->getParentTopics(); ?>
+        <?php if (count($parentTopics)): ?>
+            <div class="panel-group">
+                <?php foreach ($parentTopics as $parentTopic): ?>
+                    <div id="panel-topic-<?php echo $parentTopic->getId(); ?>" class="panel panel-default">
+                        <div class="panel-heading">
+                            <p class="panel-title">
+								<i class="fa fa-question-circle faq-icon"></i>
+                                <?php if ($parentTopic->haveQuestions()): ?>
+                                    <?php $result = $this->getQuestionByTopicId($parentTopic->getId()); ?>
+                                    <span>
+                                        <?php echo $parentTopic->getTitle(); ?><?php echo $this->__(' - %s question(s)', count($result)) ?>
+                                    </span>                                    
+                                <?php else: ?>
+                                    <span>
+                                        <?php echo $parentTopic->getTitle(); ?><?php echo $this->__(' - 0 question(s)') ?>
+                                    </span>                                    
+                                <?php endif; ?>
+                            </p>
+                        </div>
+                        <div class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <?php if ($parentTopic->haveQuestions()): ?>
+                                    <?php $questions = $this->getQuestionByTopicId($parentTopic->getId()); ?>
+                                    <?php if (count($questions)): ?>
+                                        <ul class="question-list">
+                                            <?php foreach ($questions as $question): ?>
+                                                <li class="item">
+                                                    <div style="font-weight: bold;"><?php echo $question->getContent(); ?></div>
+                                                    <div class="faq-question-by"><?php echo $this->__('Question by: ') . $question->getCustomerName() . ' on ' . Mage::helper('core')->formatDate($question->getCreatedAt(), 'medium', true); ?></div>
+                                                    <?php if ($question->haveAnswers()): ?>
+                                                        <?php $answers = $this->getAnswersByQuestionId($question->getId()); ?>
+                                                        <ul class="answer-list">
+                                                            <?php foreach ($answers as $answer): ?>
+                                                                <li class="item">
+                                                                    <div><?php echo $answer->getAContent(); ?></div>
+                                                                    <div class="answer-by"><?php echo $this->__('Answer by: ') . $answer->getACustomerName() . ' on ' . Mage::helper('core')->formatDate($answer->getACreatedAt(), 'medium', true); ?></div>                                                            
+                                                                </li>
+                                                            <?php endforeach; ?>
+                                                        </ul>
+                                                    <?php endif; ?>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php else: ?>
+                                        <?php echo $this->__('Have no questions.') ?>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <?php echo $this->__('Have no questions.') ?>
+                                <?php endif; ?>                                
+                            </div>
+                        </div>
+                    </div>
+					<script>
+						mgsjQuery(document).ready(function() {
+							mgsjQuery( "#panel-topic-<?php echo $parentTopic->getId(); ?> a" ).click(function() {
+								if(mgsjQuery('#panel-topic-<?php echo $parentTopic->getId(); ?> a .fa').hasClass('fa-caret-down')){
+									if(mgsjQuery('#accordion-product-questions a .fa').hasClass('fa-caret-up')){
+										mgsjQuery('#accordion-product-questions a .fa').removeClass( "fa-caret-up" );
+										mgsjQuery('#accordion-product-questions a .fa').addClass( "fa-caret-down" );
+									}
+									mgsjQuery( "#panel-topic-<?php echo $parentTopic->getId(); ?> a .fa").removeClass( "fa-caret-down" );
+									mgsjQuery( "#panel-topic-<?php echo $parentTopic->getId(); ?> a .fa").addClass( "fa-caret-up" );
+								}else{
+									mgsjQuery( "#panel-topic-<?php echo $parentTopic->getId(); ?> a .fa").removeClass( "fa-caret-up" );
+									mgsjQuery( "#panel-topic-<?php echo $parentTopic->getId(); ?> a .fa").addClass( "fa-caret-down" );
+								}
+							});
+						});
+					</script>					
+                <?php endforeach; ?>   
+            </div>
+        <?php else: ?>
+            <p class="note-msg"><?php echo $this->__('Have no topics.') ?></p>
+        <?php endif; ?> 
+    <?php endif; ?>
+<?php else: ?>
+    <?php if (Mage::helper('productquestions')->allowAccordition()): ?>
+        <?php $parentTopics = $this->getParentTopics(); ?>
+        <?php if (count($parentTopics)): ?>
+            <div class="panel-group" id="accordion-product-questions">
+                <?php foreach ($parentTopics as $parentTopic): ?>
+                    <div id="panel-topic-<?php echo $parentTopic->getId(); ?>"  class="panel panel-default">
+                        <div class="panel-heading">
+                            <p class="panel-title"> 
+								<i class="fa fa-question-circle faq-icon"></i>
+                                <?php if ($parentTopic->haveQuestions()): ?>
+                                    <?php $questions = $this->getQuestionByParams($parentTopic->getId()); ?>
+                                    <a data-toggle="collapse" data-parent="#accordion-product-questions" href="#collapseTopic<?php echo $parentTopic->getId(); ?>">
+                                        <?php echo $parentTopic->getTitle(); ?><?php echo $this->__(' - %s question(s)', count($questions)) ?>
+                                    </a>                                    
+                                <?php else: ?>
+                                    <a data-toggle="collapse" data-parent="#accordion-product-questions" href="#collapseTopic<?php echo $parentTopic->getId(); ?>">
+                                        <?php echo $parentTopic->getTitle(); ?><?php echo $this->__(' - 0 question(s)') ?>
+                                    </a>                                    
+                                <?php endif; ?>
+                            </p>
+                        </div>
+						<a data-toggle="collapse" data-parent="#accordion-product-questions" href="#collapseTopic<?php echo $parentTopic->getId(); ?>">
+                            <i class="fa fa-caret-down"></i>
+                        </a> 
+                        <div id="collapseTopic<?php echo $parentTopic->getId(); ?>" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <?php if ($parentTopic->haveQuestions()): ?>
+                                    <?php $questions = $this->getQuestionByParams($parentTopic->getId()); ?>
+                                    <?php if (count($questions)): ?>
+                                        <ul class="question-list">
+                                            <?php foreach ($questions as $question): ?>
+                                                <li class="item">
+                                                    <div style="font-weight: bold;"><?php echo $question->getContent(); ?></div>
+                                                    <div class="faq-question-by"><?php echo $this->__('Question by: ') . $question->getCustomerName() . ' on ' . Mage::helper('core')->formatDate($question->getCreatedAt(), 'medium', true); ?></div>
+                                                    <?php if ($question->haveAnswers()): ?>
+                                                        <?php $answers = $this->getAnswersByQuestionId($question->getId()); ?>
+                                                        <ul class="answer-list">
+                                                            <?php foreach ($answers as $answer): ?>
+                                                                <li class="item">
+                                                                    <div><?php echo $answer->getAContent(); ?></div>
+                                                                    <div class="answer-by"><?php echo $this->__('Answer by: ') . $answer->getACustomerName() . ' on ' . Mage::helper('core')->formatDate($answer->getACreatedAt(), 'medium', true); ?></div>                                                            
+                                                                </li>
+                                                            <?php endforeach; ?>
+                                                        </ul>
+                                                    <?php endif; ?>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php else: ?>
+                                        <?php echo $this->__('Have no questions.') ?>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <?php echo $this->__('Have no questions.') ?>
+                                <?php endif; ?>                                
+                            </div>
+                        </div>
+                    </div>
+					<script>
+						mgsjQuery(document).ready(function() {
+							mgsjQuery( "#panel-topic-<?php echo $parentTopic->getId(); ?> a" ).click(function() {
+								if(mgsjQuery('#panel-topic-<?php echo $parentTopic->getId(); ?> a .fa').hasClass('fa-caret-down')){
+									if(mgsjQuery('#accordion-product-questions a .fa').hasClass('fa-caret-up')){
+										mgsjQuery('#accordion-product-questions a .fa').removeClass( "fa-caret-up" );
+										mgsjQuery('#accordion-product-questions a .fa').addClass( "fa-caret-down" );
+									}
+									mgsjQuery( "#panel-topic-<?php echo $parentTopic->getId(); ?> a .fa").removeClass( "fa-caret-down" );
+									mgsjQuery( "#panel-topic-<?php echo $parentTopic->getId(); ?> a .fa").addClass( "fa-caret-up" );
+								}else{
+									mgsjQuery( "#panel-topic-<?php echo $parentTopic->getId(); ?> a .fa").removeClass( "fa-caret-up" );
+									mgsjQuery( "#panel-topic-<?php echo $parentTopic->getId(); ?> a .fa").addClass( "fa-caret-down" );
+								}
+							});
+						});
+					</script>
+                <?php endforeach; ?>   
+            </div>            
+        <?php else: ?>
+            <p class="note-msg"><?php echo $this->__('Have no topics.') ?></p>
+        <?php endif; ?> 
+    <?php else: ?>
+        <?php $parentTopics = $this->getParentTopics(); ?>
+        <?php if (count($parentTopics)): ?>
+            <div class="panel-group">
+                <?php foreach ($parentTopics as $parentTopic): ?>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <p class="panel-title">       
+								<i class="fa fa-question-circle faq-icon"></i>
+                                <?php if ($parentTopic->haveQuestions()): ?>
+                                    <?php $questions = $this->getQuestionByParams($parentTopic->getId()); ?>
+                                    <span>
+                                        <?php echo $parentTopic->getTitle(); ?><?php echo $this->__(' - %s question(s)', count($questions)) ?>
+                                    </span>                                    
+                                <?php else: ?>
+                                    <span>
+                                        <?php echo $parentTopic->getTitle(); ?><?php echo $this->__(' - 0 question(s)') ?>
+                                    </span>                                    
+                                <?php endif; ?>
+                            </p>
+                        </div>
+                        <div class="panel-collapse collapse in">
+                            <div class="panel-body">
+                                <?php if ($parentTopic->haveQuestions()): ?>
+                                    <?php $questions = $this->getQuestionByParams($parentTopic->getId()); ?>
+                                    <?php if (count($questions)): ?>
+                                        <ul class="question-list">
+                                            <?php foreach ($questions as $question): ?>
+                                                <li class="item">
+                                                    <div style="font-weight: bold;"><?php echo $question->getContent(); ?></div>
+                                                    <div class="faq-question-by"><?php echo $this->__('Question by: ') . $question->getCustomerName() . ' on ' . Mage::helper('core')->formatDate($question->getCreatedAt(), 'medium', true); ?></div>
+                                                    <?php if ($question->haveAnswers()): ?>
+                                                        <?php $answers = $this->getAnswersByQuestionId($question->getId()); ?>
+                                                        <ul class="answer-list">
+                                                            <?php foreach ($answers as $answer): ?>
+                                                                <li class="item">
+                                                                    <div><?php echo $answer->getAContent(); ?></div>
+                                                                    <div class="answer-by"><?php echo $this->__('Answer by: ') . $answer->getACustomerName() . ' on ' . Mage::helper('core')->formatDate($answer->getACreatedAt(), 'medium', true); ?></div>                                                            
+                                                                </li>
+                                                            <?php endforeach; ?>
+                                                        </ul>
+                                                    <?php endif; ?>
+                                                </li>
+                                            <?php endforeach; ?>
+                                        </ul>
+                                    <?php else: ?>
+                                        <?php echo $this->__('Have no questions.') ?>
+                                    <?php endif; ?>
+                                <?php else: ?>
+                                    <?php echo $this->__('Have no questions.') ?>
+                                <?php endif; ?>                                
+                            </div>
+                        </div>
+                    </div>  
+                <?php endforeach; ?>   
+            </div>
+        <?php else: ?>
+            <div class="note-msg alert alert-danger"><?php echo $this->__('Have no topics.') ?></div>
+        <?php endif; ?> 
+    <?php endif; ?>
+<?php endif; ?>

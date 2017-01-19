@@ -1,0 +1,34 @@
+<?php $portfolio = $this->getPortfolio() ?>
+<div class="row portfolio-details">
+	<div class="col-md-6 col-sm-6 col-xs-12">
+		<div class="portfolio-image">
+			<img src="<?php echo $this->helper('portfolio')->getBaseImage($portfolio)?>" alt="" class="img-responsive"/>
+		</div>
+	</div>
+	<div class="col-md-6 col-sm-6 col-xs-12">
+		<div class="portfolio-content">
+			<h1 class="name-portfolio"><?php echo $portfolio->getName() ?></h1>
+			<div class="portfolio-project"><?php echo $this->helper('portfolio')->getCategoriesLinkDetail($portfolio)?></div>
+			<div class="description"><?php echo nl2br($portfolio->getDescription()) ?></div>
+			<ul class="portfolio-info">
+			<?php if($portfolio->getPortfolioDate()): ?>
+				<li><span class="text-uppercase color-theme"><?php echo $this->__('Date:') ?></span><?php echo date('F d, Y', strtotime($portfolio->getPortfolioDate()))?></li>
+			<?php endif ?>
+			<?php if($portfolio->getSkills()): ?>
+				<li><span class="text-uppercase color-theme"><?php echo $this->__('Skills:') ?></span><?php echo $portfolio->getSkills() ?></li>
+			<?php endif ?>
+			<?php if($portfolio->getClient()): ?>
+				<li class="last"><span class="text-uppercase color-theme"><?php echo $this->__('Client:') ?></span><?php echo $portfolio->getClient() ?></li>
+			<?php endif ?>
+			<?php if($portfolio->getServices()): ?>
+				<li><span class="text-uppercase color-theme"><?php echo $this->__('Project:') ?></span><?php echo $portfolio->getServices() ?></li>
+			<?php endif ?>
+			</ul>
+			<?php if($portfolio->getProjectUrl()): ?>
+				<div class="go-to-project">
+					<a target="_blank" class="btn btn-primary btn-xs" href="<?php echo $portfolio->getProjectUrl() ?>"><?php echo $this->__('View project') ?></a>
+				</div>
+			<?php endif ?>
+		</div>
+	</div>
+</div>	

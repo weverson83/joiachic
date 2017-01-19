@@ -1,0 +1,152 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+?>
+<?php
+    $_product = $this->getProduct();
+    $_helper = $this->helper('catalog/output');
+	
+	$panelHelper = $this->helper('mpanel');
+	$size = $panelHelper->convertRatioToDetailSize();
+	$minSize = $panelHelper->convertRatioToSize();
+?>
+<div class="entry hidden-sm hidden-xs">
+	<div class="product-image product-image-zoom image-media" id="main-images">
+		<div class="product-image-gallery">
+			<img id="image-main"
+				 class="gallery-image visible"
+				 src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize($size['width'], $size['height']) ?>"
+				 alt="<?php echo $this->escapeHtml($this->getImageLabel()) ?>"
+				 title="<?php echo $this->escapeHtml($this->getImageLabel()); ?>" />
+
+			<?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
+				<?php if ($this->isGalleryImageVisible($_image)): ?>
+				<img id="image-<?php echo $i; ?>"
+					 class="gallery-image"
+					 src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($size['width'], $size['height']); ?>"
+					 data-zoom-image="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($size['width'], $size['height']); ?>" />
+				<?php endif; ?>
+			<?php $i++; endforeach; ?>
+		</div>
+	</div>
+</div>
+<div class="mobile-media owl-carousel hidden-lg hidden-md">
+	<?php $i=0; foreach ($this->getGalleryImages() as $_image): $i++; ?>
+		<div class="item">
+			<div class="entry<?php if($i==1): ?> first<?php endif ?><?php if($i%3==0): ?> last<?php endif ?>">
+				<div class="image-media">
+					<img data-main-image-src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($size['width'], $size['height']); ?>" alt="" class="img-responsive" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($size['width'], $size['height']); ?>">
+				</div>
+			</div>
+			<div class="magnifier">
+				<div class="buttons">
+					<a href="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($size['width'], $size['height']); ?>" class="sf" title="" data-gal="prettyPhoto[product-gallery]"><i class="fa fa-expand"></i></a>
+				</div>
+			</div>
+		</div>
+	<?php endforeach; ?>
+</div>
+<script type="text/javascript">    
+	jQuery(".mobile-media").owlCarousel ({
+		rtl: <?php echo $panelHelper->rightToLeftOwl() ?>,
+		items: 1,
+		loop: true,
+		nav: false,
+		lazyLoad: true,
+		dots: false,
+		autoplay: false,
+		autoplayHoverPause: false,
+		navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+		responsive:{
+			0 : {items: 1},
+			480 : {items: 1},
+			768 : {items: 1},
+			980 : {items: 1},
+			1200 : {items: 1}
+		}
+	});
+</script>
+<?php if (count($this->getGalleryImages()) > 0): ?>
+<div class="thumbnails clearfix hidden-sm hidden-xs">
+	<div class="carousel-container">
+		<div class="thubmbnail">
+			<div class="thubmbnail-row">
+				<div id="services" class="services owl-carousel thumbnails-carousel product-image-thumbs">
+					<?php $i=0; foreach ($this->getGalleryImages() as $_image): ?>
+						<div class="item">
+							<div class="entry<?php if($i==1): ?> first<?php endif ?><?php if($i%3==0): ?> last<?php endif ?>">
+								<div class="image-media">
+									<a class="thumb-link" href="#" title="<?php echo $this->escapeHtml($_image->getLabel()) ?>" data-image-index="<?php echo $i; ?>">
+										<img data-main-image-src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($size['width'], $size['height']); ?>" src="<?php echo $this->helper('catalog/image')->init($this->getProduct(), 'thumbnail', $_image->getFile())->resize($minSize['width'], $minSize['height']); ?>"
+											 width="<?php echo $minSize['width'] ?>" height="<?php echo $minSize['height'] ?>" alt="<?php echo $this->escapeHtml($_image->getLabel()) ?>" class="img-responsive"/>
+									</a>
+								</div>
+							</div>
+						</div>
+					<?php $i++; endforeach; ?>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">    
+		/*initSlider('services', 4, false,false, true, false);*/
+		jQuery("#services").owlCarousel ({
+			rtl: <?php echo $panelHelper->rightToLeftOwl() ?>,
+			items: 3,
+			loop: true,
+			nav: true,
+			lazyLoad: true,
+			dots: false,
+			autoplay: false,
+			autoplayHoverPause: false,
+			navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+			responsive:{
+				0 : {items: 1},
+				480 : {items: 2},
+				768 : {items: 3},
+				980 : {items: 3},
+				1200 : {items: 3}
+			}
+		});
+		
+	</script>
+	<!--script type="text/javascript">
+		jQuery(document).ready(function(){
+			jQuery("#services .item .image-media img").click(function(){
+				jQuery("#main-images img").attr("src", jQuery(this).attr("data-main-image-src"));
+				jQuery("#main-images .magnifier a").attr("href", jQuery(this).attr("data-main-image-src"));
+			});
+		});
+	</script-->
+</div>
+<?php endif; ?>
+<?php echo $this->getChildHtml('after'); ?>

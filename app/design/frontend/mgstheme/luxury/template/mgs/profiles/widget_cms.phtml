@@ -1,0 +1,58 @@
+<?php $profiles = Mage::getModel('profiles/profile')->getCollection()
+                ->addFieldToFilter('status', 0); ?>
+<div class="profile-contents">
+	<?php if(count($profiles) > 0): ?>
+		<?php if($this->getData('number_show')){
+			$col_data = $this->getData('number_show');
+		}else{
+			$col_data = 4;
+		} ?>
+		<?php 
+			$helper = $this->helper('mpanel');
+			$col = $helper->convertColRowCustom($col_data);
+		?>
+		<div class="profile-grid row">
+			<div class="carousel-container profiles">
+				<?php $i = 0; foreach ($profiles as $profile): $i ++ ?>
+				<?php if($i > $col_data): ?><?php break; ?><?php endif ?>
+					<div class="item col-sm-half col-md-<?php echo $col; ?> col-sm-6 col-xs-12 <?php if($i % $col_data == 1): ?>first-row-item<?php endif ?> <?php if($i % 2 == 1): ?>row-2sm-first<?php endif ?>">												
+						<div class="profile-content">
+							<div class="profile-top">
+								<a href="<?php echo $profile->getAddress(); ?>" class="profile-image"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) .$profile->getPhoto() ?>" class="img-responsive" alt="<?php echo $profile->getName() ?>"/></a>
+								<div class="social-links">
+									<ul class="social-connected">
+										<?php if($profile->getFacebook()!=''): ?>
+											<li><a target="_blank" href="<?php echo $profile->getFacebook() ?>"><i class="fa fa-facebook"></i></a></li>
+										<?php endif ?>
+										<?php if($profile->getTwitter()!=''): ?>
+											<li><a target="_blank" href="<?php echo $profile->getTwitter() ?>"><i class="fa fa-twitter"></i></a></li>
+										<?php endif ?>
+										<?php if($profile->getLinkedin()!=''): ?>
+											<li><a target="_blank" href="<?php echo $profile->getLinkedin() ?>"><i class="fa fa-linkedin"></i></a></li>
+										<?php endif ?>
+										<?php if($profile->getInstagram()): ?>
+											<li><a target="_blank" href="<?php echo $profile->getInstagram(); ?>"><i class="fa fa-instagram"></i></a></li>
+										<?php endif ?>
+										<?php if($profile->getGooglePlus()): ?>
+											<li><a target="_blank" href="<?php echo $profile->getGooglePlus(); ?>"><i class="fa fa-google-plus"></i></a></li>
+										<?php endif ?>
+									</ul>
+								</div>	
+							</div>
+							<div class="profile-desc">
+								<a class="profile-name h5" href="<?php echo $profile->getAddress(); ?>"><?php echo $profile->getName() ?></a>
+								<p class="job-design">
+									<?php echo $profile->getPosition(); ?>
+								</p> 						
+							</div>
+						</div>
+					</div>
+				<?php endforeach ?>
+			</div>
+		</div>
+	<?php else: ?>
+		<div class="alert alert-warning no-product-display">
+			<?php echo $this->__('There are no profiles.') ?>
+		</div>
+	<?php endif ?>
+</div>

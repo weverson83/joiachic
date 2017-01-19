@@ -1,0 +1,22 @@
+<?php $menu = $this->getMenu() ?>
+<?php echo $portfolios ?>
+<div class="block block-portfolio">
+	<div class="block-title">
+        <strong><span><?php echo $this->__('Portfolio Categories') ?></span></strong>
+    </div>
+
+	<div class="block-content">
+		<?php if(count($menu)>0): ?>
+			<ul>
+				<?php foreach( $menu as $_menu ): ?>
+				<li>
+					<a href="<?php echo $this->getUrl('portfolio/category/list', array('id'=>$_menu->getId())) ?>"><?php echo $_menu->getCategoryName() ?></a>
+				</li>
+				<?php endforeach; ?>
+			</ul>
+		<?php else: ?>
+			<p class="empty"><?php echo $this->__('Have no Portfolio category') ?></p>
+		<?php endif ?>
+	</div>
+
+</div>

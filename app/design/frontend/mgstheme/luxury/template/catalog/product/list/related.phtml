@@ -1,0 +1,142 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+if ($this->getTitle() != '') {
+    $title = $this->getTitle();
+} else {
+    $title = 'Related Products';
+}
+?>
+<?php $helper = $this->helper('mpanel') ?>
+<?php $size = $helper->convertRatioToMinSize($this->getProductRatio()) ?>
+<?php $ratio = $size['width']/$size['height']; ?>
+<?php $height_img = round(82/$ratio); ?>
+<?php $height_item = $height_img + 20; ?>
+<?php if($this->getItems()->getSize()): ?>
+<div class="block product-block-list block-related">
+    <div class="title-block">
+        <h4><?php echo $this->__($title) ?></h4>
+    </div>
+    <div class="block-content">
+        <p class="block-subtitle"><?php echo $this->__('Escolha os itens que deseja adicionar ao carrinho ou') ?>&nbsp;<a href="#" onclick="selectAllRelated(this); return false;"><?php echo $this->__('select all') ?></a></p>
+				<?php $len = count($this->getItems()); ?>
+        <div class="mini-products-list <?php if($len > 3): ?>owl-carousel<?php endif ?>" id="block-related">
+        <?php $i=0; foreach($this->getItems() as $_item): $i++; ?>
+            <?php if($i % 3 == 1): ?><ul class="category-product-list"><?php endif ?>
+			<li class="item">
+				<div class="product-content">
+					<div class="product-left">
+						<?php if(!$_item->isComposite() && $_item->isSaleable()): ?>
+							<?php if (!$_item->getRequiredOptions()): ?>
+								<input type="checkbox" class="checkbox related-checkbox" id="related-checkbox<?php echo $_item->getId() ?>" name="related_products[]" value="<?php echo $_item->getId() ?>" />
+							<?php endif; ?>
+						<?php endif; ?>
+						<a href="<?php echo $_item->getProductUrl() ?>" title="<?php echo $this->escapeHtml($_item->getName()) ?>" class="product-image"><img class="img-responsive" src="<?php echo $this->helper('catalog/image')->init($_item, 'thumbnail')->resize(82, $height_img) ?>" alt="<?php echo $this->escapeHtml($_item->getName()) ?>" /></a>
+					</div>
+					<div class="product-right">
+						<h6 class="product-name"><a href="<?php echo $_item->getProductUrl() ?>"><?php echo $this->escapeHtml($_item->getName()) ?></a></h6>
+						<?php echo $this->getPriceHtml($_item, true, '-related') ?>
+					</div>
+					<div class="clear"></div>
+				</div>
+			</li>
+            <?php if($i % 3 == 0 || $i == $len): ?></ul><?php endif ?>
+        <?php endforeach ?>
+        </div>
+		<?php if($len > 3): ?>
+			<script type="text/javascript">
+					mgsjQuery("#block-related").owlCarousel({
+						rtl: <?php echo $helper->rightToLeftOwl(); ?>,
+						items: 1,
+						loop: false,
+						lazyLoad: true,
+						nav: true,
+						dots: false,
+						autoplay: false,
+						autoplayHoverPause: false,
+						navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+						responsive:{
+							0 : {items: 1},
+							480 : {items: 1},
+							768 : {items: 2},
+							980 : {items: 2},
+							1200 : {items: 1}
+						}
+					}); 
+			</script>
+		<?php endif ?>
+        <script type="text/javascript">decorateList('block-related', 'none-recursive')</script>
+    </div>
+    <script type="text/javascript">
+    //<![CDATA[
+    $$('.related-checkbox').each(function(elem){
+        Event.observe(elem, 'click', addRelatedToProduct)
+    });
+
+    var relatedProductsCheckFlag = false;
+    function selectAllRelated(txt){
+        if (relatedProductsCheckFlag == false) {
+            $$('.related-checkbox').each(function(elem){
+                elem.checked = true;
+            });
+            relatedProductsCheckFlag = true;
+            txt.innerHTML="<?php echo $this->__('unselect all') ?>";
+        } else {
+            $$('.related-checkbox').each(function(elem){
+                elem.checked = false;
+            });
+            relatedProductsCheckFlag = false;
+            txt.innerHTML="<?php echo $this->__('select all') ?>";
+        }
+        addRelatedToProduct();
+    }
+
+    function addRelatedToProduct(){
+        var checkboxes = $$('.related-checkbox');
+        var values = [];
+        for(var i=0;i<checkboxes.length;i++){
+            if(checkboxes[i].checked) values.push(checkboxes[i].value);
+        }
+        if($('related-products-field')){
+            $('related-products-field').value = values.join(',');
+        }
+    }
+    //]]>
+    </script>
+</div>
+<?php else: ?>
+<?php if(Mage::helper('mpanel')->acceptToUsePanel()): ?>
+<div class="block block-related">
+    <div class="block-title">
+        <strong><span><?php echo $this->__($title) ?></span></strong>
+    </div>
+    <div class="block-content">
+        <p><?php echo $this->__('Have no related products.'); ?></p>
+    </div>    
+</div>
+<?php endif ?>
+<?php endif ?>

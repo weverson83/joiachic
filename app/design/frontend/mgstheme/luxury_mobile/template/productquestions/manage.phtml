@@ -1,0 +1,102 @@
+<?php
+/* * ****************************************************
+ * Package   : ProductQuestions
+ * Author    : http://www.arrowhitech.com
+ * Copyright : (c) 2013 - ArrowHiTech.Com
+ * ***************************************************** */
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+<?php $questions = $this->getQuestions(); ?>
+<h1 class="short"><?php echo $this->__('Product Questions') ?></h1>
+<div class="box">
+<div class="box-title">
+<h3><?php echo $this->__('My Questions') ?></h3>
+</div>
+<div class="top-toolbar">
+	<?php echo $this->getPagerHtml(); ?>
+</div>
+<?php if (count($questions)): ?>
+<?php foreach ($questions as $question): ?>
+<div class="product-item">
+	<?php
+	$product = Mage::getModel('catalog/product')->load($question->getProductId());
+	$productUrl = $product->getProductUrl();
+	?>
+	<p><span><?php echo $this->__('Product:') ?></span><a title="<?php echo $question->getProductName(); ?>" href="<?php echo $productUrl; ?>"><?php echo $question->getProductName(); ?></a></p>
+	<div class="question-product">
+		<p><span><?php echo $this->__('Question:') ?></span></p>
+		<p><?php echo $question->getContent(); ?></p>
+	</div>
+	<?php
+		if ($question->getStatus() == 1) {
+			$status = 'Pending';
+		} elseif ($question->getStatus() == 2) {
+			$status = 'Approved';
+		} else {
+			$status = 'Declined';
+		}
+	?>
+	<p><span><?php echo $this->__('Status:') ?></span><?php echo $status; ?></p>
+	<p>
+		<span><?php echo $this->__('Is Answered?') ?></span>
+		<?php $answersByQuestionId = $this->getAnswersByQuestionId($question->getId()); ?>
+		<?php if (count($answersByQuestionId)): ?>
+			<?php echo $this->__('Yes ' . '- ' . count($answersByQuestionId) . ' answer(s)') ?>
+		<?php else: ?>
+			<?php echo $this->__('Not yet.') ?>
+		<?php endif; ?>  
+	</p>
+</div>
+<?php endforeach; ?>
+<script type="text/javascript">decorateTable('my-questions-table');</script>
+<div class="bottom-toolbar">
+    <?php echo $this->getPagerHtml(); ?>
+</div>
+<?php else: ?>
+    <p><?php echo $this->__('You have placed no questions.'); ?></p>
+<?php endif ?>
+<br>
+<?php $answers = $this->getAnswers(); ?>
+<div class="box-title">
+<h3><?php echo $this->__('My Answers') ?></h3>
+</div>
+<div class="top-toolbar">
+<?php echo $this->getPagerAnswerHtml(); ?>
+</div>
+<?php if (count($answers)): ?>
+<?php foreach ($answers as $answer): ?>
+<div class="product-item">
+	<?php
+        $question = Mage::getModel('productquestions/question')->load($answer->getQuestionId());
+        $product = Mage::getModel('catalog/product')->load($question->getProductId());
+        $productUrl = $product->getProductUrl();
+    ?>
+	<p><span><?php echo $this->__('Product:') ?></span><a title="<?php echo $question->getProductName(); ?>" href="<?php echo $productUrl; ?>"><?php echo $question->getProductName(); ?></a></p>
+	<div class="question-product">
+		<p><span><?php echo $this->__('Question:') ?></span></p>
+		<p><?php echo $question->getContent(); ?></p>
+	</div>
+	<div class="answer-product">
+		<p><span><?php echo $this->__('Answered:') ?></span></p>
+		<p><?php echo $answer->getAContent(); ?></p>
+	</div>
+	<?php
+		if ($answer->getAStatus() == 1) {
+			$status = 'Pending';
+		} elseif ($answer->getAStatus() == 2) {
+			$status = 'Approved';
+		} else {
+			$status = 'Declined';
+		}
+		?>
+	<p><span><?php echo $this->__('Status:') ?></span><?php echo $status; ?></p>
+</div>
+<?php endforeach; ?>
+<script type="text/javascript">decorateTable('my-answers-table');</script>
+<div class="bottom-toolbar">
+    <?php echo $this->getPagerAnswerHtml(); ?>
+</div>
+<?php else: ?>
+    <p><?php echo $this->__('You have placed no answers.'); ?></p>
+<?php endif ?>
+</div>

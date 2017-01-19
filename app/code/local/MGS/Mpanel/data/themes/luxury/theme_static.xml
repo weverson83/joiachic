@@ -1,0 +1,306 @@
+<static_block>
+	<!-- MOBILE THEME -->
+	<item>
+		<title>Luxury Mobile Homepage</title>
+		<identifier>luxury_mobile_homepage</identifier>
+		<content><![CDATA[<div class="mobile-homepage-content">
+<div class="rev-slider">{{widget type="revslider/slider_preview" id="4"}}</div>
+<div class="featured">{{block type="mpanel/products" products_count="8" title="Featured Products" template="cms/home/featured_products.phtml"}}</div>
+<div class="mobile-v-menu">
+<div class="v-menu-title">
+<h3>Shop By Category</h3>
+</div>
+{{block type="page/html_topmenu" template="page/html/topmenu.phtml"}}</div>
+</div>]]></content>
+	</item>
+	<item>
+		<title>Luxury Mobile Main Menu</title>
+		<identifier>luxury_mobile_main_menu</identifier>
+		<content><![CDATA[{{block type="megamenu/horizontal" menu_id="2" template="megamenu/horizontal.phtml"}}]]></content>
+	</item>
+	<item>
+		<title>Luxury Mobile Socials</title>
+		<identifier>luxury_mobile_socilas</identifier>
+		<content><![CDATA[<div class="block-title">
+<h3>Follow Us</h3>
+</div>
+<div class="block-content">
+<ul>
+<li><a href="#"><span class="fa fa-facebook">&nbsp;</span></a></li>
+<li><a href="#"><span class="fa fa-twitter">&nbsp;</span></a></li>
+<li><a href="#"><span class="fa fa-pinterest">&nbsp;</span></a></li>
+<li><a href="#"><span class="fa fa-instagram">&nbsp;</span></a></li>
+<li><a href="#"><span class="fa fa-youtube-play">&nbsp;</span></a></li>
+<li><a href="#"><span class="fa fa-google-plus">&nbsp;</span></a></li>
+</ul>
+</div>]]></content>
+	</item>
+	<item>
+		<title>Main Menu</title>
+		<identifier>luxury_mobile_footer_block_1</identifier>
+		<content><![CDATA[<ul>
+<li><a href="{{store url=""}}">Home</a></li>
+<li><a href="{{store url=""}}">About Us</a></li>
+<li><a href="{{store url=""}}brand">Our Brands</a></li>
+<li><a href="{{store url=""}}blog">Blog</a></li>
+<li><a href="{{store url=""}}faqs">FAQs</a></li>
+<li><a href="{{store url=""}}contacts">Contacts</a></li>
+</ul>]]></content>
+	</item>
+	<item>
+		<title>Information</title>
+		<identifier>luxury_mobile_footer_block_2</identifier>
+		<content><![CDATA[<p>Suspendisse vel enim ut nisl malesuada tristique ut vel nunc. Integer sed justo ac tortor porta bibendum non vehicula sapien. Cras vel augue nisl. Nulla id aliquam purus.</p>]]></content>
+	</item>
+	<item>
+		<title>Store Info</title>
+		<identifier>luxury_mobile_footer_block_3</identifier>
+		<content><![CDATA[<div>
+<div class="store-container">
+<div class="content-store">
+<p><em class="fa fa-home">&nbsp;</em> Address:</p>
+<p>108 Street, AZ District, Green City</p>
+</div>
+</div>
+<div class="store-container">
+<div class="content-store">
+<p><em class="fa fa-phone">&nbsp;</em> Feel Free to Call Us:</p>
+<p>+123 456 7890</p>
+</div>
+</div>
+<div class="store-container">
+<div class="content-store">
+<p><em class="fa fa-envelope">&nbsp;</em> Email: info@magesolution.com</p>
+</div>
+</div>
+</div>]]></content>
+	</item>
+	<item>
+		<title>Luxury Mobile Copyright</title>
+		<identifier>luxury_mobile_copyright</identifier>
+		<content><![CDATA[Coppyright &copy; 2016 <a href="#">Luxury</a>. All Rights Reserved.<br />Powered by <a href="#">ArrowHitech</a>.]]></content>
+	</item>
+	<item>
+		<title>Luxury Mobile Payments</title>
+		<identifier>luxury_mobile_payments</identifier>
+		<content><![CDATA[<img src="{{media url="wysiwyg/payments.png"}}" alt="" />]]></content>
+	</item>
+	<item>
+		<title>Luxury Mobile Newsletter</title>
+		<identifier>luxury_mobile_newsletter</identifier>
+		<content><![CDATA[<div class="block block-subscribe">
+<div class="form-subscribe-header">
+{{block type="newsletter/subscribe" name="footer.newsletter" as="footer.newsletter" template="newsletter/subscribe.phtml"}}
+</div></div>]]></content>
+	</item>
+	<!-- HEADER -->
+	<item>
+		<title>Luxury header setting</title>
+		<identifier>luxury_setting</identifier>
+		<content><![CDATA[<div class="setting-dropdown"><a href="dropdown-toggle" data-toggle="dropdown"><em class="fa fa-cog">&nbsp;</em></a>
+<div class="dropdown-menu" role="menu">{{block type="page/switch" template="page/switch/languages.phtml"}} {{block type="directory/currency" template="directory/currency.phtml"}}
+</div>
+</div>]]></content>
+	</item>
+	<item>
+		<title>Panel Social</title>
+		<identifier>panel_social</identifier>
+		<content><![CDATA[<ul class="social">
+<li><a href="#"><em class="fa fa-facebook">&nbsp;</em></a></li>
+<li><a href="#"><em class="fa fa-twitter">&nbsp;</em></a></li>
+<li><a href="#"><em class="fa fa-linkedin">&nbsp;</em></a></li>
+<li><a href="#"><em class="fa fa-rss">&nbsp;</em></a></li>
+<li><a href="#"><em class="fa fa-dribbble">&nbsp;</em></a></li>
+</ul>]]></content>
+	</item>
+	<!-- FOOTER -->
+	<item>
+		<title>Panel Footer Logo</title>
+		<identifier>panel_footer_logo</identifier>
+		<content><![CDATA[<p style="margin-bottom:20px;"><img src="{{media url="wysiwyg/footer-logo.png"}}" alt="" /></p>]]></content>
+	</item>
+	<item>
+		<title>Panel Footer Info</title>
+		<identifier>panel_footer_info</identifier>
+		<content><![CDATA[<p>Lorem ipsum dolor sit amete, consectetur adipisicing sed do eiusmod tempor icididunt ut labore etel dolore magna aliqua.<br/> enim adminim veniam, done quisnostrud exercitation ullommodo.</p>]]></content>
+	</item>
+	<item>
+		<title>Luxury footer contacts</title>
+		<identifier>luxury-footer-contacts</identifier>
+		<content><![CDATA[<div class="footer-contacts">
+<div class="block-title"><span class="h4"><span class="title">Contacts us</span></span></div>
+<div class="block-content">
+<ul>
+<li><em class="fa fa-map-marker">&nbsp;</em> <span class="text">LUXURY London Oxford Street 02 <br>United Kingdom. </span></li>
+<li><em class="fa fa-envelope">&nbsp;</em> <span class="text">emailluxury@gmail.com<br/>emailsupport@gmail.com</span></li>
+<li><em class="fa fa-phone">&nbsp;</em> <span class="text">(+92) 3456 7890<br/>(+92) 1234 5678</span></li>
+</ul>
+</div>
+</div>]]></content>
+	</item>
+	<item>
+		<title>Luxury footer quick link</title>
+		<identifier>luxury-quick-link</identifier>
+		<content><![CDATA[<div class="footer-quicklink block">
+<div class="block-title"><span class="h4">Quick link</span></div>
+<div class="block-content">
+<ul>
+<li><a href="#">My account</a></li>
+<li><a href="#">Order history</a></li>
+<li><a href="#">Wish list</a></li>
+<li><a href="#">Store locator</a></li>
+<li><a href="#">Site map<br /></a></li>
+</ul>
+</div>
+</div>]]></content>
+	</item>
+	<item>
+		<title>luxury footer our offers</title>
+		<identifier>luxury-our-offers</identifier>
+		<content><![CDATA[<div class="footer-our block">
+<div class="block-title"><span class="h4">Our offers</span></div>
+<div class="block-content">
+<ul>
+<li><a href="#">New collection</a></li>
+<li><a href="#">Best sellers</a></li>
+<li><a href="#">Manufacturers</a></li>
+<li><a href="#">New products</a></li>
+<li><a href="#">Specail products</a></li>
+</ul>
+</div>
+</div>]]></content>
+	</item>
+	<item>
+		<title>luxury footer help</title>
+		<identifier>luxury-help</identifier>
+		<content><![CDATA[<div class="footer-help">
+<div class="block-title"><span class="h4">Help</span></div>
+<div class="block-content">
+<ul>
+<li><a href="#">Help &amp; Contact</a></li>
+<li><a href="#">Shipping &amp; taxes</a></li>
+<li><a href="#">Return policy</a></li>
+<li><a href="#">Affiliates</a></li>
+<li><a href="#">Legal Notice</a></li>
+</ul>
+</div>
+</div>]]></content>
+	</item>
+	<item>
+		<title>Luxury product tags</title>
+		<identifier>luxury-product-tags</identifier>
+		<content><![CDATA[<div class="block footer-tags">
+<div class="block-title"><span class="h4">Product tags</span></div>
+<div class="block-content">
+{{block type="tag/popular" name="tags_popular" template="tag/popular.phtml"}}</div>
+</div>]]></content>
+	</item>
+	<item>
+		<title>Panel Newsletter</title>
+		<identifier>panel_newsletter</identifier>
+		<content><![CDATA[<div class="footer-newsletter">{{block type="newsletter/subscribe" name="footer.newsletter" as="footer.newsletter" template="newsletter/footer-subscribe.phtml"/}}</div>]]></content>
+	</item>
+	<item>
+		<title>Luxury Newsletter Popup</title>
+		<identifier>newsletter_popup</identifier>
+		<content><![CDATA[<p class="img-newsletter"><img src="{{media url="wysiwyg/bg_newsletter_popup_1.jpg"}}" alt="" /></p>
+<div class="newsletter-popup-content">
+<span class="h2" style="font-style: 28px">GET OUR NEWSLETTER SIGN UP</span>
+<p class="desc-popup hidden-xs">Subscribe to the LUXURY mailing list to receive updates on new arrivals,<br /> special offers and other discount information.</p>
+{{block type="newsletter/subscribe" name="home.newsletter" as="home.newsletter" template="newsletter/subscribe-popup.phtml"/}}
+<div class="checkbox"><label for="dont_show"> <input id="dont_show" onclick="dontShowPopup('dont_show')" type="checkbox" /> Don't show this popup again </label></div>
+</div>]]></content>
+	</item>
+	<item>
+		<title>Panel Payment Icons</title>
+		<identifier>panel_payment_icons</identifier>
+		<content><![CDATA[<ul>
+<li><a href="#"><img src="{{media url="wysiwyg/icon-paypal.png"}}" alt="" /></a></li>
+<li><a href="#"><img src="{{media url="wysiwyg/icon-discover.png"}}" alt="" /></a></li>
+<li><a href="#"><img src="{{media url="wysiwyg/icon-mastercard.png"}}" alt="" /></a></li>
+<li><a href="#"><img src="{{media url="wysiwyg/icon-visa.png"}}" alt="" /></a></li>
+</ul>]]></content>
+	</item>
+	<item>
+		<title>Panel Main Menu</title>
+		<identifier>panel_main_menu</identifier>
+		<content><![CDATA[<div class="footer-mainmenu">
+<ul>
+<li><a href="#">Help & contact</a></li>
+<li><a href="#">Return  Policy</a></li>
+<li><a href="#">Site Map</a></li>
+<li><a href="#">Shipping & Tax</a></li>
+<li><a href="#">Login</a></li>
+</ul>
+</div>]]></content>
+	</item>
+	<!-- PRODUCT DETAIL -->
+	<item>
+		<title>Luxury Video Custom Tab</title>
+		<identifier>luxury_video_custom_tab</identifier>
+		<content><![CDATA[<div class="iframe-video"><iframe src="https://www.youtube.com/embed/Se5Uo1tfsGg" frameborder="0" width="560" height="400"></iframe></div>]]></content>
+	</item>
+	<item>
+		<title>Luxury Custom Static Block Sidebar</title>
+		<identifier>luxury_custom_static_block_sidebar</identifier>
+		<content><![CDATA[<div class="service-box margin-bottom15">
+<div class="icon rotate"><i class="fa fa-truck"></i></div>
+<div class="text"><span class="h4">FREE SHIPPING</span></div>
+</div>
+<div class="service-box margin-bottom15">
+<div class="icon rotate"><i class="fa fa-reply"></i></div>
+<div class="text"><span class="h4">100% MONEY BACK</span></div>
+</div>
+<div class="service-box margin-bottom15">
+<div class="icon rotate"><i class="fa fa-comments"></i></div>
+<div class="text"><span class="h4">ONLINE SUPPORT 24/7</span></div>
+</div>]]></content>
+	</item>
+	<item>
+		<title>MGS Panel Product Static Block Bottom</title>
+		<identifier>mgs_panel_product_static_block_bottom</identifier>
+		<content><![CDATA[Sed arcu velit, lacinia quis scelerisque sit amet, fringilla eu nibh. In in metus vel lacus fringilla mattis vitae at augue. Nullam malesuada, urna at scelerisque consequat, enim libero commodo enim, in malesuada purus erat ut ipsum.]]></content>
+	</item>
+	<item>
+		<title>MGS Panel Product Static Block Top</title>
+		<identifier>mgs_panel_product_static_block_top</identifier>
+		<content><![CDATA[Sed arcu velit, lacinia quis scelerisque sit amet, fringilla eu nibh. In in metus vel lacus fringilla mattis vitae at augue. Nullam malesuada, urna at scelerisque consequat, enim libero commodo enim, in malesuada purus erat ut ipsum.]]></content>
+	</item>
+	<!-- LOGIN -->
+	<item>
+		<title>Luxury Custom New Customer</title>
+		<identifier>luxury_custom_new_customer</identifier>
+		<content><![CDATA[<div class="margin-top40 padding-top10">
+<h3 class="title-step text-uppercase">Sign Up Today And You'll Be Able To :</h3>
+<ul class="custom-create-acc">
+<li><span class="icon fa fa-check-square-o"></span>Speed your way through the checkout.</li>
+<li><span class="icon fa fa-check-square-o"></span>Track your orders easily.</li>
+<li><span class="icon fa fa-check-square-o"></span>Keep a record of all your purchases.</li>
+</ul>
+</div>]]></content>
+	</item>
+	
+	<item>
+		<title>Luxury Breadcrumb Background</title>
+		<identifier>luxury-background-breadcrumbs</identifier>
+		<content><![CDATA[<img src="{{media url="wysiwyg/bg-header_1.png"}}" alt="" />]]></content>
+	</item>
+	
+	<item>
+		<title>Luxury Landing Category Grid</title>
+		<identifier>luxury_landing_category_grid</identifier>
+		<content><![CDATA[{{block type="catalog/navigation" template="mgs/mpanel/landing-grid.phtml"}}]]></content>
+	</item>
+	
+	<item>
+		<title>Luxury Landing Category Lookbook</title>
+		<identifier>luxury_landing_category_lookbook</identifier>
+		<content><![CDATA[{{block type="catalog/navigation" template="mgs/mpanel/landing-lookbook.phtml"}}]]></content>
+	</item>
+	
+	<item>
+		<title>Luxurt Landing Category Mansory</title>
+		<identifier>luxury_landing_category_mansory</identifier>
+		<content><![CDATA[{{block type="catalog/navigation" template="mgs/mpanel/landing-mansory.phtml"}}]]></content>
+	</item>
+</static_block>

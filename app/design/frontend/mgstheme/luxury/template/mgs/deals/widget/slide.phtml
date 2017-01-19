@@ -1,0 +1,132 @@
+<?php if(Mage::getStoreConfig('deals/general/enabled')): ?>
+	<?php $widgetId = $this->getWidgetId();?>
+	<?php $productCollection = $this->getProductCollection(); ?>
+	<?php $_helper = $this->helper('catalog/output'); ?>
+	<?php $helper = $this->helper('mpanel'); ?>
+	<?php if(count($productCollection)>0): ?>
+	
+		<?php if($this->getTitle()!=''): ?>
+			<div class="carousel_wrapper">
+				<div class="title-content">
+					<h3><?php echo $this->getTitle() ?></h3>
+				</div>
+			</div>
+		<?php endif ?>
+		<?php if($this->getColumn() == 1): ?>
+		<div id="deals-slide" class="deals-slide owl-carousel">
+			<?php foreach ($productCollection as $product): ?>
+				<?php $_product = Mage::getModel('catalog/product')->load($product->getId()) ?>
+				<div class="one-deals">
+					<div class="row">
+						<div class="col-md-5 col-sm-6 col-xs-12 deals-content-left">
+							<div class="deals-img">
+								<div id="img-deals-slider-<?php echo $product->getId(); ?>" class="img-deals-slider">
+									<div class="item">
+										<a href="<?php echo $_product->getProductUrl() ?>" title="" class="product-image" >
+											<img class="img-responsive" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($size['width'], $size['height']); ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-7 col-sm-6 col-xs-12 deals-content-right">
+							<div class="deals-info">
+								<?php echo $this->getLayout()->createBlock('deals/deals')->setTemplate('mgs/deals/price.phtml')->setProductId($_product->getId())->setData("widgetId",$widgetId)->toHtml(); ?>
+								<div class="clear"></div>
+								<div class="product-name"><a class="h1" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></div>
+								<p class="short_description"><?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?></p>
+								<div class="price-show">
+									<?php echo $this->getPriceHtml($_product, true) ?>
+								</div>
+								<?php if($_product->isSaleable()): ?>
+									<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="btn-cart btn btn-default btn-lg" onclick="setLocation('<?php echo $this->helper('checkout/cart')->getAddUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+								<?php else: ?>
+									<span class="btn btn-default btn-lg availability out-of-stock"><?php echo $this->__('Out of stock') ?></span>
+								<?php endif; ?>
+								<a class="btn btn-default btn-lg" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Detail') ?></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			<?php endforeach ?>
+		</div>
+		<script type="text/javascript">
+			mgsjQuery("#deals-slide").owlCarousel({
+				rtl: <?php echo $helper->rightToLeftOwl(); ?>,
+				items: 1,
+				loop: true,
+				lazyLoad: true,
+				nav: false,
+				dots: true,
+				autoplay: false,
+				autoplayHoverPause: false,
+				navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+				responsive:{
+					0 : {items: 1},
+					480 : {items: 1},
+					768 : {items: 1},
+					980 : {items: 1},
+					1200 : {items: 1}
+				}
+			}); 
+		</script>
+		<?php else: ?>
+			<div id="deal_products" class="owl-carousel deal-carousel">
+				<?php $i= 0; foreach($productCollection as $product): ?>
+				<?php $_product = Mage::getModel('catalog/product')->load($product->getId()) ?>
+					<div class="item">
+						<div class="product-info">
+							<div class="product-image-container">
+								<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+									<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(240); ?>" width="240" height="240" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+								</a>
+								<div class="discount-save">
+									<div class="save-content">
+										<?php echo $this->__('Save') ?>
+										<div class="percent">
+											<?php $save = $_product->getPrice() - $_product->getFinalPrice() ?>
+											<?php $percent = round(($save*100)/$_product->getPrice(), 1) ?>
+											<?php echo $percent ?>%
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="slide-deals">
+							<div class="deals-info">
+								<div class="time-left">
+									<div class="note"><?php echo $this->__('Time left') ?></div>
+									<?php echo $this->getLayout()->createBlock('deals/deals')->setTemplate('mgs/deals/list.phtml')->setProductId($_product->getId())->setData("widgetId", $widgetId)->toHtml(); ?>
+								</div>
+								<div class="item-info">
+									<div class="sold">
+										<?php echo $this->__('Sold:') ?> <span><?php echo $this->getSold($_product->getId()) ?></span>
+									</div>
+									<div class="item-left">
+										<?php $itemLeft = $this->getItemLeft($_product->getId()); ?>
+										<?php if($itemLeft!=''): ?>
+											<?php if($itemLeft>1): ?>
+												<?php echo $this->__('Items left:') ?> <span><?php echo $itemLeft ?></span>
+											<?php else: ?>
+												<?php echo $this->__('Item left:') ?> <span><?php echo $itemLeft ?></span>
+											<?php endif ?>
+										<?php else: ?>
+											<?php echo $this->__('Items left:') ?> <span><?php echo $this->__('Unlimited') ?></span>
+										<?php endif ?>
+									</div>
+								</div>
+								<div class="addcart-button">
+									<a href="<?php echo $this->getAddToCartUrl($_product) ?>"><span><?php echo $this->__('Buy Now') ?></span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				<?php endforeach ?>
+			</div>
+			<script type="text/javascript">
+				initSlider('deal_products', <?php echo $this->getColumn() ?>, <?php echo $this->getAutoPlay()?>, <?php echo $this->getStopHover()?>, <?php echo $this->getNavigation()?>, <?php echo $this->getPagination()?>,<?php echo $helper->rightToLeftOwl(); ?>);
+			</script>
+		<?php endif ?>
+	<?php endif ?>
+<?php endif ?>

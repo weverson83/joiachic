@@ -1,0 +1,529 @@
+<layout>
+    <name>1_column_full</name>
+	<page_width><![CDATA[width1200]]></page_width>
+	<header>header3</header>
+	<footer>footer</footer>
+	<sticky_menu>1</sticky_menu>
+	<popup_newsletter>1</popup_newsletter>	
+	<!-- Theme Color -->
+	<!-- Theme Color -->
+ <theme_color_header>
+	<use_custom>1</use_custom>
+	<top_background><![CDATA[#2d2d2d]]></top_background>
+	<top_text_color><![CDATA[]]></top_text_color>
+	<top_link_color><![CDATA[]]></top_link_color>
+	<top_border_color><![CDATA[]]></top_border_color>
+	<top_link_hover_color><![CDATA[]]></top_link_hover_color>
+	<top_dropdown_background><![CDATA[]]></top_dropdown_background>
+	<top_dropdown_link><![CDATA[]]></top_dropdown_link>
+	<top_dropdown_link_hover><![CDATA[]]></top_dropdown_link_hover>
+	<top_dropdown_border><![CDATA[]]></top_dropdown_border>
+	
+	<middle_background><![CDATA[#ffffff]]></middle_background>
+	
+	<search_background><![CDATA[]]></search_background>
+	<search_text_color><![CDATA[]]></search_text_color>
+	<search_link_color><![CDATA[]]></search_link_color>
+	<search_link_hover_color><![CDATA[]]></search_link_hover_color>
+	<search_input_color><![CDATA[]]></search_input_color>
+	<search_icon_color><![CDATA[]]></search_icon_color>
+	<search_dropdown_background><![CDATA[]]></search_dropdown_background>
+	<search_dropdown_hover_background><![CDATA[]]></search_dropdown_hover_background>
+	<search_dropdown_text_color><![CDATA[]]></search_dropdown_text_color>
+	<search_dropdown_text_hover_color><![CDATA[]]></search_dropdown_text_hover_color>
+	
+	<cart_text_color><![CDATA[]]></cart_text_color>
+	<cart_price_color><![CDATA[]]></cart_price_color>
+	<cart_icon_background><![CDATA[]]></cart_icon_background>
+	<cart_dropdown_background><![CDATA[]]></cart_dropdown_background>
+	<cart_number_background><![CDATA[]]></cart_number_background>
+	<cart_number_text><![CDATA[]]></cart_number_text>
+	
+	<menu_background><![CDATA[#ffffff]]></menu_background>
+	<menu_link_color><![CDATA[]]></menu_link_color>
+	<menu_link_hover_color><![CDATA[]]></menu_link_hover_color>
+	<menu_border_color><![CDATA[]]></menu_border_color>
+ </theme_color_header>
+ <theme_color_main>
+  <use_custom>0</use_custom>
+ </theme_color_main>
+ <theme_color_footer>
+  <use_custom>0</use_custom>
+ </theme_color_footer>
+
+<custom_style>
+	<style><![CDATA[.header-v3 .top-bar{
+	font-family: 'Oswald',sans-serif;
+}]]></style>
+</custom_style>
+
+    <!--  Blocks  -->
+    <block>
+        <name>block62</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[]]></padding_top>
+        <padding_bottom><![CDATA[]]></padding_bottom>
+        <block_position>1</block_position>
+    </block>
+    <block>
+        <name>block63</name>
+        <block_cols><![CDATA[4,4,4]]></block_cols>
+        <block_class><![CDATA[["","",""]]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[40]]></padding_top>
+        <padding_bottom><![CDATA[10]]></padding_bottom>
+        <block_position>2</block_position>
+    </block>
+    <block>
+        <name>block64</name>
+        <block_cols><![CDATA[8,4]]></block_cols>
+        <block_class><![CDATA[["padding-right0",""]]]></block_class>
+        <custom_class><![CDATA[promo-boxed]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[]]></padding_top>
+        <padding_bottom><![CDATA[]]></padding_bottom>
+        <block_position>3</block_position>
+    </block>
+    <block>
+        <name>block65</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[42]]></padding_top>
+        <padding_bottom><![CDATA[70]]></padding_bottom>
+        <block_position>4</block_position>
+    </block>
+    <block>
+        <name>block66</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[]]></block_class>
+        <custom_class><![CDATA[text-colour-white]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[bg_categories_wg.jpg]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>1</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[62]]></padding_top>
+        <padding_bottom><![CDATA[58]]></padding_bottom>
+        <block_position>5</block_position>
+    </block>
+    <block>
+        <name>block67</name>
+        <block_cols><![CDATA[4,4,4]]></block_cols>
+        <block_class><![CDATA[["col-sm-12 col-xs-12","col-sm-12 col-xs-12","col-sm-12 col-xs-12"]]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[80]]></padding_top>
+        <padding_bottom><![CDATA[50]]></padding_bottom>
+        <block_position>6</block_position>
+    </block>
+    <block>
+        <name>block68</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[#ffffff]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[62]]></padding_top>
+        <padding_bottom><![CDATA[]]></padding_bottom>
+        <block_position>7</block_position>
+    </block>
+    <block>
+        <name>block69</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[#ffffff]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[]]></padding_top>
+        <padding_bottom><![CDATA[]]></padding_bottom>
+        <block_position>8</block_position>
+    </block>
+
+    <!--  Childs  -->
+	<!--  Static block  -->
+    <child>
+        <block_name>block63-0</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <static_block_title><![CDATA[Luxury Service Sample 01]]></static_block_title>
+        <static_block_identifier><![CDATA[luxury_service_sample_01]]></static_block_identifier>
+        <static_block_content><![CDATA[<div class="service-box">
+<div class="icon rotate"><i class="fa fa-truck"></i></div>
+<div class="text"><span class="h4">FREE SHIPPING ON OVER ORDER $500</span></div>
+</div>]]></static_block_content>
+        <type>static</type>
+        <position>1</position>
+        <setting><![CDATA[{"custom_class":"","animation":"","animation_delay":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block63-1</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <static_block_title><![CDATA[Luxury Service Sample 02]]></static_block_title>
+        <static_block_identifier><![CDATA[luxury_service_sample_02]]></static_block_identifier>
+        <static_block_content><![CDATA[<div class="service-box">
+<div class="icon rotate"><i class="fa fa-reply"></i></div>
+<div class="text"><span class="h4">100% MONEY BACK</span></div>
+</div>]]></static_block_content>
+        <type>static</type>
+        <position>1</position>
+        <setting><![CDATA[{"custom_class":"","animation":"","animation_delay":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block63-2</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <static_block_title><![CDATA[Luxury Service Sample 03]]></static_block_title>
+        <static_block_identifier><![CDATA[luxury_service_sample_03]]></static_block_identifier>
+        <static_block_content><![CDATA[<div class="service-box">
+<div class="icon rotate"><i class="fa fa-comments"></i></div>
+<div class="text"><span class="h4">ONLINE SUPPORT 24/7</span></div>
+</div>]]></static_block_content>
+        <type>static</type>
+        <position>1</position>
+        <setting><![CDATA[{"custom_class":"","animation":"","animation_delay":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block64-0</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <static_block_title><![CDATA[Luxury Banner Slider2]]></static_block_title>
+        <static_block_identifier><![CDATA[luxury_banner_slider2]]></static_block_identifier>
+        <static_block_content><![CDATA[<div id="promobanner-slider" class="owl-carousel banner-slider left">
+		<div class="promo-banner">
+			<a href=""><img class="img-responsive" src="{{media url="wysiwyg/banner_shop_3_1.jpg"}}" alt=""></a>
+			<div class="text-container text-left">
+				<div class="text-hover">
+					<div style="color: #3b3b3b;" class="a-center">
+						<span style="font-weight: 300; font-size: 16px" class="h5 margin-bottom0">HOT &amp; TRENDY CLOTHES</span>
+						<span style="font-size: 42px;" class="h1 padding-bottom15">FOR REAL WOMEN</span>
+						<button onclick="setLocation('#');" class="btn btn-default btn-lg">SHOP NOW</button>
+					</div>		
+				</div>
+			</div>
+		</div>
+		<div class="promo-banner">
+			<a href=""><img class="img-responsive" src="{{media url="wysiwyg/banner_shop_3_4.jpg"}}" alt=""></a>
+			<div class="text-container text-center">
+				<div class="text-hover">
+					<div style="color: #3b3b3b;">
+						<span style="font-weight: 300; font-size: 16px" class="h5 margin-bottom0">HOT &amp; TRENDY CLOTHES</span>
+						<span style="font-size: 42px;" class="h1 padding-bottom15">FOR REAL MEN</span>
+						<button onclick="setLocation('#');" class="btn btn-default btn-lg">SHOP NOW</button>
+					</div>		
+				</div>
+			</div>
+		</div>
+	</div>
+<script type="text/javascript">
+	initSliderBanner('promobanner-slider', 1,true,true,false,true);
+</script>]]></static_block_content>
+        <type>static</type>
+        <position>1</position>
+        <setting><![CDATA[{"custom_class":"","animation":"","animation_delay":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block66-0</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <static_block_title><![CDATA[Luxury Categories Widget Slider]]></static_block_title>
+        <static_block_identifier><![CDATA[luxury_categories_widget_slider]]></static_block_identifier>
+        <static_block_content><![CDATA[<div class="title-content">
+	<h3>Our Categories</h3>
+</div>
+<div id="categories-slider" class="owl-carousel categories-slider">
+	<div class="item">
+		<div class="img-category">
+			<a href="#"><img class="img-responsive" src="{{media url="wysiwyg/cat_bag.jpg"}}" alt=""></a>
+		</div>
+		<div class="categories-desc">
+			<a href="#"><span style="font-size: 16px" class="h5">BAGS</span></a>
+			<span style="font-size: 12px;" class="h6">( 20 PRODUCTS )</span>
+		</div>
+	</div>
+	<div class="item">
+		<div class="img-category">
+			<a href="#"><img class="img-responsive" src="{{media url="wysiwyg/cat_shoes.jpg"}}" alt=""></a>
+		</div>
+		<div class="categories-desc">
+			<a href="#"><span style="font-size: 16px" class="h5">WOMEN'S SHOES</span></a>
+			<span style="font-size: 12px;" class="h6">( 25 PRODUCTS )</span>
+		</div>
+	</div>
+	<div class="item">
+		<div class="img-category">
+			<a href="#"><img class="img-responsive" src="{{media url="wysiwyg/cat_kid.jpg"}}" alt=""></a>
+		</div>
+		<div class="categories-desc">
+			<a href="#"><span style="font-size: 16px" class="h5">KID</span></a>
+			<span style="font-size: 12px;" class="h6">( 27 PRODUCTS )</span>
+		</div>
+	</div>
+	<div class="item">
+		<div class="img-category">
+			<a href="#"><img class="img-responsive" src="{{media url="wysiwyg/cat_glass.jpg"}}" alt=""></a>
+		</div>
+		<div class="categories-desc">
+			<a href="#"><span style="font-size: 16px" class="h5">GLASS</span></a>
+			<span style="font-size: 12px;" class="h6">( 70 PRODUCTS )</span>
+		</div>
+	</div>
+	<div class="item">
+		<div class="img-category">
+			<a href="#"><img class="img-responsive" src="{{media url="wysiwyg/cat_shoes_men.jpg"}}" alt=""></a>
+		</div>
+		<div class="categories-desc">
+			<a href="#"><span style="font-size: 16px" class="h5">MEN'S SHOES</span></a>
+			<span style="font-size: 12px;" class="h6">( 64 PRODUCTS )</span>
+		</div>
+	</div>
+	<div class="item">
+		<div class="img-category">
+			<a href="#"><img class="img-responsive" src="{{media url="wysiwyg/cat_sport.jpg"}}" alt=""></a>
+		</div>
+		<div class="categories-desc">
+			<a href="#"><span style="font-size: 16px" class="h5">SPORT</span></a>
+			<span style="font-size: 12px;" class="h6">( 19 PRODUCTS )</span>
+		</div>
+	</div>
+	<div class="item">
+		<div class="img-category">
+			<a href="#"><img class="img-responsive" src="{{media url="wysiwyg/cat_shoes_kid.jpg"}}" alt=""></a>
+		</div>
+		<div class="categories-desc">
+			<a href="#"><span style="font-size: 16px" class="h5">KID'S SHOES</span></a>
+			<span style="font-size: 12px;" class="h6">( 35 PRODUCTS )</span>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	initSlider('categories-slider', 4,true,true,false,true);
+</script>]]></static_block_content>
+        <type>static</type>
+        <position>1</position>
+        <setting><![CDATA[{"custom_class":"","animation":"","animation_delay":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+	<child>
+        <block_name>block64-1</block_name>
+        <block_content><![CDATA[{{block type="promobanners/promobanners" banner_id="%s" template="mgs/promobanners/banner.phtml"}}]]></block_content>
+        <type>promo_banner</type>
+        <banner_title><![CDATA[Luxury Banner Fashion Shoes]]></banner_title>
+        <banner_filename><![CDATA[banner_shop_3_2.jpg]]></banner_filename>
+        <banner_url>#</banner_url>
+        <banner_content><![CDATA[<div class="title-block">
+<span class="h3" style="font-size: 20px;">FASHION SHOES</h3>
+</div>]]></banner_content>
+        <banner_button><![CDATA[]]></banner_button>
+        <banner_text_align><![CDATA[top-left]]></banner_text_align>
+        <position>1</position>
+        <setting><![CDATA[{"custom_class":"padding-left0 top right col-sm-6 col-xs-12 col-xs-half","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"%s"}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+	<child>
+        <block_name>block64-1</block_name>
+        <block_content><![CDATA[{{block type="promobanners/promobanners" banner_id="%s" template="mgs/promobanners/banner.phtml"}}]]></block_content>
+        <type>promo_banner</type>
+        <banner_title><![CDATA[Luxury Banner Fashion Bags]]></banner_title>
+        <banner_filename><![CDATA[banner_shop_3_3.jpg]]></banner_filename>
+        <banner_url>#</banner_url>
+        <banner_content><![CDATA[<div class="title-block">
+<span class="h3" style="font-size: 20px;">FASHION BAGS</h3>
+</div>]]></banner_content>
+        <banner_button><![CDATA[]]></banner_button>
+        <banner_text_align><![CDATA[top-left]]></banner_text_align>
+        <position>2</position>
+        <setting><![CDATA[{"custom_class":"padding-left0 bottom right  col-sm-6 col-xs-12 col-xs-half","animation":"","animation_delay":"","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","banner_id":"%s"}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block69-0</block_name>
+        <block_content><![CDATA[{{block type="brand/homeblock" brand_ids="" slider="1" title="" count_per_row="5" number_row="1" auto_play="true" stop_hover="false" navigation="false" pagination="false" template="mgs/brand/home-featured-brands.phtml"}}]]></block_content>
+        <type>brands</type>
+        <position>1</position>
+        <setting><![CDATA[{"title":"","custom_class":"","animation":"","animation_delay":"","brand":[],"count_per_row":"5","slider":{"active":"1","auto":"true","stop_hover":"false","navigation":"false","pagination":"false"},"number_row":"1"}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block67-0</block_name>
+        <block_content><![CDATA[{{block type="mpanel/products" template="mgs/mpanel/products/category_products/category_products_list.phtml" title="Special" products_count="2" column="1" category_ids="" product_ratio="" show_type="position"}}]]></block_content>
+        <type>category_products</type>
+        <position>1</position>
+        <setting><![CDATA[{"title":"Special","custom_class":"","animation":"","animation_delay":"","show_type":"position","products_count":"2","count_per_row":"1","view_mode":"category_products_list.phtml","category_id":[],"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","price_colour":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block67-1</block_name>
+        <block_content><![CDATA[{{block type="mpanel/products" template="mgs/mpanel/products/category_products/category_products_list.phtml" title="Must Have" products_count="2" column="1" category_ids="" product_ratio="" show_type="position"}}]]></block_content>
+        <type>category_products</type>
+        <position>1</position>
+        <setting><![CDATA[{"title":"Must Have","custom_class":"","animation":"","animation_delay":"","show_type":"position","products_count":"2","count_per_row":"1","view_mode":"category_products_list.phtml","category_id":[],"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","price_colour":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block67-2</block_name>
+        <block_content><![CDATA[{{block type="mpanel/products" template="mgs/mpanel/products/category_products/category_products_list.phtml" title="New Products" products_count="2" column="1" category_ids="" product_ratio="" show_type="new"}}]]></block_content>
+        <type>category_products</type>
+        <position>1</position>
+        <setting><![CDATA[{"title":"New Products","custom_class":"","animation":"","animation_delay":"","show_type":"new","products_count":"2","count_per_row":"1","view_mode":"category_products_list.phtml","category_id":[],"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","price_colour":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block68-0</block_name>
+        <block_content><![CDATA[{{widget type="blog/last" blog_count="2" categories="1" column="2" view_mode="grid" slider="0" title="Latest From Blogs" character_count="200"}}]]></block_content>
+        <type>latest_posts</type>
+        <position>1</position>
+        <setting><![CDATA[{"title":"Latest From Blogs","custom_class":"","animation":"","animation_delay":"","categories":["1"],"product_count":"2","character_count":"200","view_mode":"grid","count_per_row":"2","slider":{"active":"0","auto":"false","stop_hover":"false","navigation":"false","pagination":"false"},"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block62-0</block_name>
+        <block_content><![CDATA[{{widget type="revslider/slider_preview" id="6"}}]]></block_content>
+        <type>revolution</type>
+        <position>1</position>
+        <setting><![CDATA[6]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block65-0</block_name>
+        <block_content><![CDATA[{{block type="mpanel/products" template="mgs/mpanel/products/category_products/category_products_tabs_view_more.phtml" title="The Trendy Clothing" products_count="8" column="4" category_ids="" product_ratio="" show_type="position"}}]]></block_content>
+        <type>category_products</type>
+        <position>1</position>
+        <setting><![CDATA[{"title":"The Trendy Clothing","custom_class":"","animation":"","animation_delay":"","show_type":"position","products_count":"8","count_per_row":"4","view_mode":"category_products_tabs_view_more.phtml","category_id":[],"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","price_colour":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block63-0</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <type>separator</type>
+        <position>2</position>
+        <setting><![CDATA[{"custom_class":"col-xs-12","separator_type":"white-space","border_type":"full","border_style":"style1","border_icon":"","text_content":"","margin_top":"15","margin_bottom":"15"}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block63-1</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <type>separator</type>
+        <position>2</position>
+        <setting><![CDATA[{"custom_class":"col-xs-12","separator_type":"white-space","border_type":"full","border_style":"style1","border_icon":"","text_content":"","margin_top":"15","margin_bottom":"15"}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block63-2</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <type>separator</type>
+        <position>2</position>
+        <setting><![CDATA[{"custom_class":"col-xs-12","separator_type":"white-space","border_type":"full","border_style":"style1","border_icon":"","text_content":"","margin_top":"15","margin_bottom":"15"}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block68-0</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <type>separator</type>
+        <position>2</position>
+        <setting><![CDATA[{"custom_class":"col-xs-12","separator_type":"border","border_type":"full","border_style":"style1","border_icon":"","text_content":"","margin_top":"40","margin_bottom":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block67-0</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <type>separator</type>
+        <position>2</position>
+        <setting><![CDATA[{"custom_class":"col-xs-12","separator_type":"white-space","border_type":"full","border_style":"style1","border_icon":"","text_content":"","margin_top":"15","margin_bottom":"15"}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block67-1</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <type>separator</type>
+        <position>2</position>
+        <setting><![CDATA[{"custom_class":"col-xs-12","separator_type":"white-space","border_type":"full","border_style":"style1","border_icon":"","text_content":"","margin_top":"15","margin_bottom":"15"}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block67-2</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <type>separator</type>
+        <position>2</position>
+        <setting><![CDATA[{"custom_class":"col-xs-12","separator_type":"white-space","border_type":"full","border_style":"style1","border_icon":"","text_content":"","margin_top":"15","margin_bottom":"15"}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block64-0</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <type>separator</type>
+        <position>2</position>
+        <setting><![CDATA[{"custom_class":"col-xs-12","separator_type":"white-space","border_type":"full","border_style":"style1","border_icon":"","text_content":"","margin_top":"10","margin_bottom":"10"}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block64-1</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <type>separator</type>
+        <position>3</position>
+        <setting><![CDATA[{"custom_class":"col-xs-12","separator_type":"white-space","border_type":"full","border_style":"style1","border_icon":"","text_content":"","margin_top":"10","margin_bottom":"10"}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+</layout>

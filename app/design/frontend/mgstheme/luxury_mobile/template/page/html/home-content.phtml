@@ -1,0 +1,8 @@
+<div class="list_carousel">
+    <?php echo $this->getLayout()->createBlock('banner/banner', 'banner.home')->setBannerGroupCode("mobile_home_banner")->setTemplate('unibanner/banner.phtml')->toHtml();?>
+    <script type="text/javascript">
+        jQuery("select, input, a.button").uniform();
+    </script>
+
+</div>
+<?php echo $this->getLayout()->createBlock('page/html_topmenu')->setTemplate('page/html/topmenu.phtml')->toHtml(); ?>

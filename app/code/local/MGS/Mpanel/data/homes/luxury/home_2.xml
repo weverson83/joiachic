@@ -1,0 +1,307 @@
+<layout>
+    <name>1_column_full</name>
+	<page_width><![CDATA[width1200]]></page_width>
+	<header>header</header>
+	<footer>footer</footer>
+	<sticky_menu>1</sticky_menu>
+	<popup_newsletter>1</popup_newsletter>	
+	<!-- Theme Color -->
+	<!-- Theme Color -->
+ <theme_color_header>
+	<use_custom>1</use_custom>
+	<top_background><![CDATA[#ffffff]]></top_background>
+	<top_text_color><![CDATA[#6a6a6a]]></top_text_color>
+	<top_link_color><![CDATA[#6a6a6a]]></top_link_color>
+	<top_link_hover_color><![CDATA[#252525]]></top_link_hover_color>
+	<dropdown_link_hover><![CDATA[#b18ade]]></dropdown_link_hover>
+	
+	<middle_background><![CDATA[#ffffff]]></middle_background>
+	
+	<search_background><![CDATA[]]></search_background>
+	<search_text_color><![CDATA[#6a6a6a]]></search_text_color>
+	<search_link_color><![CDATA[#6a6a6a]]></search_link_color>
+	<search_link_hover_color><![CDATA[#252525]]></search_link_hover_color>
+	<search_input_color><![CDATA[]]></search_input_color>
+	<search_icon_color><![CDATA[]]></search_icon_color>
+	<search_dropdown_background><![CDATA[]]></search_dropdown_background>
+	<search_dropdown_hover_background><![CDATA[]]></search_dropdown_hover_background>
+	<search_dropdown_text_color><![CDATA[]]></search_dropdown_text_color>
+	<search_dropdown_text_hover_color><![CDATA[#b18ade]]></search_dropdown_text_hover_color>
+	
+	<cart_text_color><![CDATA[#6a6a6a]]></cart_text_color>
+	<cart_price_color><![CDATA[#757575]]></cart_price_color>
+	<cart_icon_background><![CDATA[#ffffff]]></cart_icon_background>
+	<cart_dropdown_background><![CDATA[]]></cart_dropdown_background>
+	<cart_number_background><![CDATA[]]></cart_number_background>
+	<cart_number_text><![CDATA[]]></cart_number_text>
+	
+	<menu_background><![CDATA[#ffffff]]></menu_background>
+	<menu_link_color><![CDATA[#5d5d5d]]></menu_link_color>
+	<menu_link_hover_color><![CDATA[#252525]]></menu_link_hover_color>
+	<menu_dropdown_background><![CDATA[]]></menu_dropdown_background>
+	<menu_dropdown_link_color><![CDATA[]]></menu_dropdown_link_color>
+	<menu_dropdown_link_hover_color><![CDATA[]]></menu_dropdown_link_hover_color>
+	<menu_border_color><![CDATA[transparent]]></menu_border_color>
+ </theme_color_header>
+ <theme_color_main>
+  <use_custom>0</use_custom>
+ </theme_color_main>
+ <theme_color_footer>
+  <use_custom>0</use_custom>
+ </theme_color_footer>
+
+<custom_style>
+	<style><![CDATA[header nav ul.nav-main li.active > a.level0::before,
+header nav ul.nav-main li > a.level0::before{
+background-color:#252525;
+}
+header nav ul.nav-main li.dropdown > a.level0:after{
+background-color:#5d5d5d;
+}
+.block-cart-header .fa-shopping-cart{color:#6a6a6a;}
+.block-cart-header:hover .fa-shopping-cart{color:#252525;}
+.block-cart-header:hover .count{
+background-color: #b18ade;
+color:#fff;
+}
+.header-v1.position-abs{position:relative;}
+.btn-responsive-nav{color:#6a6a6a;}
+.btn-responsive-nav:hover{color:#252525;}]]></style>
+</custom_style>
+
+    <!--  Blocks  -->
+    <block>
+        <name>block29</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[]]></padding_top>
+        <padding_bottom><![CDATA[]]></padding_bottom>
+        <block_position>1</block_position>
+    </block>
+    <block>
+        <name>block30</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[6]]></padding_top>
+        <padding_bottom><![CDATA[]]></padding_bottom>
+        <block_position>2</block_position>
+    </block>
+    <block>
+        <name>block31</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[72]]></padding_top>
+        <padding_bottom><![CDATA[70]]></padding_bottom>
+        <block_position>3</block_position>
+    </block>
+    <block>
+        <name>block32</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[]]></block_class>
+        <custom_class><![CDATA[text-colour-white]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[bg_testimonials.jpg]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>1</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[62]]></padding_top>
+        <padding_bottom><![CDATA[40]]></padding_bottom>
+        <block_position>4</block_position>
+    </block>
+    <block>
+        <name>block34</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[72]]></padding_top>
+        <padding_bottom><![CDATA[62]]></padding_bottom>
+        <block_position>5</block_position>
+    </block>
+    <block>
+        <name>block35</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[#ffffff]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[62]]></padding_top>
+        <padding_bottom><![CDATA[]]></padding_bottom>
+        <block_position>6</block_position>
+    </block>
+    <block>
+        <name>block36</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[#ffffff]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[]]></padding_top>
+        <padding_bottom><![CDATA[]]></padding_bottom>
+        <block_position>7</block_position>
+    </block>
+
+    <!--  Childs  -->
+    <child>
+        <block_name>block30-0</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <static_block_title><![CDATA[Luxury Banner Boxed Home 1]]></static_block_title>
+        <static_block_identifier><![CDATA[luxury_banner_boxed_h1]]></static_block_identifier>
+        <static_block_content><![CDATA[<div class="boxed-content padding30">
+<div class="row">
+<div class="col-md-3 col-sm-4 col-xs-12">
+<div class="banner row">
+<div class="col-xs-12 col-xs-half">
+<span class="title h3">NEW DESIGN SEND HER <br/> YOUR LOVE </span> 
+<p class="margin0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor </p>
+<a href="#" class="btn btn-default btn-lg margin-top30 margin-bottom30">SHOP NOW</a>
+</div>
+<div class="col-xs-12 col-xs-half">
+<a class="banner-img" href="#"><img class="img-responsive" src="{{media url="wysiwyg/banner_shop_1.jpg"}}" alt="" /></a>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-sm-4 col-xs-12">
+<div class="banner row">
+<div class="col-xs-12">
+<a class="banner-img" href="#"><img class="img-responsive" src="{{media url="wysiwyg/banner_shop_2.jpg"}}" alt="" /></a>
+<span class="title h3" style="font-size: 30px;">THE BIGGEST WINTER COLLECTION</span> 
+<p class="margin0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam </p>
+<a href="#" class="btn btn-default btn-lg margin-top30">GET IT NOW</a>
+</div>
+</div>
+</div>
+<div class="col-md-3 col-sm-4 col-xs-12">
+<div class="banner last row">
+<div class="col-xs-12 col-xs-half">
+<span class="title h3">WOMEN'S FASHION MID SEASON SALES </span> 
+<p class="margin0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor </p>
+<a href="#" class="btn btn-default btn-lg  margin-top30 margin-bottom30">SHOP NOW</a>
+</div>
+<div class="col-xs-12 col-xs-half">
+<a class="banner-img" href="#"><img class="img-responsive" src="{{media url="wysiwyg/banner_shop_3.jpg"}}" alt="" /></a>
+</div>
+</div>
+</div>
+</div>
+</div>]]></static_block_content>
+        <type>static</type>
+        <position>1</position>
+        <setting><![CDATA[{"custom_class":"","animation":"","animation_delay":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block29-0</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <static_block_title><![CDATA[Luxury top search]]></static_block_title>
+        <static_block_identifier><![CDATA[luxury_top_search]]></static_block_identifier>
+        <static_block_content><![CDATA[<div class="top-search">
+{{block type="advancedsearch/form" name="top.search" template="mgs/advancedsearch/form.phtml"}}
+</div>]]></static_block_content>
+        <type>static</type>
+        <position>3</position>
+        <setting><![CDATA[{"custom_class":"","animation":"","animation_delay":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block32-0</block_name>
+        <block_content><![CDATA[{{block type="testimonial/testimonial" template="mgs/testimonial/view.phtml" view_mode="grid" title="What's Client Say?" item_count="4"}}]]></block_content>
+        <type>testimonials</type>
+        <position>1</position>
+        <setting><![CDATA[{"custom_class":"","animation":"","animation_delay":"","title":"What's Client Say?","item_count":"4","view_mode":"grid"}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block36-0</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <type>separator</type>
+        <position>1</position>
+        <setting><![CDATA[{"custom_class":"col-xs-12","separator_type":"border","border_type":"full","border_style":"style1","border_icon":"","text_content":"","margin_top":"40","margin_bottom":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block29-0</block_name>
+        <block_content><![CDATA[{{widget type="revslider/slider_preview" id="6"}}]]></block_content>
+        <type>revolution</type>
+        <position>1</position>
+        <setting><![CDATA[6]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block35-0</block_name>
+        <block_content><![CDATA[{{widget type="blog/last" blog_count="2" categories="1" column="2" view_mode="grid" slider="0" title="Latest From Blogs" character_count="200"}}]]></block_content>
+        <type>latest_posts</type>
+        <position>1</position>
+        <setting><![CDATA[{"title":"Latest From Blogs","custom_class":"","animation":"","animation_delay":"","categories":["1"],"product_count":"2","character_count":"200","view_mode":"grid","count_per_row":"2","slider":{"active":"0","auto":"false","stop_hover":"false","navigation":"false","pagination":"false"},"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block31-0</block_name>
+        <block_content><![CDATA[{{block type="mpanel/products" products_count="4" slider="1" count_per_row="4" title="Featured Products" product_ratio="" auto_play="false" stop_hover="false" navigation="false" pagination="false" number_row="1" template="mgs/mpanel/products/featured_products.phtml"}}]]></block_content>
+        <type>featured_products</type>
+        <position>1</position>
+        <setting><![CDATA[{"title":"Featured Products","custom_class":"","animation":"","animation_delay":"","product_count":"4","view_mode":"grid","count_per_row":"4","product_ratio":"","slider":{"active":"1","number_row":"1","auto":"false","stop_hover":"false","navigation":"false","pagination":"false"},"load_more":"0","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","price_colour":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block34-0</block_name>
+        <block_content><![CDATA[{{block type="mpanel/products" template="mgs/mpanel/products/category_products/category_products_tabs.phtml" title="The Trendy Clothing" products_count="4" column="4" category_ids="" product_ratio="" show_type="position"}}]]></block_content>
+        <type>category_products</type>
+        <position>1</position>
+        <setting><![CDATA[{"title":"The Trendy Clothing","custom_class":"","animation":"","animation_delay":"","show_type":"position","products_count":"4","count_per_row":"4","view_mode":"category_products_tabs.phtml","category_id":[],"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","price_colour":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block36-0</block_name>
+        <block_content><![CDATA[{{block type="brand/homeblock" brand_ids="" slider="1" title="" count_per_row="5" number_row="1" auto_play="true" stop_hover="false" navigation="false" pagination="false" template="mgs/brand/home-featured-brands.phtml"}}]]></block_content>
+        <type>brands</type>
+        <position>2</position>
+        <setting><![CDATA[{"title":"","custom_class":"col-xs-12","animation":"","animation_delay":"","brand":[],"count_per_row":"5","slider":{"active":"1","auto":"true","stop_hover":"false","navigation":"false","pagination":"false"},"number_row":"1"}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+	
+</layout>

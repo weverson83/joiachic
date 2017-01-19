@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dutra_Cielo>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Dutra_Cielo>
+    </modules>
+</config>

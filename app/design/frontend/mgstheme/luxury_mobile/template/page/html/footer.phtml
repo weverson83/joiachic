@@ -1,0 +1,87 @@
+<?php
+/**
+ * Magento Enterprise Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Enterprise Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/enterprise-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     enterprise_default
+ * @copyright   Copyright (c) 2013 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://www.magentocommerce.com/license/enterprise-edition
+ */
+?>
+<div class="top-footer">
+	<div class="content">
+		<?php if($this->getLayout()->createBlock('cms/block')->setBlockId('luxury_mobile_newsletter')->toHtml()): ?>
+			<div class="mobile-newsletter">
+				<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('luxury_mobile_newsletter')->toHtml() ?>
+			</div>
+		<?php endif ?>
+		<div class="block block-socials">
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('luxury_mobile_socilas')->toHtml() ?>
+		</div>
+	</div>
+</div>
+
+<div class="footer-container">
+	<div class="content">
+		<?php 
+			$helper = Mage::helper('cms');
+			$processor = $helper->getPageTemplateProcessor();
+			$block = Mage::getModel('cms/block')->load('luxury_mobile_footer_block_1');
+		?>
+		<div class="block-container">
+			<?php if($block): ?>
+				<div class="footer-block block-1" id="luxury_mobile_footer_block_1">
+					<div class="block-title" onclick="toogleFooterBLock('luxury_mobile_footer_block_1')"><h3><?php echo $block->getTitle(); ?></h3><span></span></div>
+					<div class="block-content" style="display:none">
+						<?php echo $processor->filter($block->getContent()); ?>
+					</div>
+				</div>
+			<?php endif ?>
+			
+			<?php $block = Mage::getModel('cms/block')->load('luxury_mobile_footer_block_2'); ?>
+			
+			<?php if($block): ?>
+				<div class="footer-block block-2" id="luxury_mobile_footer_block_2">
+					<div class="block-title" onclick="toogleFooterBLock('luxury_mobile_footer_block_2')"><h3><?php echo $block->getTitle(); ?></h3><span></span></div>
+					<div class="block-content" style="display:none">
+						<?php echo $processor->filter($block->getContent()); ?>
+					</div>
+				</div>
+			<?php endif ?>
+			
+			<?php $block = Mage::getModel('cms/block')->load('luxury_mobile_footer_block_3'); ?>
+			
+			<?php if($block): ?>
+				<div class="footer-block block-3" id="luxury_mobile_footer_block_3">
+					<div class="block-title" onclick="toogleFooterBLock('luxury_mobile_footer_block_3')"><h3><?php echo $block->getTitle(); ?></h3><span></span></div>
+					<div class="block-content" style="display:none">
+						<?php echo $processor->filter($block->getContent()); ?>
+					</div>
+				</div>
+			<?php endif ?>
+		</div>
+		<div class="copy-right">
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('luxury_mobile_copyright')->toHtml() ?>
+		</div>
+		
+		<div class="payments">
+			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('luxury_mobile_payments')->toHtml() ?>
+		</div>
+	</div>
+</div>

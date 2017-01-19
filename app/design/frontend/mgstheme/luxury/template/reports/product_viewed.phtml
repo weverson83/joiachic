@@ -1,0 +1,86 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/* @var $this Mage_Reports_Block_Product_Viewed */
+?>
+<?php
+if ($this->getTitle() != '') {
+    $title = $this->getTitle();
+} else {
+    $title = 'Recently Viewed Products';
+}
+$panelHelper = $this->helper('mpanel');
+$size = $panelHelper->convertRatioToMinSize();
+?>
+<?php if ($_products = $this->getRecentlyViewedProducts()): ?>
+    <div class="block product-block-list block-list block-viewed">
+        <div class="title-block">
+            <h4><?php echo $this->__($title) ?></h4>
+        </div>
+        <div class="block-content">
+			<?php $len = count($_products); ?>
+			<div class="block-content <?php if($len > 3): ?>owl-carousel<?php endif ?>" id="recently_viewed_list">
+				<?php $i=0; foreach ($_products as $_item): $i++; ?>
+				<?php $product = Mage::getModel('catalog/product')->load($_item->getId()); ?>
+				<?php if($i % 3 == 1): ?><ol id="recently-viewed-items" class="category-product-list"><?php endif ?>
+				<li class="item">
+					<div class="product-content">
+						<div class="product-left">
+							<a class="product-image" href="<?php echo $this->getProductUrl($product) ?>">
+								<img class="img-responsive" src="<?php echo $this->helper('catalog/image')->init($product, 'thumbnail')->resize($size[width], $size[height]); ?>" alt="<?php echo $this->escapeHtml($product->getName()) ?>" />
+							</a>
+						</div>
+						<div class="product-right">
+							<h6 class="product-name"><a href="<?php echo $this->getProductUrl($_item) ?>"><?php echo $this->helper('catalog/output')->productAttribute($_item, $_item->getName(), 'name') ?></a></h6>
+							<?php echo $this->getPriceHtml($_item, true) ?>
+							<?php echo $this->getReviewsSummaryHtml($_item, 'short','') ?>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</li> 
+				<?php if($i % 3 == 0 || $i == $len): ?></ol><?php endif ?>
+				<?php endforeach ?>
+			</div>
+			<?php if($i > 3): ?>
+				<script type="text/javascript">
+					initSlider('recently_viewed_list', 1, false, false, true, false);
+					decorateList('recently-viewed-items');
+				</script>
+			<?php endif ?>
+            <script type="text/javascript"></script>
+        </div>
+    </div>
+<?php else: ?>
+    <?php if (Mage::helper('mpanel')->acceptToUsePanel()): ?>
+        <div class="block block-list block-viewed">
+            <div class="title-block">
+                <h4><?php echo $this->__($title) ?></h4>
+            </div>
+            <div class="block-content">
+                <p><?php echo $this->__('Have no recently viewed products.'); ?></p>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endif; ?>

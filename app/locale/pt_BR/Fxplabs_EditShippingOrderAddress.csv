@@ -1,0 +1,10 @@
+"Change Shipping Address","Alterar Endereço de Entrega"
+"Change %sShipping Address%s","Alterar %sEndereço de Entrega%s"
+"Street1","Número"
+"Street2","Complemento"
+"Please enter the first name.","Por favor preencha o Nome"
+"Please enter the last name.","Por favor preencha o Sobrenome"
+"Please enter the street1.","Por favor preencha o Número"
+"The shipping order address has been updated.","O endereço de entrega do pedido foi atualizado."
+"You can <a href=""%s"" onclick=""this.target='_blank'"">edit the shipping address</a> while your order is not processed.","Você pode <a href=""%s"" onclick=""this.target='_blank'"">editar o endereço de entrega</a> enquanto seu pedido não é processado."
+

@@ -1,0 +1,49 @@
+<?php $posts = $this->getPosts(); ?>
+<div id="messages_product_view">
+    <?php Mage::app()->getLayout()->getMessagesBlock()->setMessages(Mage::getSingleton('customer/session')->getMessages(true)); ?>
+    <?php echo Mage::app()->getLayout()->getMessagesBlock()->getGroupedHtml(); ?>
+</div>
+
+<div class="blog-main social-blog-lastest ">
+<?php foreach ($posts as $post): ?>
+    <div class="social-blog">
+		<div class="blog-container">
+			<?php if ($post->getImage() != ''): ?>
+				<div class="blog-img">
+					<h2><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h2>
+					<p class="date posted-by">
+						<span class="user-post"><?php echo $post->getUser(); ?></span> 
+						<?php if ($this->getCommentsEnabled()): ?>
+							<span class="comment-post"><a class="comment" href="<?php echo $post->getAddress(); ?>#commentBox" ><?php echo $post->getCommentCount(); ?><?php echo Mage::helper('blog')->__('Comments'); ?></a></span>
+						<?php endif; ?>
+					</p>
+					<a href="<?php echo $post->getAddress(); ?>">
+						<img class="img-responsive" alt="" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'blog/images/' . $post->getImage(); ?>"/>
+					</a>
+				</div>
+			<?php endif ?>
+			<div class="blog-desc">
+				<p class="date">
+					<?php echo $post->getCreatedTime(); ?>
+				</p>
+				
+				<div class="tags"><?php echo $this->getTagsHtml($post) ?></div>
+				<div class="blog-desc-content">
+					<?php echo $post->getPostContent(); ?>
+
+				</div>
+			</div>
+			<?php echo $this->getBookmarkHtml($post) ?>
+			
+		</div>
+    </div>
+<?php endforeach; ?>
+</div>
+<?php if(Mage::getStoreConfig('mpanel/share_this/blog_list')): ?>
+    <div class="social-icons">
+         <?php echo Mage::getStoreConfig('mpanel/share_this/span_tags') ?>
+    </div>
+<?php endif; ?>
+<div class="blog-bottom-toolbar bottom-toolbar">
+<?php echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
+</div>

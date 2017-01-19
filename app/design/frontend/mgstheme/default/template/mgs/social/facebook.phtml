@@ -1,0 +1,35 @@
+<?php
+/* * ****************************************************
+ * Package   : Social
+ * Author    : HIEPNH
+ * Copyright : (c) 2014
+ * ***************************************************** */
+?>
+<?php
+$helper = Mage::helper('social/facebook');
+$storeId = Mage::app()->getStore()->getStoreId();
+?>
+<?php if ($helper->getFacebookConfig('active_sdk', $storeId) && $helper->isActived($storeId)): ?>
+    <div class="social-facebook">
+        <a class="facebook" title="<?php echo $this->__('Facebook Login'); ?>" href="javascript:void(0);" onclick="facebookLogin();"></a>        
+        <script type="text/javascript">
+            //<![CDATA[            
+            function facebookLogin() {
+                FB.getLoginStatus(function (result) {
+                    if (result.status === 'connected') {
+                        window.location.href = '<?php echo $this->getUrl('social/facebook/connect', array('_secure' => true)); ?>';
+                    } else {
+                        FB.login(function (response) {
+                            if (response.authResponse) {
+                                window.location.href = '<?php echo $this->getUrl('social/facebook/connect', array('_secure' => true)); ?>';
+                            } else {
+                                window.location.reload();
+                            }
+                        }, {scope: 'email'});
+                    }
+                });
+            }
+            //]]>
+        </script>
+    </div>
+<?php endif; ?>

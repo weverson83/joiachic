@@ -1,0 +1,48 @@
+<?php if ($posts = $this->getRecent()): ?>
+	<div class="block block-blog block-recent">
+		<div class="title-block">
+			<h4><?php echo Mage::helper('blog')->__('Recent Posts'); ?></h4>
+		</div>
+		<div class="block-content">
+			<ul>
+				<?php $i = 0; ?>
+				<?php $countPost = count($posts); ?>
+				<?php foreach ($posts as $post): ?>
+				<?php $i++; ?>
+				<?php if($i==5){ break;} ?>
+					<li <?php if($i == $countPost || $i == 4): ?>class="last"<?php endif ?>>
+						<?php if ($post->getFeaturedImage() != ''): ?>
+							<a class="blog_link_img" href="<?php echo $post->getAddress(); ?>" >
+								<img class="img-responsive" alt="" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'blog/' . $post->getFeaturedImage(); ?>"/>
+							</a>
+						<?php endif ?>
+						<div class="blog-desc">
+							<a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a>
+							<p class="h6">
+								<span><?php echo date('M', strtotime($post->getCreatedTime())) ?></span>,
+								<span><?php echo date('d', strtotime($post->getCreatedTime())) ?></span>,
+								<span><?php echo date('Y', strtotime($post->getCreatedTime())) ?></span>
+							</p>
+						</div>
+					</li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</div>
+<?php endif; ?>
+<?php if ($this->getCategories()->count() && Mage::getStoreConfig('blog/menu/category')): ?>
+	<div class="block block-blog block-menu">
+		<div class="title-block">
+			<h4><?php echo Mage::helper('blog')->__('Categories'); ?></h4>
+		</div>
+		<div class="block-content">
+			<ul>
+				<?php $cats = $this->getCategories(); ?>
+				<?php foreach ($cats as $cat): ?>
+					<li><a href="<?php echo $cat->getAddress(); ?>" ><?php echo $cat->getTitle(); ?></a></li>
+				<?php endforeach; ?>
+			</ul>
+		</div>
+	</div>
+<?php endif; ?>
+<?php echo $this->getChildHtml('blog_tags'); ?>

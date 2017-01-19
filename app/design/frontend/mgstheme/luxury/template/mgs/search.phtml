@@ -1,0 +1,31 @@
+<?php
+/* * ****************************************************
+ * Package   : Brand
+ * Author    : HIEPNH
+ * Copyright : (c) 2015
+ * ***************************************************** */
+?>
+<?php
+$params = $this->getRequest()->getParams();
+$urlKey = $this->getUrlKey();
+?>
+<div class="block brands-search">
+	<div class="title-inline">
+		<h4 class="heading full text-uppercase"><?php echo $this->__('Brands Search'); ?></h4>
+	</div>
+    <div class="block-content">
+        <div class="brands-search-form">
+            <form action="" method="get" id="brands-search-form">
+				<div class="form-group">
+					<input type="text" value="<?php if (isset($params['q'])): ?><?php echo $params['q']; ?><?php endif ?>"
+					title="<?php echo $this->__('Enter Keyword'); ?>" class="input-text form-control"
+						   placeholder="<?php echo $this->__('Enter Keyword'); ?>" name="q">
+				</div>
+			   <button type="submit" class="btn btn-lg btn-primary"><span><span><?php echo $this->__('Search'); ?></span></span>
+                </button>
+                <button type="button" class="btn btn-lg btn-secondary" onclick="setLocation('<?php echo $this->getUrl() . $urlKey; ?>')">
+                    <span><span><?php echo $this->__('Reset Filter'); ?></span></span></button>
+            </form>
+        </div>
+    </div>
+</div>

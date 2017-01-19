@@ -1,0 +1,72 @@
+<?php $posts = $this->getPosts(); ?>
+<div id="messages_product_view">
+    <?php Mage::app()->getLayout()->getMessagesBlock()->setMessages(Mage::getSingleton('customer/session')->getMessages(true)); ?>
+    <?php echo Mage::app()->getLayout()->getMessagesBlock()->getGroupedHtml(); ?>
+</div>
+<div class="post-list">
+	<?php $i= 0; foreach ($posts as $post): $i++; ?>
+		<?php if ($this->getCommentsEnabled()): ?>
+			<?php $num = $post->getCommentCount(); ?>
+			<?php 	if($num > 1){  $many_string = "s";
+					}elseif($num == 1){  $many_string = "";
+					}else { $many_string = ""; $num = 0; } ?>
+			<?php $fomart_string =  "<strong class='number h3'>%s</strong> <span class='text h6'>Comment%s</span>";?>
+		<?php endif; ?>
+		<div class="postWrapper" style="min-height: <?php if ($this->getCommentsEnabled()): ?>160px<?php else: ?>80px<?php endif; ?>;">
+			<div class="row">
+				<?php if ($post->getImage() != ''): ?>
+					<div class="col-md-6 col-sm-6 col-xs-12">
+						<div class="post-img">
+							<a class="images-post" href="<?php echo $post->getAddress(); ?>">
+								<img class="img-responsive" alt="" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'blog/images/' . $post->getImage(); ?>"/>
+							</a>
+							<div class="post-info">
+								<div class="day-desc">
+<?php $postDate = DateTime::createFromFormat('d/m/Y H:i', $post->getCreatedTime()); ?>
+									<strong class="number h3"><?php echo $postDate->format('d') ?></strong>
+									<span class="text h6 text-uppercase"><?php echo $postDate->format('M') ?></span>
+								</div>
+								<?php if ($this->getCommentsEnabled()): ?>
+									<div class="timer">
+										<a href="<?php echo $post->getAddress(); ?>#commentBox">
+											<?php echo sprintf($fomart_string, $num, $many_string); ?>
+										</a>
+									</div>
+								<?php endif; ?>
+								<div class="clear"></div>
+							</div>
+						</div>
+					</div>
+				<?php endif ?>
+					<div class="<?php if ($post->getImage() != ''): ?>col-sm-6 col-md-6<?php endif ?> col-xs-12">
+						<div class="post-desc <?php if ($post->getImage() == ''): ?>no-image<?php endif ?>">
+							<?php if ($post->getImage() == ''): ?>
+								<div class="post-info">
+									<div class="day-desc">
+										<strong class="number h3"><?php echo date('d', strtotime($post->getCreatedTime())) ?></strong>
+										<span class="text h6 text-uppercase"><?php echo date('M', strtotime($post->getCreatedTime())) ?></span>
+									</div>
+									<?php if ($this->getCommentsEnabled()): ?>
+										<div class="timer">
+											<a href="<?php echo $post->getAddress(); ?>#commentBox">
+												<?php echo sprintf($fomart_string, $num, $many_string); ?>
+											</a>
+										</div>
+									<?php endif; ?>
+								</div>
+							<?php endif ?>
+							<h5><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle(); ?></a></h5>
+							<div class="postContent"><?php echo $post->getPostContent(); ?></div>
+							<?php echo $this->getBookmarkHtml($post) ?>
+							<div class="post-tags"><?php echo $this->getTagsHtml($post) ?></div>
+						</div>
+						
+					</div>
+			</div>
+		</div>
+		<?php if($i != count($posts)): ?><hr/><?php endif ?>
+	<?php endforeach; ?>
+</div>
+<div class="show-bottom">
+	<?php echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
+</div>

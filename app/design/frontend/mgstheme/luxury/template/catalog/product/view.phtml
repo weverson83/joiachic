@@ -1,0 +1,401 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $helper = $this->helper('mpanel'); ?>
+<?php $_product = $this->getProduct(); ?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="product-view">
+    <div class="product-essential">
+        <form action="<?php echo $this->getSubmitUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <?php echo $this->getBlockHtml('formkey') ?>
+            <div class="no-display">
+                <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                <input type="hidden" name="related_product" id="related-products-field" value="" />
+            </div>
+			<div class="row">
+            <div class="product-img-box col-md-5 col-sm-6 col-xs-12">
+                <?php echo $this->getChildHtml('media') ?>
+            </div>
+            <div class="product-shop col-md-7 col-sm-6 col-xs-12">
+                <div class="product-name">
+                    <span class="h5 text-uppercase"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></span>
+                </div>
+				<?php if(Mage::getStoreConfig('mpanel/product_details/sku')): ?>
+					<div class="product-sku">
+						<?php echo $this->__('<strong>SKU</strong>: <span>%s</span>', $_product->getSku()) ?>
+					</div>
+				 <?php endif; ?>
+
+                <?php if (Mage::getStoreConfig('mpanel/product_details/reviews_summary')): ?>
+                    <?php echo $this->getReviewsSummaryHtml($_product, false, true) ?>
+                <?php endif; ?>
+                <?php if (Mage::getStoreConfig('mpanel/product_details/alert_urls')): ?>
+                    <?php echo $this->getChildHtml('alert_urls') ?>
+                <?php endif; ?>
+				<?php if ($_product->isAvailable()): ?>
+					<p class="availability pull-right in-stock"><span><?php echo $this->helper('catalog')->__('Disponibilidade: <span class="color-theme">Em estoque</span>') ?></span></p>
+				<?php else: ?>
+					<p class="availability pull-right out-of-stock"><span><?php echo $this->helper('catalog')->__('Disponibilidade: <span class="color-theme">Fora de estoque</span>') ?></span></p>
+				<?php endif; ?>
+				<?php echo $this->getChildHtml('product_type_data') ?>
+				<div class="clear"></div>
+				<?php if (Mage::getStoreConfig('mpanel/product_details/short_description')): ?>
+                    <?php if ($_product->getShortDescription()): ?>
+                        <div class="short-description">
+                            <div class="std"><?php echo $_product->getShortDescription() ?></div>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
+                <?php echo $this->getTierPriceHtml() ?>
+
+
+                <?php echo $this->getChildHtml('extrahint') ?>
+
+
+                <?php if (!$this->hasOptions()): ?>
+                    <div class="add-to-box">
+                        <?php if ($_product->isSaleable()): ?>
+                            <?php echo $this->getChildHtml('addtocart') ?>
+                        <?php endif; ?>
+                        <?php if (Mage::getStoreConfig('mpanel/product_details/wishlist_compare')): ?>
+                            <?php echo $this->getChildHtml('addto') ?>
+                        <?php endif; ?>
+                    </div>
+
+                    <?php echo $this->getChildHtml('extra_buttons') ?>
+
+                <?php elseif (!$_product->isSaleable()): ?>
+                    <div class="add-to-box">
+                        <?php echo $this->getChildHtml('addto') ?>
+                    </div>
+                <?php endif; ?>
+                
+				
+				<?php if (Mage::getStoreConfig('mpanel/product_details/brand_image')): ?>
+					<?php echo $this->getLayout()->createBlock('brand/product_brand')->setTemplate('mgs/brand/product_brand.phtml')->toHtml() ?>
+				<?php endif; ?>
+				
+                <?php echo $this->getChildHtml('other'); ?>
+
+				<div class="clear"></div>
+				
+                <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                    <?php echo $this->getChildChildHtml('container1', '', true, true) ?>
+                <?php endif; ?>
+				<?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                <?php echo $this->getChildChildHtml('container2', '', true, true) ?>
+				<?php endif; ?>
+				<?php if(Mage::getStoreConfig('mpanel/share_this/product')): ?>
+					<hr />
+					<div class="box-social">
+						<div class="social-icons">
+                            <span class="title-share h6"><?php echo $this->helper('catalog')->__('Share This') ?>:</span>
+                            <?php echo Mage::getStoreConfig('mpanel/share_this/span_tags') ?>
+                            
+                            <?php $productName = $_helper->productAttribute($_product, $_product->getName(), 'name'); ?>
+                            <?php $productUrl = $_helper->productAttribute($_product, $_product->getProductUrl(), 'product_url'); ?>
+                            <?php $productImage = $_product->getImageUrl() ?>
+                           
+                            
+                            <a href="javascript:popWin('https://plus.google.com/share?url=<?php echo urlencode($productUrl); ?>', 'google', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Share on Google Plus') ?>">
+                                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN); ?>/frontend/mgstheme/default/mgs/social/images/square-google-plus-128.png" width="30" border="0" height="30"/>
+                            </a>
+
+                            <a href="javascript:popWin('https://www.linkedin.com/shareArticle?mini=true&url=<?php echo urlencode($productUrl); ?>', 'linkedin', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Share on Linkedin') ?>">
+                                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN); ?>/frontend/mgstheme/default/mgs/social/images/square-linkedin-128.png" width="30" border="0" height="30"/>
+                            </a>
+                            
+                            <a href="javascript:popWin('https://www.facebook.com/sharer/sharer.php?u=<?php echo urlencode($productUrl); ?>&t=<?php echo urlencode($productName); ?>', 'facebook', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Share on Facebook') ?>">
+                                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN); ?>/frontend/mgstheme/default/mgs/social/images/square-facebook-128.png" width="30" border="0" height="30"/>
+                            </a>
+                            
+
+                            <a href="javascript:popWin('http://twitter.com/home/?status=<?php echo urlencode($productName . ' (' . $productUrl . ')'); ?>', 'twitter', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Tweet') ?>">
+                                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN); ?>/frontend/mgstheme/default/mgs/social/images/square-twitter-128.png" width="30" border="0" height="30"/></a>
+                            
+
+                            <a href="javascript:popWin('https://pinterest.com/pin/create/button/?url=<?php echo urlencode($productUrl); ?>&media=<?php echo urlencode($productImage); ?>&description=<?php echo urlencode($productName); ?>', 'pinterest', 'width=640,height=480,left=0,top=0,location=no,status=yes,scrollbars=yes,resizable=yes');" title="<?php echo $this->__('Pin it') ?>">
+                                <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN); ?>/frontend/mgstheme/default/mgs/social/images/square-pinterest-128.png" width="30" border="0" height="30"/>
+                            </a>
+                            
+                            <div class="clear"></div>
+                        </div>
+
+					</div>
+				<?php endif; ?>	
+				<div class="clear"></div>
+				<!-- custom statick block 1 -->
+				<div class="static-block-top">
+					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mgs_panel_product_static_block_top')->setCanEdit(1)->toHtml() ?>
+				</div>
+            </div>
+			</div>
+            <div class="clear"></div>
+        </form>
+        <script type="text/javascript">
+            //<![CDATA[
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function (button, url) {
+                if (this.validator.validate()) {
+                    var form = this.form;
+                    var oldUrl = form.action;
+
+                    if (url) {
+                        form.action = url;
+                    }
+                    var e = null;
+                    try {
+                        this.form.submit();
+                    } catch (e) {
+                    }
+                    this.form.action = oldUrl;
+                    if (e) {
+                        throw e;
+                    }
+
+                    if (button && button != 'undefined') {
+                        button.disabled = true;
+                    }
+                }
+            }.bind(productAddToCartForm);
+
+            productAddToCartForm.submitLight = function (button, url) {
+                if (this.validator) {
+                    var nv = Validation.methods;
+                    delete Validation.methods['required-entry'];
+                    delete Validation.methods['validate-one-required'];
+                    delete Validation.methods['validate-one-required-by-name'];
+                    // Remove custom datetime validators
+                    for (var methodName in Validation.methods) {
+                        if (methodName.match(/^validate-datetime-.*/i)) {
+                            delete Validation.methods[methodName];
+                        }
+                    }
+
+                    if (this.validator.validate()) {
+                        if (url) {
+                            this.form.action = url;
+                        }
+                        this.form.submit();
+                    }
+                    Object.extend(Validation.methods, nv);
+                }
+            }.bind(productAddToCartForm);
+            //]]>
+        </script>
+    </div>
+    
+    <?php
+    $productTabs = $helper->getProductTabs();
+    $tabsArray = array();
+    foreach ($this->getChildGroup('tabs', 'getChildHtml') as $alias => $html) {
+        $tabsArray[$alias] = $html;
+    }
+    ?>
+    <div id="product_tabs" class="tabbable hidden-sm hidden-xs">
+        <ul class="nav nav-tabs">
+            <?php $i = 0;  foreach ($productTabs as $key => $value): $i++; ?>
+                <?php if ($key != 'description' && $key != 'additional' && $key != 'reviews' && $key != 'product_tag_list'): ?>                            
+                    <li id="<?php echo "{$key}-tab" ?>" <?php if ($i == 1): ?> class="active"<?php endif ?>>
+                        <a class="h6" href="#<?php echo "box-{$key}" ?>" data-toggle="tab">		                        
+                            <?php echo Mage::getStoreConfig('mpanel/product_tabs/' . $key . '_title'); ?>
+						</a>
+                    </li>
+                <?php else: ?>
+                    <?php if ($tabsArray[$key] != ''): ?>
+                        <li id="<?php echo "{$key}-tab" ?>" <?php if ($i == 1): ?> class="active"<?php endif ?>>
+                            <a class="h6" href="#<?php echo "box-{$key}" ?>" data-toggle="tab">                                                
+                                <?php if ($title = $this->getChildData($key, 'title')): ?>
+                                    <?php echo $this->escapeHtml($title); ?>
+                                <?php endif; ?>                                                                         
+                            </a>
+                        </li>
+                    <?php endif; ?>
+                <?php endif; ?>
+            <?php endforeach ?>
+            <?php if ($helper->acceptToUsePanel()): ?>      
+                <li>
+                    <a class="btn btn-primary popup-link" title="<?php echo $this->__('Manage Product Tabs'); ?>" href="<?php echo $this->getUrl('mpanel/index/manageProductTabs'); ?>">
+                        <em class="fa fa-plus"> </em>
+                    </a>
+                </li>
+            <?php endif; ?>
+        </ul>
+        <div class="tab-content">
+            <?php
+            $i = 0;
+            foreach ($productTabs as $key => $value): $i++;
+                ?>
+                <?php if ($key != 'description' && $key != 'additional' && $key != 'reviews' && $key != 'product_tag_list' && $key != 'product_questions'): ?>   
+                    <div class="tab-pane<?php if ($value == 0): ?> active<?php endif ?>" id="<?php echo "box-{$key}" ?>">
+                        <?php if (Mage::getStoreConfig('mpanel/product_tabs/' . $key) == 'attribute'): ?>
+                            <?php $p = Mage::getModel('catalog/product')->load($_product->getId()); ?>                            
+                            <p><?php echo $p->getResource()->getAttribute(Mage::getStoreConfig('mpanel/product_tabs/' . $key . '_attribute_code_value'))->getFrontend()->getValue($p); ?></p>
+                        <?php else: ?>
+                            <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId(Mage::getStoreConfig('mpanel/product_tabs/' . $key . '_identifier_value'))->toHtml(); ?>
+                        <?php endif; ?>
+                    </div>
+                <?php else: ?>
+                    <?php if ($key == 'product_questions'): ?>
+                        <div class="tab-pane<?php if ($value == 0): ?> active<?php endif ?>" id="<?php echo "box-{$key}" ?>">
+                            <?php echo $this->getChildHtml('product.questions') ?>
+                        </div>
+                    <?php else: ?>
+                        <?php
+                        $i = 0;
+                        foreach ($this->getChildGroup('tabs', 'getChildHtml') as $alias => $html): $i++;
+                            ?>
+                            <?php if ($key == $alias): ?>
+                                <div class="tab-pane<?php if ($i == 1): ?> active<?php endif ?>" id="<?php echo "box-{$alias}" ?>">
+                                    <?php echo $html; ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach ?>
+                    <?php endif; ?>                    
+                <?php endif; ?>                
+            <?php endforeach ?>            
+        </div>
+    </div>
+	<div class="product-accordion panel-group visible-sm visible-xs" id="accordion" role="tablist" aria-multiselectable="true">
+			<?php $i = 0; foreach ($productTabs as $key => $value): $i++; ?>
+				<?php if ($key != 'description' && $key != 'additional' && $key != 'reviews' && $key != 'product_tag_list'): ?>
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="heading_<?php echo $key ?>">
+								<h4 class="panel-title">
+									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<?php echo $key ?>" aria-expanded="true" aria-controls="collapse_<?php echo $key ?>">
+										<?php echo Mage::getStoreConfig('mpanel/product_tabs/' . $key . '_title'); ?>        
+									</a>
+								</h4>
+							</div>
+				<?php else: ?>
+					<?php if (isset($tabsArray[$key]) && $tabsArray[$key] != ''): ?>
+						<div class="panel panel-default">
+							<div class="panel-heading" role="tab" id="heading_<?php echo $key ?>">
+								<h4 class="panel-title">
+									<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse_<?php echo $key ?>" aria-expanded="true" aria-controls="collapse_<?php echo $key ?>">
+										<?php if ($title = $this->getChildData($key, 'title')): ?>
+											<?php echo $this->escapeHtml($title); ?>
+										<?php endif; ?>  
+									</a>	
+								</h4>
+							</div>							
+							<?php endif; ?>
+						<?php endif; ?>
+				 
+				<?php if ($key != 'description' && $key != 'additional' && $key != 'reviews' && $key != 'product_tag_list' && $key != 'product_questions'): ?>   
+					<div class="panel-collapse collapse <?php if ($i == 1): ?> in<?php endif ?>" id="collapse_<?php echo $key ?>" role="tabpanel" aria-labelledby="heading_<?php echo $key ?>">
+						<div class="panel-body">
+							<?php if (Mage::getStoreConfig('mpanel/product_tabs/' . $key) == 'attribute'): ?>
+								<?php $p = Mage::getModel('catalog/product')->load($_product->getId()); ?>                            
+								<p><?php echo $p->getResource()->getAttribute(Mage::getStoreConfig('mpanel/product_tabs/' . $key . '_attribute_code_value'))->getFrontend()->getValue($p); ?></p>
+							<?php else: ?>
+								<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId(Mage::getStoreConfig('mpanel/product_tabs/' . $key . '_identifier_value'))->toHtml(); ?>
+							<?php endif; ?>
+						</div>
+					</div>
+					</div>
+				<?php else: ?>
+					<?php if ($key == 'product_questions'): ?>
+						<div class="panel-collapse collapse <?php if ($value == 0): ?> in<?php endif ?>" id="collapse_<?php echo $key ?>" role="tabpanel" aria-labelledby="heading_<?php echo $key ?>">
+							<div class="panel-body">
+								<?php echo $this->getLayout()->createBlock('productquestions/question')->setTemplate('productquestions/list1.phtml')->toHtml(); ?>
+							</div>
+						</div>
+						</div>
+					<?php else: ?>
+						<?php
+						$i = 0;
+						foreach ($this->getChildGroup('tabs', 'getChildHtml') as $alias => $html): $i++;
+							?>
+							<?php if ($key == $alias): ?>
+								<div class="panel-collapse collapse <?php if ($value == 0): ?> in<?php endif ?>" id="collapse_<?php echo $key ?>" role="tabpanel" aria-labelledby="heading_<?php echo $key ?>">
+									<div class="panel-body">
+										<?php echo $html; ?>
+									</div>
+								</div>
+								</div>
+							<?php endif; ?>
+						<?php endforeach ?>
+					<?php endif; ?>                    
+				<?php endif; ?>     
+			<?php endforeach ?> 
+	</div>
+    <div class="product-collateral">
+        <?php if (Mage::getStoreConfig('mpanel/product_details/upsell_products')): ?>
+            <?php echo $this->getChildHtml('upsell_products') ?>
+        <?php endif; ?>
+
+        <?php echo $this->getChildHtml('product_additional_data') ?>
+
+    </div>
+	<?php if (Mage::getStoreConfig('mpanel/product_details/brand_products')): ?>
+		<?php echo $this->getLayout()->createBlock('brand/product_brand')->setData('show_product_short_description', 0)->setTemplate('mgs/brand/related_products.phtml')->toHtml(); ?>
+	<?php endif; ?>
+	
+	<div class="clearer"></div>
+	<!-- custom statick block 2 -->
+	<div class="static-block-bottom">
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('mgs_panel_product_static_block_bottom')->setCanEdit(1)->toHtml() ?>
+	</div>
+	
+	<!-- start google rich snippets -->
+	<?php if(Mage::getStoreConfig('mgs_theme/general/snippets') == 1): ?>
+	<!-- MICRODATA -->
+	<div itemscope itemtype="http://schema.org/Product">
+	  <meta itemprop="name" content="<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>" />
+	  <div itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+	    <meta itemprop="priceCurrency" content="<?php echo $currency_code = Mage::app()->getStore()->getCurrentCurrencyCode(); ?>">
+	    <meta itemprop="price" content="<?php echo strip_tags(Mage::helper('core')->currency($_product->getPrice())); ?>">
+	    <?php
+	    $microdata_stock = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product)->getIsInStock();
+	    if ($microdata_stock >= 1){
+	      $microdata_stock_msg = 'In Stock';
+	    }else{
+	      $microdata_stock_msg = 'Out of Stock';
+	    }
+	    ?>
+	    <meta itemprop="availability" content="<?php echo $microdata_stock_msg; ?>">
+	    <meta itemprop="itemCondition" itemtype="http://schema.org/OfferItemCondition" content="http://schema.org/NewCondition" />
+	  </div>
+	  <div itemtype="http://schema.org/AggregateRating" itemscope="" itemprop="aggregateRating">
+		<?php $rating_summary = $_product->getRatingSummary();?>  
+		<meta itemprop="ratingValue" content="<?php echo $rating_summary->getRatingSummary()/20; ?>">
+		<meta itemprop="ratingCount" content="<?php echo $rating_summary->getReviewsCount(); ?>">
+	  </div>
+	</div>
+	<!-- MICRODATA -->
+	<?php endif; ?>	
+</div>

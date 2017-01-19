@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Promocode>
+            <version>0.1.0</version>
+        </Promocode>
+    </modules>
+    <global>
+        <models>
+			<promocode>
+                <class>Promocode_Model</class>         
+            </promocode>
+        </models>
+        <helpers>
+            <promocode>
+                <class>Promocode_Helper</class>
+            </promocode>
+        </helpers>
+        <template>
+            <email>
+              <notifynewcustomer>
+                    <label>Cupom primeiro registro</label>
+                    <file>notifynewcustomer.html</file>
+                    <type>html</type>
+                </notifynewcustomer>
+            </email>
+        </template>
+    </global>    
+</config>

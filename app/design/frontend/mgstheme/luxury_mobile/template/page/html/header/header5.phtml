@@ -1,0 +1,70 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_iphone
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<?php $_cartItems = $this->helper('checkout/cart')->getSummaryCount(); ?>
+
+<header class="mobile-header mobile-theme">
+	<div class="header-top">
+		<?php echo $this->getChildHtml('topLinks') ?>
+		<?php echo $this->getChildHtml('store_language') ?>
+		<?php echo $this->getChildHtml('top.currency') ?>
+	</div>
+	<div class="header-content">
+		<?php if ($this->getIsHomePage()): ?>
+			<h1 class="logo">
+				<a class="logo" href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" >
+					<img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+				</a>
+			</h1>
+		<?php else: ?>
+			<a class="logo" href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>">
+				<img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+			</a>
+		<?php endif ?>
+		
+		<div class="search"><?php echo $this->getChildHtml('topSearch') ?></div>
+	</div>
+	
+	<div class="nav-container">
+		<div class="menu">
+			<button class="btn btn-responsive-nav btn-inverse" id="menu-button">
+				<?php echo $this->__('Menu') ?>
+			</button>
+		</div>
+		<?php echo $this->getChildHtml('topCart') ?>
+	</div>
+</header>
+
+<div class="navbar-collapse nav-main-collapse collapse" aria-expanded="true" id="menu-collapse">
+	<div class="content-bg">
+		<div class="close-head"><a href="#" onclick="closeMenu(); return false"><?php echo $this->__('Close') ?> <span class="fa fa-close"></span></a></div>
+		<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('luxury_mobile_main_menu')->toHtml() ?>
+	</div>
+	<div class="transparent-menu-bg" onclick="closeMenu(); return false"></div>
+</div>

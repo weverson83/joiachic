@@ -1,0 +1,85 @@
+<?php if (Mage::getStoreConfig('deals/general/enabled')): ?>
+    <div class="page-title">
+        <h1><?php echo Mage::getStoreConfig('deals/deals_page/title') ?></h1>
+    </div>
+    <?php
+    $layout = Mage::getSingleton('core/layout');
+    $productCollection = $this->getProductCollection();
+    $toolbar = $this->getToolbarBlock();
+    $pager = $layout->createBlock('page/html_pager');
+    $toolbar->setChild('product_list_toolbar_pager', $pager);
+    $toolbar->setCollection($productCollection);
+    
+    $toolbar->setMode($this->getMode());
+	$toolbar->setTemplate('mgs/deals/toolbar.phtml');
+    echo $toolbar->toHtml();
+    ?> 
+    <?php if (count($productCollection) > 0): ?>
+	<div class="category-products">
+            <div class="deals-container">
+                <?php foreach ($productCollection as $product): ?>
+                    <?php $_product = Mage::getModel('catalog/product')->load($product->getId()) ?>
+                    <div class="product-deal-item">
+                        <div class="product-deals">
+                            <div class="product-image-container">
+                                <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image">
+                                    <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image'); ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+                                </a>
+                            </div>
+                            <div class="product-content">
+                                <h2><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image'), null, true) ?>"><strong><?php echo $_product->getName() ?></strong></a></h2>
+                                <div class="product-price">
+                                    <?php echo $this->getPriceHtml($_product, true) ?>
+                                </div>
+								<?php $save = $_product->getPrice() - $_product->getFinalPrice() ?>
+								<?php $percent = round(($save * 100) / $_product->getPrice(), 1) ?>
+								<div class="content-save">
+									<p><?php echo $this->__('You save') ?>: <span><?php echo $percent ?>%</span></p>
+								</div>
+                            </div>
+                        </div>
+                        <div class="product-deals-info">
+                            <div class="deals-time">
+                                <div class="note"><?php echo $this->__('Time left') ?></div>
+                                <?php echo $this->getLayout()->createBlock('deals/deals')->setTemplate('mgs/deals/list.phtml')->setProductId($_product->getId())->toHtml(); ?>
+                            </div>
+                            <div class="products-item-info">
+                                <div class="sold">
+                                    <?php echo $this->__('Sold:') ?> <span><?php echo $this->getSold($_product->getId()) ?></span>
+                                </div>
+                                <div class="item-left">
+                                    <?php $itemLeft = $this->getItemLeft($_product->getId()); ?>
+                                    <?php if ($itemLeft != ''): ?>
+                                        <?php if ($itemLeft > 1): ?>
+                                            <?php echo $this->__('Items left:') ?> <span><?php echo $itemLeft ?></span>
+                                        <?php else: ?>
+                                            <?php echo $this->__('Item left:') ?> <span><?php echo $itemLeft ?></span>
+                                        <?php endif ?>
+                                    <?php else: ?>
+                                        <?php echo $this->__('Items left:') ?> <span><?php echo $this->__('Unlimited') ?></span>
+                                    <?php endif ?>
+                                </div>
+                            </div>
+                            <form action="<?php echo $this->getAddToCartUrl($_product) ?>" method="post" id="product_addtocart_form_<?php echo $_product->getId(); ?>">
+                                <input name="qty" type="text" class="input-text qty addcart-qty" maxlength="12" value="<?php echo $this->getMinimalQty($_product) ?>" />
+								<div class="add-to-cart">
+									<button class="btn-cart btn btn-primary btn-lg btn-full" onclick="productAddToCartForm_<?php echo $_product->getId(); ?>.submit();"><span><?php echo $this->__('Buy Now') ?></span></button>
+								</div>
+                            </form>
+                            <script type="text/javascript">
+                                    var productAddToCartForm_<?php echo $_product->getId(); ?> = new VarienForm('product_addtocart_form_<?php echo $_product->getId(); ?>');
+                                    productAddToCartForm_<?php echo $_product->getId(); ?>.submit = function() {
+                                        if (this.validator.validate()) {
+                                            this.form.submit();
+                                        }
+                                    }.bind(productAddToCartForm_<?php echo $_product->getId(); ?>);
+                            </script>
+                        </div>
+                    </div>
+                <?php endforeach ?>
+            </div>
+    <?php endif; ?>
+	</div>
+    <?php echo $toolbar->toHtml();?>
+	
+<?php endif; ?>

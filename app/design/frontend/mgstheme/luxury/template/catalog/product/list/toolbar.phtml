@@ -1,0 +1,125 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list toolbar
+ *
+ * @see Mage_Catalog_Block_Product_List_Toolbar
+ */
+?>
+<?php
+	foreach ($this->getAvailableLimit() as  $_key=>$_limit){
+		if($this->isLimitCurrent($_key)){
+			if($_limit > $this->getTotalNum()){
+				$checkPages = false;
+			}else {
+				$checkPages = true;
+				break;
+			}
+		}
+	}
+?>
+<?php if($this->getCollection()->getSize()): ?>
+<div class="toolbar">
+	<div class="show-top">
+		<div class="row">
+			<div class="col-md-9 col-sm-9 col-xs-12">
+			<?php if( $this->isEnabledViewSwitcher() ): ?>
+				<div class="view-mode pull-left hidden-xs">
+					<?php $_modes = $this->getModes(); ?>
+					<?php if($_modes && count($_modes)>1): ?>
+					<span style="vertical-align: 2px;" class="sub-label"><?php echo $this->__('View as') ?>:</span>
+					<?php foreach ($this->getModes() as $_code=>$_label): ?>
+							<?php if($this->isModeActive($_code)): ?>
+									<strong class="view-type" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php if($_label=="Grid"): ?><i class="fa fa-th"></i><?php else: ?><i class="fa fa-list"></i><?php endif; ?></strong>&nbsp;
+							<?php else: ?>
+									<a class="view-type" href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php if($_label=="Grid"): ?><i class="fa fa-th"></i><?php else: ?><i class="fa fa-list"></i><?php endif; ?></a>&nbsp;
+							<?php endif; ?>
+					<?php endforeach; ?>
+					<?php endif; ?>
+				</div>    
+			<?php endif; ?>
+			<?php if( $this->isExpanded() ): ?>
+				<div class="sort-by pull-left">
+					<span class="sub-label"><?php echo $this->__('Sort By') ?>:</span>
+					<select onchange="setLocation(this.value)">
+					<?php foreach($this->getAvailableOrders() as $_key=>$_order): ?>
+							<option value="<?php echo $this->getOrderUrl($_key, 'asc') ?>"<?php if($this->isOrderCurrent($_key)): ?> selected="selected"<?php endif; ?>>
+									<?php echo $this->__($_order) ?>
+							</option>
+					<?php endforeach; ?>
+					</select>
+					<?php if($this->getCurrentDirection() == 'desc'): ?>
+						<a href="<?php echo $this->getOrderUrl(null, 'asc') ?>" title="<?php echo $this->__('Set Ascending Direction') ?>"><i class="fa fa-arrow-up"></i></a>
+					<?php else: ?>
+						<a href="<?php echo $this->getOrderUrl(null, 'desc') ?>" title="<?php echo $this->__('Set Descending Direction') ?>"><i class="fa fa-arrow-down"></i></a>
+					<?php endif; ?>
+				</div>
+			 <?php endif; ?>
+				<div class="limiter pull-left">
+					<span class="sub-label"><?php echo $this->__('Show') ?>:</span>
+					<select onchange="setLocation(this.value)">
+					<?php foreach ($this->getAvailableLimit() as  $_key=>$_limit): ?>
+						<option value="<?php echo $this->getLimitUrl($_key) ?>"<?php if($this->isLimitCurrent($_key)): ?> selected="selected"<?php endif ?>>
+							<?php echo $_limit ?>
+						</option>
+					<?php endforeach; ?>
+					</select>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<?php if($checkPages): ?>
+				<div class="col-md-3 col-sm-3 hidden-xs text-right">
+					<?php echo $this->getPagerHtml(); ?>
+				</div>
+			<?php endif ?>
+		</div>
+	</div>
+	<div class="show-bottom">
+		<div class="row">
+			<div class="col-md-6 col-sm-6 hidden-xs text-left">
+				<?php if( $this->isEnabledViewSwitcher() ): ?>
+					<div class="view-mode pull-left hidden-xs">
+						<?php $_modes = $this->getModes(); ?>
+						<?php if($_modes && count($_modes)>1): ?>
+						<span style="vertical-align: 2px;" class="sub-label"><?php echo $this->__('View as') ?>:</span>
+						<?php foreach ($this->getModes() as $_code=>$_label): ?>
+								<?php if($this->isModeActive($_code)): ?>
+										<strong class="view-type" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php if($_label=="Grid"): ?><i class="fa fa-th"></i><?php else: ?><i class="fa fa-list"></i><?php endif; ?></strong>&nbsp;
+								<?php else: ?>
+										<a class="view-type" href="<?php echo $this->getModeUrl($_code) ?>" title="<?php echo $_label ?>" class="<?php echo strtolower($_code); ?>"><?php if($_label=="Grid"): ?><i class="fa fa-th"></i><?php else: ?><i class="fa fa-list"></i><?php endif; ?></a>&nbsp;
+								<?php endif; ?>
+						<?php endforeach; ?>
+						<?php endif; ?>
+					</div>    
+				<?php endif; ?>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12 text-right"><?php echo $this->getPagerHtml(); ?></div>
+		</div>
+	</div>
+</div>
+<?php endif ?>

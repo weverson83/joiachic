@@ -1,0 +1,55 @@
+<?php $portfolios = $this->getPortfolios() 
+?>
+<div class="portfolio-container">
+	<?php if($this->getTitle()): ?>
+		<div class="title-content">
+			<h3><?php echo $this->getTitle() ?></h3>
+		</div>
+	<?php endif ?>
+	<?php if(count($portfolios)>0): ?>
+		<?php 
+			$helper = $this->helper('mpanel');
+			$col = $this->getColumn();
+			$number_perrow = $col;
+			$col = $helper->convertColRowCustom($col);
+		?>
+		<div class="row">
+			<?php if($this->getSlider()==1): ?>
+				<div class="owl-carousel portfolio-carousel portfolio-grid" id="portfolio_carousel">
+			<?php else: ?>
+				<div class="portfolio-grid<?php if($col == 'custom-5' || $col == 'custom-7' || $col == 'custom-8'): ?> products-grid-<?php echo $col; ?><?php endif; ?>">
+			<?php endif ?>
+				<?php $i =0; foreach($portfolios as $portfolio): $i++; ?>
+					<?php if($this->getSlider()==1): ?>
+						<div class="item">
+					<?php else: ?>
+						<div class="<?php if($i % $number_perrow == 1): ?>first-row-item <?php endif ?><?php if($i % 2 == 1): ?>row-2-first row-2sm-first <?php endif ?><?php if($col !=''): ?>col-md-<?php echo $col; ?> col-sm-6 col-xs-12 col-xs-half<?php endif; ?>">
+						<div class="item">
+					<?php endif ?>
+							<div class="portfolio-top-content">
+								<a href="<?php echo $portfolio->getAddress(); ?>"><img src="<?php echo $this->helper('portfolio')->getThumbnail($portfolio)?>" alt="" class="img-responsive"/></a>
+								<?php if($portfolio->getServices() != ''): ?>
+									<span class="hover-info text-center text-colour-white button-text-colour-white">
+										<span class="project h4"><?php echo $portfolio->getServices() ?></span>
+									</span>
+								<?php endif ?>
+							</div>
+							<div class="portfolio-bottom-content">
+								<h4><a href="<?php echo $portfolio->getAddress(); ?>"><?php echo $portfolio->getName() ?></a></h4>
+								<p class="category-link"><?php echo $this->helper('portfolio')->getCategoriesLink($portfolio)?></p>
+							</div>
+						</div>
+					<?php if(!$this->getSlider()==1): ?></div><?php endif ?>
+				<?php endforeach ?>
+				
+			</div>
+		</div>
+		<?php if($this->getSlider()==1): ?>
+			<script type="text/javascript">
+				initSlider('portfolio_carousel', <?php echo $this->getColumn() ?>, <?php echo $this->getAutoPlay()?>, <?php echo $this->getStopHover()?>, <?php echo $this->getNavigation()?>, <?php echo $this->getPagination()?>,<?php echo $helper->rightToLeftOwl(); ?>);
+			</script>
+		<?php endif ?>
+	<?php else: ?>
+		<p class="note-msg"><?php echo $this->__('There are no portfolios matching the selection.') ?></p>
+	<?php endif ?>
+</div>

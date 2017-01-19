@@ -1,0 +1,93 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2014 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Cart cross sell items template
+ *
+ * @see Mage_Checkout_Block_Cart_Crosssell
+ */
+?>
+<?php if($this->getItemCount()): ?>
+
+	<?php $helper = $this->helper('mpanel') ?>
+	<?php $size = $helper->convertRatioToSize() ?>
+	<div class="carousel_wrapper margin-top40 padding-top10">
+		<div class="title-block">
+			<h4><?php echo $this->__('You may be interested in the following items:') ?></h4>
+		</div>
+	</div>
+	<div class="row">
+		<ul id="crosssell_products" class="owl-carousel products-carousel products-grid">
+			<?php foreach ($this->getItems() as $_item): ?>
+				<?php $_product = Mage::getModel('catalog/product')->load($_item->getId()) ?>
+				<li class="item">
+					<div class="product-content">
+						<div class="product-top">
+							<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>" class="product-image">
+								<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($size['width'], $size['height']) ?>" alt="<?php echo $this->stripTags($_product->getName(), null, true) ?>" class="img-responsive"/>
+								<?php if(basename($_product->getData('image')) != basename($_product->getData('small_image'))): ?>
+									<img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize($size['width'], $size['height']) ?>" 
+									alt="<?php echo $this->stripTags($_product->getName(), null, true) ?>" class="img-responsive img-two"/>
+								<?php endif ?>
+							</a>
+							<ul class="icon-links">
+								<?php if($this->helper('core')->isModuleEnabled('MGS_QuickView') && Mage::getStoreConfig('quickview/general/active')): ?>
+									<button class="btn-quickview quick-view" onclick="quickView('<?php echo $_product->getProductUrl() ?>'); return false;"><em class="fa fa-eye"></em></button>
+								<?php endif ?>
+								<?php if ($this->helper('wishlist')->isAllow() && $helper->isShowWishList()) : ?>
+									<li><button onclick="setLocation('<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>')" type="button" class="link-wishlist"><em class="fa fa-heart"></em></button></li>
+								<?php endif; ?>
+								<?php $_compareUrl=$this->helper('catalog/product_compare')->getAddUrl($_product); ?>
+								<?php if( $_compareUrl && $helper->isShowCompare()): ?>
+									<li><button onclick="setLocation('<?php echo $_compareUrl ?>')" class="link-compare" type="button"><em class="fa fa-retweet"></em></button></li>
+								<?php endif; ?>
+							</ul>
+							<?php echo $helper->getProductLabel($_product) ?>
+						</div>
+						<div class="product-desc">	
+							<h6 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>)"><?php echo $this->helper('catalog/output')->productAttribute($_product, $_product->getName() , 'name') ?></a></h6>
+							<?php echo $this->getPriceHtml($_product, true) ?>
+							<div class="controls">
+								<div class="add-to-cart">
+									<?php if ($_product->isSaleable()): ?>
+										<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><em class="fa fa-shopping-cart"></em></button>
+									<?php else: ?>
+										<p class="h6"><?php echo $this->__('Sold') ?></p>
+									<?php endif; ?>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</li>
+			<?php endforeach ?>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		initSlider('crosssell_products', 4, false, false, true, false,<?php echo $helper->rightToLeftOwl(); ?>);
+	</script>
+<?php endif; ?>

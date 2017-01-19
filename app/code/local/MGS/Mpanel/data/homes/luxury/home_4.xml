@@ -1,0 +1,58 @@
+<layout>
+    <name>1_column_full</name>
+	<page_width><![CDATA[width1200]]></page_width>
+	<header>header2</header>
+	<footer>footer2</footer>
+	<sticky_menu>0</sticky_menu>
+	<popup_newsletter>1</popup_newsletter>	
+	<!-- Theme Color -->
+	<!-- Theme Color -->
+ <theme_color_header>
+	<use_custom>0</use_custom>
+ </theme_color_header>
+ <theme_color_main>
+  <use_custom>0</use_custom>
+ </theme_color_main>
+ <theme_color_footer>
+  <use_custom>0</use_custom>
+ </theme_color_footer>
+
+<custom_style>
+	<style><![CDATA[.cms-home #footer{display:none;}
+.breadcrumbs{margin-bottom:40px;}
+
+.revolution-slider-container{position:fixed; top: 0;left: 0; right:0; bottom: 0;}
+.header-v2.position-fx {
+    background-color: rgba(255, 255, 255, 0.8);
+}]]></style>
+</custom_style>
+
+    <!--  Blocks  -->
+    <block>
+        <name>block70</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>1</fullwidth>
+        <padding_top><![CDATA[]]></padding_top>
+        <padding_bottom><![CDATA[]]></padding_bottom>
+        <block_position>1</block_position>
+    </block>
+
+    <!--  Childs  -->
+    <child>
+        <block_name>block70-0</block_name>
+        <block_content><![CDATA[{{widget type="revslider/slider_preview" id="7"}}]]></block_content>
+        <type>revolution</type>
+        <position>1</position>
+        <setting><![CDATA[7]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+	
+</layout>

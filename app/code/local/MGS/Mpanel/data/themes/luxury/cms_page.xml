@@ -1,0 +1,148 @@
+<cms_page>
+	<item>
+		<title>About Us</title>
+		<identifier>about-us</identifier>
+		<root_template>one_column</root_template>
+		<content><![CDATA[<div class="about-banner">
+	<span class="h4">LUXURY SAY HI !</span> 
+	<span class="h1">WE ARE THE <span style="color: #b18ade;">LUXURY</span> THEME </span>
+	<a class="btn btn-default btn-lg" href="#" >VIEW DETAIL</a>
+</div>
+<section style="background-color: rgb(255, 255, 255); padding-top: 64px; padding-bottom: 50px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-6 col-xs-12">
+				<div class="title-block">
+					<h4>Our Skills</h4>
+				</div>
+				<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat</p>
+			</div>
+			<div class="col-sm-6 col-xs-12">
+				<ul class="chart-ab">
+					<li>
+						<span class="title">Photoshop</span>
+						<div class="chart-parent">
+							<div style="width: 80%" class="chart">
+								<span class="number">80%</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="title">Html</span>
+						<div class="chart-parent">
+							<div style="width: 90%" class="chart">
+								<span class="number">90%</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="title">Css</span>
+						<div class="chart-parent">
+							<div style="width: 85%" class="chart">
+								<span class="number">85%</span>
+							</div>
+						</div>
+					</li>
+					<li>
+						<span class="title">Code</span>
+						<div class="chart-parent">
+							<div style="width: 95%" class="chart">
+								<span class="number">95%</span>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<section style="padding-top: 62px; padding-bottom: 40px;">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="title-content">
+					<h3>MEET THE TEAM</h3>
+				</div>
+				<div class="testimonials-center">
+					{{block type="core/template" number_show='4'  template="mgs/profiles/widget_cms.phtml"}}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section style="background-color: #fff; padding-top: 62px; padding-bottom: 45px;">
+	<div>
+		<div class="container">
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="title-content">
+						<h3><span>OUR SERVICE</span></h3>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12 col-sm-half">
+					<div class="service-inline" style="margin-bottom: 25px;">
+						<span class="icon fa fa-desktop">&nbsp;</span >
+						<h5 class="title">CLEAN DESIGN</h5>
+						<p class="content">Get Free Shipping on all orders over $75 and free returns to our UK returns centre! Items are dispatched from the US and will arrive in 5-8 days.</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12 col-sm-half">
+					<div class="service-inline" style="margin-bottom: 25px;">
+						<span class="icon fa fa-wrench">&nbsp;</span >
+						<h5 class="title">FREE UPDATE & SUPPORT</h5>
+						<p class="content">Get Free Shipping on all orders over $75 and free returns to our UK returns centre! Items are dispatched from the US and will arrive in 5-8 days.</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12 col-sm-half">
+					<div class="service-inline" style="margin-bottom: 25px;">
+						<span class="icon fa fa-user-times">&nbsp;</span >
+						<h5 class="title">LOADED WITH POWER</h5>
+						<p class="content">Get Free Shipping on all orders over $75 and free returns to our UK returns centre! Items are dispatched from the US and will arrive in 5-8 days.</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12 col-sm-half">
+					<div class="service-inline" style="margin-bottom: 25px;">
+						<span class="icon fa fa-cloud-upload">&nbsp;</span >
+						<h5 class="title">COMPLETELY CUSTOMIZABLE</h5>
+						<p class="content">Get Free Shipping on all orders over $75 and free returns to our UK returns centre! Items are dispatched from the US and will arrive in 5-8 days.</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12 col-sm-half">
+					<div class="service-inline" style="margin-bottom: 25px;">
+						<span class="icon fa fa-cloud-download">&nbsp;</span >
+						<h5 class="title">CHOOSE THE PRODUCT YOU LOVE</h5>
+						<p class="content">Get Free Shipping on all orders over $75 and free returns to our UK returns centre! Items are dispatched from the US and will arrive in 5-8 days.</p>
+					</div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12 col-sm-half">
+					<div class="service-inline" style="margin-bottom: 25px;">
+						<span class="icon fa fa-sliders">&nbsp;</span >
+						<h5 class="title">STYLE FOR EVERY BUDGET</h5>
+						<p class="content">Get Free Shipping on all orders over $75 and free returns to our UK returns centre! Items are dispatched from the US and will arrive in 5-8 days.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<section style="background-image: url('{{media url="wysiwyg/bg_testimonials.jpg"}}');background-repeat:no-repeat;background-size:cover; padding-top:62px; padding-bottom:40px;" class=" text-colour-white ">
+	<div class="container">
+		<div class="row">
+			{{block type="core/template" title="What's Client Say?" number_item='4'  template="mgs/testimonial/view_cms.phtml"}}
+		</div>
+	</div>		
+</section>]]></content>
+	</item>
+	<item>
+		<title>404 Not Found</title>
+		<identifier>no-route</identifier>
+		<root_template>one_column</root_template>
+		<content><![CDATA[<div class="error-content text-center">
+<div class="title-content">
+       <span class="h1">404 PAGE</span>
+ </div>
+<p class="text">The page you are looking for does not exist. <br>
+Return to the <a href="{{config path="web/unsecure/base_url"}}">home page.</a></p>
+</div>]]></content>
+	</item>
+</cms_page>

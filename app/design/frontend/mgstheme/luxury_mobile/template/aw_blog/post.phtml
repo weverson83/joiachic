@@ -1,0 +1,127 @@
+<?php $post = $this->getPost(); ?>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="blog-main social-blog-lastest">
+<div class="social-blog social-detail-blog">
+	<div class="blog-container">
+		<?php if ($post->getImage() != ''): ?>
+				<div class="blog-img">
+					<img class="img-responsive" alt="" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'blog/images/' . $post->getImage(); ?>"/>
+				</div>
+		<?php endif ?>
+		<div class="blog-desc">
+			<div class="blog-title">
+				<h2><?php echo $post->getTitle(); ?></h2>
+			</div>
+			<div class="blog-desc-content">
+				<?php echo $post->getPostContent(); ?>
+			</div>
+		</div>
+		<?php echo $this->getBookmarkHtml($post) ?>
+		<div class="tags"><?php echo Mage::getBlockSingleton('blog/blog')->getTagsHtml($post) ?></div>
+		<?php if(Mage::getStoreConfig('mpanel/share_this/blog_detail')): ?>
+		    <div class="social-icons social-share-mg">
+		         <?php echo Mage::getStoreConfig('mpanel/share_this/span_tags') ?>
+		    </div>
+		<?php endif; ?>
+	</div>
+</div>
+</div>
+
+<!-- Comment Section -->
+<?php if ($this->getCommentsEnabled()): ?>
+<div class="blog-comment">
+    <?php $comments = $this->getComment(); ?>
+    <div class="title-form"><a name="commentBox" ></a>
+        <h2><?php echo $this->__('Post Comments') ?></h2>
+    </div>
+
+    <?php //echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
+        <?php foreach ($comments as $comment) : ?>
+            <div class="social-blog">
+				<div class="blog-container">
+					<div class="blog-desc">
+						<div class="blog-title">
+							<a><?php echo $comment->getUser(); ?></a>
+						</div>
+						<div class="blog-desc-content">
+							<p class="date"><?php echo $this->formatDate($comment->getCreatedTime(), Mage::getStoreConfig('blog/blog/dateformat'), true); ?></p>
+							<p class="blog-desc-details"><?php echo nl2br($comment->getComment()); ?></p>
+						</div>
+					</div>
+				</div>
+            </div>
+        <?php endforeach; ?>
+<div class="blog-bottom-toolbar bottom-toolbar">
+     <?php echo $this->getChildHtml('aw_blog_comments_toolbar'); ?>
+</div>
+
+    <?php if ($post->getComments()): ?>
+        <div class="postError"><?php echo Mage::helper('blog')->__('Comments are Closed for this post') ?></div>
+    <?php else: ?>
+	<div class="form-comment">
+		<div class="title-form">
+			<h2><?php echo Mage::helper('blog')->__('Submit your comment') ?></h2>
+		</div>
+        <?php if ($this->getLoginRequired()): ?>
+            <?php if ($this->helper('customer')->isLoggedIn()): ?>
+                <form action="" id="postComment" method="post">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 input-form">
+                        <textarea name="comment" id="comment" placeholder="Message:" title="<?php echo $this->__('Comment') ?>" class="required-entry input-text form-control form-control-2" rows="6"><?php echo $this->getCommentText(); ?></textarea>
+                    </div>
+                    <div class="button-set col-lg-12 col-md-12 col-sm-12 col-xs-12 input-form">
+                        <input name="post_id" type="hidden" value="<?php echo $post->getPostId(); ?>" />
+                        <input name="email" type="hidden" value="<?php echo $this->htmlEscape($this->helper('blog')->getUserEmail()) ?>"/>
+                        <input name="user" type="hidden" value="<?php echo $this->htmlEscape($this->helper('blog')->getUserName()) ?>"/>
+                        <button class="form-button button btn btn-primary btn-sm" type="submit"><span><span><?php echo Mage::helper('blog')->__('Submit Comment') ?><em class="fa fa-paper-plane"></em></span></span></button>
+                    </div>
+                </form>
+
+                <script type="text/javascript">
+                    var contactForm = new VarienForm('postComment', false);
+                </script>
+
+            <?php else: ?>
+                <p><?php echo Mage::helper('blog')->__('You must be logged in to post a comment.'); ?></p>
+                <p><a href="<?php echo Mage::helper('customer')->getLoginUrl(); ?>"><?php echo Mage::helper('blog')->__('click here'); ?></a> <?php echo Mage::helper('blog')->__('to log in'); ?></p>
+            <?php endif ?>
+
+        <?php else: ?>
+            <form action="" id="postComment" method="post">
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 input-form">
+					<input name="user" id="user"  placeholder="Name*:" value="<?php echo $this->getCommentName(); ?>" title="<?php echo $this->__('Name') ?>" class=" form-control required-entry input-text" type="text" />
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 input-form">
+					<input name="email" id="email" placeholder="Email*:" value="<?php echo $this->getCommentEmail(); ?>" title="<?php echo $this->__('Email') ?>" class="required-entry input-text validate-email form-control" type="text" />
+				</div>
+				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 input-form">
+					<textarea name="comment" placeholder="Message:" id="comment" title="<?php echo Mage::helper('blog')->__('Comment') ?>" class="required-entry input-text form-control form-control-2" rows="6"><?php echo $this->getCommentText(); ?></textarea>
+				</div>
+                
+					<?php
+                        if (Mage::getStoreConfig('blog/recaptcha/enabled') && !$this->helper('customer')->isLoggedIn()) {
+                            ?><fieldset class="group-select"><ul><li><?php
+							require_once 'recaptcha/recaptchalib-aw.php';
+
+							// Get a key from http://recaptcha.net/api/getkey
+							$publickey = Mage::getStoreConfig('blog/recaptcha/publickey');
+							$privatekey = Mage::getStoreConfig('blog/recaptcha/privatekey');
+							$error = null;
+
+						echo recaptcha_get_html($publickey, $error);
+                            ?></li></ul></fieldset><?php
+						}
+                        ?>
+                    
+                <div class="button-set col-lg-12 col-md-12 col-sm-12 col-xs-12 input-form">
+                    <input name="post_id" type="hidden" value="<?php echo $post->getPostId(); ?>" />
+                    <button class="button form-button btn btn-primary btn-sm" type="submit"><span><span><?php echo Mage::helper('blog')->__('Submit Comment') ?><em class="fa fa-paper-plane"></em></span></span></button>
+                </div>
+            </form>
+            <script type="text/javascript">
+                var contactForm = new VarienForm('postComment', false);
+            </script>
+        <?php endif; ?>
+    <?php endif; ?>
+	</div>
+</div>
+<?php endif; ?>

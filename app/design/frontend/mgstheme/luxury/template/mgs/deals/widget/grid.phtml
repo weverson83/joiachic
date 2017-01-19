@@ -1,0 +1,114 @@
+<?php if(Mage::getStoreConfig('deals/general/enabled')): ?>
+<?php
+    $_productCollection=$this->getProductCollection();
+    $_helper = $this->helper('catalog/output');
+	$helper = $this->helper('mpanel');
+	$widgetId = $this->getWidgetId();
+?>
+<?php $size = $helper->convertRatioToSize($this->getProductRatio()) ?>
+<?php if(count($_productCollection)>0): ?>
+	<?php if($this->getTitle()!=''): ?>
+		<div class="block-view">
+			<div class="title-content">
+				<h3><?php echo $this->getTitle() ?></h3>
+			</div>
+		</div>
+	<?php endif ?>
+	<?php $_columnCount = $this->getColumn(); ?>
+	<div class="row deal-container">
+		<?php foreach ($_productCollection as $product): ?>
+			<?php $_product = Mage::getModel('catalog/product')->load($product->getId()) ?>
+			<?php if(count($product)== 1): ?>
+				<div class="one-deals">
+					<div class="row">
+						<div class="col-md-5 col-sm-6 col-xs-12 deals-content-left">
+							<div class="deals-img <?php if(count($_product->getMediaGalleryImages()) > 1): ?>is-slider<?php endif ?>">
+								<div id="img-deals-slider" class="owl-carousel img-deals-slider">
+									<?php $i=0; foreach ($_product->getMediaGalleryImages() as $_image): $i++; ?>
+										<div class="item">
+											<a href="<?php echo $_product->getProductUrl() ?>" title="" class="product-image" >
+												<img class="img-responsive" src="<?php echo Mage::helper('catalog/image')->init($_product, 'image', $_image->getFile())->resize($size['width'], $size['height']); ?>" alt="<?php echo $_product->getName()?>" />
+											</a>
+										</div>
+									<?php endforeach; ?>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-7 col-sm-6 col-xs-12 deals-content-right">
+							<div class="deals-info">
+								<?php echo $this->getLayout()->createBlock('deals/deals')->setTemplate('mgs/deals/price.phtml')->setProductId($_product->getId())->setData("widgetId",$widgetId)->toHtml(); ?>
+								<div class="clear"></div>
+								<div class="product-name"><a class="h1" href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></div>
+								<p class="short_description"><?php echo $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?></p>
+								<div class="price-show">
+									<?php echo $this->getPriceHtml($_product, true) ?>
+								</div>
+								<?php if($_product->isSaleable()): ?>
+									<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="btn-cart btn btn-default btn-lg" onclick="setLocation('<?php echo $this->helper('checkout/cart')->getAddUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+								<?php else: ?>
+									<span class="btn btn-default btn-lg availability out-of-stock"><?php echo $this->__('Out of stock') ?></span>
+								<?php endif; ?>
+								<a class="btn btn-default btn-lg" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Detail') ?></a>
+							</div>
+						</div>
+					</div>
+					<script type="text/javascript">
+						mgsjQuery("#img-deals-slider").owlCarousel({
+							rtl: <?php echo $helper->rightToLeftOwl(); ?>,
+							items: 1,
+							loop: true,
+							lazyLoad: true,
+							nav: false,
+							dots: true,
+							autoplay: false,
+							autoplayHoverPause: false,
+							navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
+							responsive:{
+								0 : {items: 1},
+								480 : {items: 1},
+								768 : {items: 1},
+								980 : {items: 1},
+								1200 : {items: 1}
+							}
+						}); 
+					</script>
+				</div>
+			<?php else: ?>
+			
+			<div class="item col-md-<?php echo $helper->convertColRow($_columnCount) ?>">
+				<div class="product-content">
+				<div class="product-top">
+					<a href="<?php echo $_product->getProductUrl() ?>" title="" class="product-image" >
+						<img class="img-responsive" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($size['width'], $size['height']); ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+					</a>
+					<div class="discount-save">
+						<div class="save-content">
+							<?php echo $this->__('Save') ?>
+							<div class="percent">
+								<?php $save = $_product->getPrice() - $_product->getFinalPrice() ?>
+								<?php $percent = round(($save*100)/$_product->getPrice(), 1) ?>
+								<?php echo $percent ?>%
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="product-desc">
+				<h4 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName(), null, true) ?>"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h4>
+				   
+				<?php echo $this->getLayout()->createBlock('deals/deals')->setTemplate('mgs/deals/price.phtml')->setProductId($_product->getId())->setData("widgetId",$widgetId)->toHtml(); ?>
+							
+				<div class="actions">
+					<?php if($_product->isSaleable()): ?>
+						<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="btn-cart btn btn-default btn-lg btn-full" onclick="setLocation('<?php echo $this->helper('checkout/cart')->getAddUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+					<?php else: ?>
+						<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+					<?php endif; ?>
+				</div>
+				</div>
+				</div>
+			</div>
+			<?php endif ?>
+		<?php endforeach ?>
+	</div>
+<?php endif ?>
+<?php endif ?>

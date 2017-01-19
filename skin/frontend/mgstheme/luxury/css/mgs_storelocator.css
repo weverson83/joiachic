@@ -1,0 +1,48 @@
+
+.store-list-container .store-list .items{max-height: 600px; overflow: auto;}
+.store-list-container .store-list .items li{border:1px solid #ccc; padding:15px; margin: 0 5px 10px 0}
+#store-list-map {height: 650px; width: 100%;	border:1px solid #ccc;}
+.store-list-container .input-text::-webkit-input-placeholder { color:#c9c9c9; }
+.store-list-container .input-text::-moz-placeholder { color:#c9c9c9; }
+.store-list-container .input-text:-ms-input-placeholder { color:#c9c9c9; }
+.store-list-container .search-form {
+	margin-bottom: 30px
+}
+.store-list-container .search-form,
+.store-list-container .store-list {
+	padding:20px; 
+	background-color: #fff;
+}
+.store-list-container .search-form h2{border-bottom:1px solid #ccc; margin-bottom:20px; padding-bottom:5px}
+
+.map-short-info {font-size:12px; max-width:180px}
+.map-short-info p{margin-bottom:5px}
+#map-detail{height:650px}
+.store-list-container .store-list .items li .store-content .store-logo {
+	display: inline-block;
+	width: 75px;
+	vertical-align: top;
+}
+.store-list-container .store-list .items li .store-content .description {
+	display: inline-block;
+	width: calc(100% - 80px);
+	padding-left: 5px;
+}
+.store-list-container .store-list .items li .store-content .description h4 {
+	margin-top: 0;
+}
+.store-list-container .toolbar {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+.store-list-container .toolbar .amount {
+	display: none;
+}
+.store-list-container .toolbar  .pager {
+	padding-top: 10px;
+	margin-top: 20px;
+	margin-bottom: 0;
+	text-align: right;
+	border-top: 1px solid #e4e4e4;
+}

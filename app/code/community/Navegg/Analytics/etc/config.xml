@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to suporte.developer@buscape-inc.com so we can send you a copy immediately.
+ *
+ * @category   Buscape
+ * @package    Navegg_Analytics
+ * @copyright  Copyright (c) 2015 Navegg (http://www.navegg.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<config>
+    <modules>
+        <Navegg_Analytics>
+            <version>0.1.0</version>
+        </Navegg_Analytics>
+    </modules>
+    <global>
+        <models>
+            <navegg>
+                <class>Navegg_Analytics_Model</class>
+            </navegg>
+        </models>
+        <blocks>
+            <navegg>
+                <class>Navegg_Analytics_Block</class>
+            </navegg>
+        </blocks>
+        <helpers>
+            <navegg>
+                <class>Navegg_Analytics_Helper</class>
+            </navegg>
+        </helpers>
+    </global>
+    <frontend>
+      <routers>
+            <navegg>
+                <use>standard</use>
+                <args>
+                    <module>Navegg_Analytics</module>
+                    <frontName>navegg_analytics</frontName>
+                </args>
+            </navegg>
+        </routers>
+        <events>
+            <controller_action_layout_generate_blocks_after>
+                <observers>
+                    <navegg_page_head>
+                        <class>navegg/observer</class>
+                        <method>setPageHeadNavegg</method>
+                    </navegg_page_head>
+                </observers>
+            </controller_action_layout_generate_blocks_after>
+        </events>
+    </frontend>
+    <!-- <admin>
+         <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <navegg after="Mage_Adminhtml">Navegg_Analytics</navegg>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin> -->
+    <adminhtml>
+        <layout>
+            <updates>
+                <Navegg_Analytics>
+                    <file>analytics.xml</file>
+                </Navegg_Analytics>
+            </updates>
+        </layout>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <navegg_analytics>
+                                            <title>Navegg Analytics</title>
+                                        </navegg_analytics>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

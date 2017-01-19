@@ -1,0 +1,55 @@
+# -- A
+# -- B
+# -- C
+# -- D
+# -- E
+# -- F
+# -- G
+# -- H
+# -- I
+# -- J
+# -- K
+# -- L
+# -- M
+# -- N
+# -- O
+# -- P
+# -- Q
+# -- R
+# -- S
+# -- T
+# -- U
+# -- V
+# -- X
+# -- Y
+# -- Z
+
+"txt.msgTituloMetodoPagamentoCartao","Cartão de Crédito"
+"txt.msgTituloMetodoPagamentoDebito","Débito Online"
+"txt.msgTituloMetodoPagamentoBoleto","Boleto"
+"txt.msgTituloValorPagamento","Valor do pagamento"
+"txt.informacao","Informação"
+"txt.msgInformacaoDebito","Após o fechamento do pedido você será redirecionado ao ambiente da operadora para informar os dados do cartão."
+"txt.numeroCartao","Número do cartão"
+"txt.validade","Validade"
+"txt.codigoSeguranca","Código de segurança"
+"txt.msgAjudaCodSeguranca","o que é isso?"
+"txt.msgTituloNomeTitularCartao","Nome do titular do cartão"
+"txt.msgTituloCpfTitularCartao","CPF do titular do cartão"
+"txt.numParcelas","Número de parcelas"
+"txt.vencimento","Vencimento"
+"txt.opcional","opcional"
+"txt.tituloPagamento","Seu pagamento será iniciado..."
+"txt.msgPagBoleto1","Quando você clicar no botão ""Abrir página do banco"", uma nova janela será aberta e você será direcionado para o ambiente seguro do Banco."
+"txt.msgPagBoleto2","Siga as instruções de pagamento no ambiente do banco."
+"txt.msgPagBoleto3","Após finalizar o pagamento, feche a janela do Banco e a janela atual será automaticamente recarregada."
+"txt.msgPagBoleto4","Após fechar a janela do Banco ou Operadora, por favor aguarde 10 segundos para que o seu pagamento seja processado. Por favor, não feche esta janela até que seu pagamento seja processado."
+"txt.msgPagBanco1","Quando você clicar no botão ""Abrir página do banco"", você será direcionado para o ambiente seguro do Banco."
+"txt.msgPagBanco2","Siga as instruções de pagamento no ambiente do banco."
+"txt.msgPagBanco3","Após finalizar o pagamento, você será automaticamente redirecionado para a página da loja."
+"txt.msgPagBanco4","Após fechar a janela do Banco ou Operadora, por favor aguarde 10 segundos para que o seu pagamento seja processado. Por favor, não feche esta janela até que seu pagamento seja processado."
+"txt.btnBanco","Abrir página do banco"
+"txt.btnBoleto","Gerar Boleto"
+"txt.boletoDesc","Clique em ""Gerar boleto"" e realize o pagamento através de seu Internet Banking ou agência bancária até a data de vencimento"
+"txt.Parcelas","Escolha a forma de pagamento"
+"txt.msgInfoPagamentoFalha","<br/><br/> Ocorreu uma falha no pagamento"

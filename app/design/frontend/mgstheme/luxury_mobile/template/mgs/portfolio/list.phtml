@@ -1,0 +1,98 @@
+<?php $menu = Mage::getModel('portfolio/category')->getCollection(); ?>
+<?php if($this->getRequest()->getParam('id')){
+	$checkParam = true;
+	$id_param = $this->getRequest()->getParam('id');
+}else{
+	$checkParam = false;
+}
+?>
+<?php if(count($menu)>1): ?>
+	<ul class="tabs_categories_porfolio">
+	<?php $i=0; foreach( $menu as $_menu ): $i++; ?>
+		<?php $id_get = $_menu->getId(); ?>
+		<li><a class="button <?php if($i==1 && !$checkParam): ?>is-checked<?php endif ?><?php if($checkParam && $id_get == $id_param): ?>is-checked<?php endif ?>" data-filter=".item_<?php echo $_menu->getId() ?>"><?php echo $_menu->getCategoryName() ?></a></li>
+	<?php endforeach ?>
+	</ul>
+<?php endif ?>
+<?php if(count($menu)>1): ?>
+	<div class="tabs_categories_porfolio_content isotope row">
+		<?php $i=0; foreach( $menu as $_menu ): $i++; ?>
+			<?php $id = $_menu->getId(); ?> 
+			<?php $portfolios = $this->getPortfoliosForCate($id); ?>
+				<?php if(count($portfolios)>0): ?>
+					<div class="portfolio-grid">
+						<?php $i=0; foreach($portfolios as $portfolio): $i++; ?>
+							<div class="item item_<?php echo $id ?> col-md-4 col-sm-6 col-xs-12">
+								<div class="portfolio-top-content">
+									<a href="<?php echo $this->getUrl('portfolio/view/index', array('id'=>$portfolio->getId())) ?>"><img src="<?php echo $this->helper('portfolio')->getThumbnail($portfolio)?>" alt="" class="img-responsive"/></a>
+								</div>
+								<div class="portfolio-bottom-content text-center">
+									<p class="portfolio-name"><a href="<?php echo $this->getUrl('portfolio/view/index', array('id'=>$portfolio->getId())) ?>"><?php echo $portfolio->getName() ?></a></p>
+									<p class="project"><span><?php echo $portfolio->getServices() ?></span></p>
+									<p class="category-link text-uppercase color-theme"><?php echo $this->helper('portfolio')->getCategoriesLink($portfolio)?></p>
+								</div>
+							</div>
+						<?php endforeach ?>
+					</div>
+				<?php else: ?>
+				<div class="row">
+					<div class="alert alert-danger item col-xs-12 item_<?php echo $id ?>" style="min-height: 40px;"><?php echo $this->__('There are no portfolios matching the selection.') ?></div>
+				</div>
+				<?php endif ?>
+		<?php endforeach ?>
+	</div>
+<?php else: ?>
+	<?php $portfolios = $this->getPortfolios(); ?>
+	<div class="row portfolio-container">
+		<?php if(count($portfolios)>0): ?>
+			<?php $i=0; foreach($portfolios as $portfolio): $i++; ?>
+				<div class="item col-md-4 col-sm-6 col-xs-12 <?php if($i % 3 == 1): ?>first-row-item<?php endif ?><?php if($i % 2 == 1): ?>  row-2sm-first<?php endif ?>">
+					<div class="portfolio-top-content">
+						<a href="<?php echo $this->getUrl('portfolio/view/index', array('id'=>$portfolio->getId())) ?>"><img src="<?php echo $this->helper('portfolio')->getThumbnail($portfolio)?>" alt="" class="img-responsive"/></a>
+						<div class="hover-info">
+							<div class="text-info text-center">
+								<p class="icon-portfolio"><a href="<?php echo $this->getUrl('portfolio/view/index', array('id'=>$portfolio->getId())) ?>"><span class="fa fa-search"></span></a></p>
+								<p class="project"><span><?php echo $portfolio->getServices() ?></span></p>
+								<p class="categories text-uppercase"><span><?php echo $this->helper('portfolio')->getCategoriesText($portfolio)?></span></p>
+							</div>
+						</div>
+					</div>
+					<div class="portfolio-bottom-content text-center">
+						<p class="portfolio-name"><a href="<?php echo $this->getUrl('portfolio/view/index', array('id'=>$portfolio->getId())) ?>"><?php echo $portfolio->getName() ?></a></p>
+						<p class="category-link text-uppercase color-theme"><?php echo $this->helper('portfolio')->getCategoriesLink($portfolio)?></p>
+					</div>
+				</div>
+			<?php endforeach ?>
+		<?php else: ?>
+			<div class="alert alert-danger"><?php echo $this->__('There are no portfolios matching the selection.') ?></div>
+		<?php endif ?>
+	</div>
+<?php endif ?>
+<?php if(count($menu)>1): ?>
+<script type="text/javascript">
+	mgsjQuery(window).ready(function() {
+		var container = mgsjQuery('.isotope').isotope({
+			itemSelector: '.item',
+			layoutMode: 'fitRows',
+			getSortData: {
+				name: '.item'
+			}
+		});
+		mgsjQuery('.tabs_categories_porfolio').each( function( i, buttonGroup ) {
+			var filterLoadValue = mgsjQuery(this).find('.is-checked').attr('data-filter');
+			container.isotope({ filter: filterLoadValue });
+		});
+		mgsjQuery('.tabs_categories_porfolio').on( 'click', '.button', function() {
+			var filterValue = mgsjQuery(this).attr('data-filter');
+			container.isotope({ filter: filterValue });
+		});
+		mgsjQuery('.tabs_categories_porfolio').each( function( i, buttonGroup ) {
+			var buttonGroup = mgsjQuery(buttonGroup);
+			buttonGroup.on( 'click', '.button', function() {
+				buttonGroup.find('.is-checked').removeClass('is-checked');
+				mgsjQuery(this).addClass('is-checked');
+			});
+		});
+	});
+	</script>
+<?php endif ?>

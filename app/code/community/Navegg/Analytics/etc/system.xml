@@ -1,0 +1,200 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to suporte.developer@buscape-inc.com so we can send you a copy immediately.
+ *
+ * @category   Buscape
+ * @package    Navegg_Analytics
+ * @copyright  Copyright (c) 2015 Navegg (http://www.navegg.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+
+
+<config>
+    <tabs>
+        <navegg translate="label" >
+            <label>Navegg</label>
+            <sort_order>100</sort_order>
+        </navegg>
+    </tabs>
+    <sections>
+        <navegg_analytics translate="label" module="navegg">
+            <label>Setup</label>
+            <tab>navegg</tab>
+            <sort_order>10</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+
+  	    <groups>
+                <navegg translate="label">
+                    <label>Navegg Analytics</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <comment>
+                        <![CDATA[
+                        <div class="wrap">
+                          <h2>Navegg Analytics</h2>
+                          <div id="dashboard-widgets-wrap">
+                          <div id="dashboard-widgets" class="metabox-holder">
+                          <div style="width:49%; float: left;">
+                          <div class="postbox-container" style="width:99%;">
+                          <div id="normal-sortables" class="meta-box-sortables ui-sortable">
+                          <div id="dashboard_right_now" class="postbox ">
+                          <h3><span>About Navegg Analytics</span></h3>
+                          <div class="inside">
+                          <img src="/media/navegg/analytics/navegg-analytics.png" style="width: 300px; height: 50px; margin: 0 auto 20px auto;" />
+                          <h4><strong>Identify the 8 different groups your visitors belong to and customize your website and content.</strong></h4><br />
+                          <p><strong>Navegg Analytics</strong> is <strong>Navegg’s</strong> solution for companies that wish to monitor the website audience’s consumption behavior and profile, to welcome each user with personalized banners and to improve marketing strategies.</p>
+                          <p><strong></strong> Learn more about the 8 internet users’ profile and find out which one is your target audience. You can use this information to create personalized banners to welcome each visitor with a relevant offer for that person.
+                          Besides that you can use the information to improve your marketing strategy, to guide content and to find out if the website visitors are the right audience to increase sales.</p>
+                          <p><strong></strong> <strong>Navegg Analytics</strong> provides basic analytics data such as amount of website visits, unique visitors, pageviews, bounce rate, demography (age, social class, localization) and also <strong>who</strong> are the visitors – their main interests, which websites they visit the most,
+                          which brands and products they like, technologies and social networks used and their profile category according to EveryOne.</p>
+                          <p><strong></strong> </p>
+                          <ul class="nvg_lst">
+                          <li class="tlt">Links:</li>
+                          <li class="d">
+                          <a href="http://www.navegg.com/en/documentation/websites-blogs-ecommerces/how-to-install/magento-plugin/" target="_blank">
+                          Documentation</a>
+                          </li>
+                          <li class="s">
+                          <a href="http://www.navegg.com/en/analytics/" target="_blank">
+                          Resources</a>
+                          </li>
+                          <li class="b">
+                          <a href="http://www.navegg.com/en/blog/" target="_blank">
+                          Blog</a>
+                          </li>
+                          <li class="f">
+                          <a href="http://www.navegg.com/en/client-area/faq/" target="_blank">
+                          FAQ </a>
+                          </li>
+                          <li class="p">
+                          <a href="http://www.navegg.com/en/solutions/sites-blogs-ecommerces/" target="_blank">
+                          Sign up</a>
+                          </li>
+                          <li class="c">
+                          <a href="http://www.navegg.com/en/about/#contact" target="_blank">
+                          Contact </a>
+                          </li>
+                          </ul>
+                          <div class="clearme"></div>
+                          </div>
+                          </div>
+                          </div>
+                          </div>
+                          <div class="clearme"></div>
+                          </div>
+                          <div style="width:49%; float: left;">
+                          <div class="postbox-container" style="width:99%;">
+                          <div class="meta-box-sortables ui-sortable">
+                          <div class="postbox id_nvg" style="max-height: 315px;">
+                          <div class="inside">
+                          <p>Don’t know your ID? Enter your e-mail:</p>
+                          <input type="text" name="emNvg" id="emNvg" value="" style="float: left; width: 200px; padding-left: 6px !important; background-image: none; font-size: 13px;" />
+                          <a class="button" style="float: left; margin-top: -1px; text-transform: uppercase;" title="Search" onclick="api('getId')">
+                          Search </a>
+                          <div class="clearme"></div>
+                          <div id="result_ids"></div>
+                          <div class="clearme"></div>
+                          <ul class="nvg_lst" style="clear: both;">
+                          <li class="r">
+                          <a href="javascript:void(0)" onClick="document.getElementById('containerNewAccount').style.display = 'block'" >
+                          Don't you have a Navegg ID?
+                          <span>Sign up now!</span>
+                          </a>
+                          </li>
+                          </ul>
+                          <div class="clearme"></div>
+                          </div>
+                          </div>
+                          </div>
+                          </div>
+                          <div id="containerNewAccount" class="postbox-container" style="width:99%; display:none;">
+                          <div class="meta-box-sortables ui-sortable">
+                          <div class="postbox cnt_nvg" style="max-height: 315px;">
+                          <h3><span>Create account</span></h3>
+                          <div class="inside">
+                          <input type="hidden" name="newNvg" value="true"/>
+                          <p>Create Navegg Analytics account</p>
+                          <label for="nmNvg" style="display: block; float: left; width: 80px; margin-right: 8px; padding-top: 7px; text-align: right;">
+                          * Name:</label>
+                          <input type="text" name="nmNvg" id="nmNvg" value="" style="width: 200px; padding-left: 6px !important; background-image: none; font-size: 13px;" /><br />
+                          <label for="nemNvg" style="display: block; float: left; width: 80px; margin-right: 8px; padding-top: 7px; text-align: right;">
+                          * E-mail:</label>
+                          <input type="text" name="nemNvg" id="nemNvg" value="" style="width: 200px; padding-left: 6px !important; background-image: none; font-size: 13px;" /><br />
+                          <label for="stNvg" style="display: block; float: left; width: 80px; margin-right: 8px; padding-top: 0px; text-align: right;">
+                          Website’s name:</label>
+                          <input type="text" name="stNvg" id="stNvg" value="" style="width: 200px; padding-left: 6px !important; background-image: none; font-size: 13px;" /><br />
+                          <label for="urNvg" style="display: block; float: left; width: 80px; margin-right: 8px; padding-top: 0px; text-align: right;">
+                          Website’s URL: </label>
+                          <input type="text" name="urNvg" id="urNvg" value="" style="float: left; width: 200px; padding-left: 6px !important; background-image: none; font-size: 13px;" />
+                          <a class="button" style="float: left; margin-top: 4px; text-transform: uppercase;" title="Create account" onclick="api('newAcc')">
+                          Create account </a><br/><br/>
+                          </div>
+                          </div>
+                          </div>
+                          </div>
+                          <div class="postbox-container" style="width:99%;">
+                          <div class="meta-box-sortables ui-sortable">
+                          <div class="postbox pn_nvg" style="max-height: 315px;">
+
+                          <div class="inside">
+                          <p>
+                          <a href="http://auth.navegg.com/" target="_blank">
+                          Click here</a>
+                          to access your audience’s complete reports. </p>
+                          </div>
+                          </div>
+                          </div>
+                          </div>
+                          <div class="clearme"></div>
+                          </div>
+                          <div class="clear"></div>
+                          </div>
+                          </div>
+                          <div class="clear"></div>
+                          </div>
+                        ]]>
+                    </comment>
+                    <fields>
+                        <active translate="label">
+                            <label>Enable</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </active>
+                        <advertising translate="label">
+                            <label>Navegg ID</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <validate>validate-number required-entry</validate>
+                        </advertising>
+
+                    </fields>
+                </navegg>
+            </groups>
+
+        </navegg_analytics>
+    </sections>
+</config>

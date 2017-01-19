@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/******************************************************
+ * Package   : Social
+ * Author    : HIEPNH
+ * Copyright : (c) 2014
+*******************************************************/
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="after_body_start">
+            <block type="core/template" name="social_js" template="mgs/social/js.phtml" />
+        </reference>
+        <reference name="header">
+            <block type="social/header" name="social_header"  template="mgs/social/header.phtml">
+                <block type="social/facebook" name="social_facebook" />
+                <block type="social/google" name="social_google" />
+                <block type="social/twitter" name="social_twitter" />                
+            </block>
+        </reference>
+    </default>       
+</layout> 

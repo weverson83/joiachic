@@ -1,0 +1,292 @@
+<layout>
+    <name>1_column_full</name>
+	<page_width><![CDATA[width1200]]></page_width>
+	<header>header</header>
+	<footer>footer</footer>
+	<sticky_menu>1</sticky_menu>
+	<popup_newsletter>1</popup_newsletter>	
+	<!-- Theme Color -->
+	<!-- Theme Color -->
+ <theme_color_header>
+	<use_custom>0</use_custom>
+ </theme_color_header>
+ <theme_color_main>
+  <use_custom>0</use_custom>
+ </theme_color_main>
+ <theme_color_footer>
+  <use_custom>0</use_custom>
+ </theme_color_footer>
+
+<custom_style>
+	<style><![CDATA[.breadcrumbs{
+background:url(http://mgs.arrowhitech.net/luxury/media/wysiwyg/bg-breadcrumbs.png) no-repeat  scroll;
+height: 453px;
+padding: 255px 0 122px;
+}]]></style>
+</custom_style>
+
+    <!--  Blocks  -->
+    <block>
+        <name>block9</name>
+        <block_cols><![CDATA[]]></block_cols>
+        <block_class><![CDATA[]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[]]></padding_top>
+        <padding_bottom><![CDATA[]]></padding_bottom>
+        <block_position>0</block_position>
+    </block>
+    <block>
+        <name>block17</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[#fff]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[62]]></padding_top>
+        <padding_bottom><![CDATA[]]></padding_bottom>
+        <block_position>6</block_position>
+    </block>
+    <block>
+        <name>block26</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[6]]></padding_top>
+        <padding_bottom><![CDATA[]]></padding_bottom>
+        <block_position>1</block_position>
+    </block>
+    <block>
+        <name>block27</name>
+        <block_cols><![CDATA[4,4,4]]></block_cols>
+        <block_class><![CDATA[["col-sm-12 col-xs-12","col-sm-12 col-xs-12","col-sm-12 col-xs-12"]]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[80]]></padding_top>
+        <padding_bottom><![CDATA[50]]></padding_bottom>
+        <block_position>5</block_position>
+    </block>
+    <block>
+        <name>block46</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[[]]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>0</background_cover>
+        <parallax>0</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[72]]></padding_top>
+        <padding_bottom><![CDATA[70]]></padding_bottom>
+        <block_position>3</block_position>
+    </block>
+    <block>
+        <name>block47</name>
+        <block_cols><![CDATA[12]]></block_cols>
+        <block_class><![CDATA[[]]]></block_class>
+        <custom_class><![CDATA[]]></custom_class>
+        <background><![CDATA[]]></background>
+        <background_image><![CDATA[bg_deals.jpg]]></background_image>
+        <background_repeat>0</background_repeat>
+        <background_cover>1</background_cover>
+        <parallax>1</parallax>
+        <fullwidth>0</fullwidth>
+        <padding_top><![CDATA[70]]></padding_top>
+        <padding_bottom><![CDATA[70]]></padding_bottom>
+        <block_position>4</block_position>
+    </block>
+
+    <!--  Childs  -->
+    <child>
+        <block_name>block26-0</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <static_block_title><![CDATA[Luxury Banner Boxed Home 1]]></static_block_title>
+        <static_block_identifier><![CDATA[luxury_banner_boxed_h1]]></static_block_identifier>
+        <static_block_content><![CDATA[<div class="boxed-content padding30">
+<div class="row">
+<div class="col-md-3 col-sm-4 col-xs-12">
+<div class="banner row">
+<div class="col-xs-12 col-xs-half">
+<span class="title h3">NEW DESIGN SEND HER <br/> YOUR LOVE </span> 
+<p class="margin0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor </p>
+<a href="#" class="btn btn-default btn-lg margin-top30 margin-bottom30">SHOP NOW</a>
+</div>
+<div class="col-xs-12 col-xs-half">
+<a class="banner-img" href="#"><img class="img-responsive" src="{{media url="wysiwyg/banner_shop_1.jpg"}}" alt="" /></a>
+</div>
+</div>
+</div>
+<div class="col-md-6 col-sm-4 col-xs-12">
+<div class="banner row">
+<div class="col-xs-12">
+<a class="banner-img" href="#"><img class="img-responsive" src="{{media url="wysiwyg/banner_shop_2.jpg"}}" alt="" /></a>
+<span class="title h3" style="font-size: 30px;">THE BIGGEST WINTER COLLECTION</span> 
+<p class="margin0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim adminim veniam </p>
+<a href="#" class="btn btn-default btn-lg margin-top30">GET IT NOW</a>
+</div>
+</div>
+</div>
+<div class="col-md-3 col-sm-4 col-xs-12">
+<div class="banner last row">
+<div class="col-xs-12 col-xs-half">
+<span class="title h3">WOMEN'S FASHION MID SEASON SALES </span> 
+<p class="margin0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, do eiusmod tempor </p>
+<a href="#" class="btn btn-default btn-lg  margin-top30 margin-bottom30">SHOP NOW</a>
+</div>
+<div class="col-xs-12 col-xs-half">
+<a class="banner-img" href="#"><img class="img-responsive" src="{{media url="wysiwyg/banner_shop_3.jpg"}}" alt="" /></a>
+</div>
+</div>
+</div>
+</div>
+</div>]]></static_block_content>
+        <type>static</type>
+        <position>1</position>
+        <setting><![CDATA[{"custom_class":"","animation":"","animation_delay":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block9-0</block_name>
+        <block_content><![CDATA[]]></block_content>
+        <static_block_title><![CDATA[Luxury top search]]></static_block_title>
+        <static_block_identifier><![CDATA[luxury_top_search]]></static_block_identifier>
+        <static_block_content><![CDATA[<div class="top-search">
+{{block type="advancedsearch/form" name="top.search" template="mgs/advancedsearch/form.phtml"}}
+</div>]]></static_block_content>
+        <type>static</type>
+        <position>2</position>
+        <setting><![CDATA[{"custom_class":"","animation":"","animation_delay":""}]]></setting>
+        <col>12</col>
+        <custom_class><![CDATA[]]></custom_class>
+    </child>
+    <child>
+        <block_name>block17-0</block_name>
+		<type>brands</type>
+		<position>3</position>
+        <setting><![CDATA[{"title":"","custom_class":"col-xs-12","animation":"","animation_delay":"","brand":[],"count_per_row":"5","slider":{"active":"1","auto":"true","stop_hover":"false","navigation":"false","pagination":"false"},"number_row":"1"}]]></setting>
+		<col>12</col>
+		<custom_class><![CDATA[]]></custom_class>
+        <block_content><![CDATA[{{block type="brand/homeblock" brand_ids="" slider="1" title="" count_per_row="5" number_row="1" auto_play="true" stop_hover="false" navigation="false" pagination="false" template="mgs/brand/home-featured-brands.phtml"}}]]></block_content>
+    </child>
+    <child>
+        <block_name>block27-0</block_name>
+		<type>category_products</type>
+		<position>1</position>
+        <setting><![CDATA[{"title":"Special","custom_class":"","animation":"","animation_delay":"","show_type":"position","products_count":"2","count_per_row":"1","view_mode":"category_products_list.phtml","category_id":[],"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","price_colour":""}]]></setting>
+		<col>12</col>
+		<custom_class><![CDATA[]]></custom_class>
+        <block_content><![CDATA[{{block type="mpanel/products" template="mgs/mpanel/products/category_products/category_products_list.phtml" title="Special" products_count="2" column="1" category_ids="" product_ratio="" show_type="position"}}]]></block_content>
+    </child>
+    <child>
+        <block_name>block27-1</block_name>
+		<type>category_products</type>
+		<position>1</position>
+        <setting><![CDATA[{"title":"Must Have","custom_class":"","animation":"","animation_delay":"","show_type":"position","products_count":"2","count_per_row":"1","view_mode":"category_products_list.phtml","category_id":[],"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","price_colour":""}]]></setting>
+		<col>12</col>
+		<custom_class><![CDATA[]]></custom_class>
+        <block_content><![CDATA[{{block type="mpanel/products" template="mgs/mpanel/products/category_products/category_products_list.phtml" title="Must Have" products_count="2" column="1" category_ids="" product_ratio="" show_type="position"}}]]></block_content>
+    </child>
+    <child>
+        <block_name>block27-2</block_name>
+		<type>category_products</type>
+		<position>1</position>
+        <setting><![CDATA[{"title":"New Products","custom_class":"","animation":"","animation_delay":"","show_type":"new","products_count":"2","count_per_row":"1","view_mode":"category_products_list.phtml","category_id":[],"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","price_colour":""}]]></setting>
+		<col>12</col>
+		<custom_class><![CDATA[]]></custom_class>
+        <block_content><![CDATA[{{block type="mpanel/products" template="mgs/mpanel/products/category_products/category_products_list.phtml" title="New Products" products_count="2" column="1" category_ids="" product_ratio="" show_type="new"}}]]></block_content>
+    </child>
+    <child>
+        <block_name>block47-0</block_name>
+		<type>deals</type>
+		<position>1</position>
+        <setting><![CDATA[{"title":"","custom_class":"","animation":"","animation_delay":"","deal":[],"count_per_row":"1","product_ratio":"","slider":{"active":"0","number_row":"","auto":"false","stop_hover":"false","navigation":"false","pagination":"false"},"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","price_colour":""}]]></setting>
+		<col>12</col>
+		<custom_class><![CDATA[]]></custom_class>
+        <block_content><![CDATA[{{widget type="deals/widget" template="mgs/deals/widget/grid.phtml" column="1" real_deal="" title="" product_ratio=""}}]]></block_content>
+    </child>
+    <child>
+        <block_name>block46-0</block_name>
+		<type>featured_products</type>
+		<position>1</position>
+        <setting><![CDATA[{"title":"Featured Product","custom_class":"","animation":"","animation_delay":"","product_count":"8","view_mode":"grid","count_per_row":"4","product_ratio":"","slider":{"active":"0","number_row":"","auto":"false","stop_hover":"false","navigation":"false","pagination":"false"},"load_more":"1","text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":"","price_colour":""}]]></setting>
+		<col>12</col>
+		<custom_class><![CDATA[]]></custom_class>
+        <block_content><![CDATA[{{block type="mpanel/products" products_count="8" slider="0" count_per_row="4" title="Featured Product" product_ratio="" load_more="1" template="mgs/mpanel/products/featured_products.phtml"}}]]></block_content>
+    </child>
+    <child>
+        <block_name>block17-0</block_name>
+		<type>latest_posts</type>
+		<position>1</position>
+        <setting><![CDATA[{"title":"Latest From Blogs","custom_class":"col-xs-12","animation":"","animation_delay":"","categories":["1"],"product_count":"2","character_count":"200","view_mode":"grid","count_per_row":"2","slider":{"active":"0","auto":"false","stop_hover":"false","navigation":"false","pagination":"false"},"text_colour":"","link_colour":"","link_hover_colour":"","button_colour":"","button_hover_colour":"","button_text_colour":"","button_text_hover_colour":"","button_border_colour":"","button_border_hover_colour":""}]]></setting>
+		<col>12</col>
+		<custom_class><![CDATA[]]></custom_class>
+        <block_content><![CDATA[{{widget type="blog/last" blog_count="2" categories="1" column="2" view_mode="grid" slider="0" title="Latest From Blogs" character_count="200"}}]]></block_content>
+    </child>
+    <child>
+        <block_name>block9-0</block_name>
+		<type>revolution</type>
+		<position>1</position>
+        <setting><![CDATA[4]]></setting>
+		<col>12</col>
+		<custom_class><![CDATA[]]></custom_class>
+        <block_content><![CDATA[{{widget type="revslider/slider_preview" id="4"}}]]></block_content>
+    </child>
+    <child>
+        <block_name>block17-0</block_name>
+		<type>separator</type>
+		<position>2</position>
+        <setting><![CDATA[{"custom_class":"col-xs-12","separator_type":"border","border_type":"full","border_style":"style1","border_icon":"","text_content":"","margin_top":"40","margin_bottom":""}]]></setting>
+		<col>12</col>
+		<custom_class><![CDATA[]]></custom_class>
+        <block_content><![CDATA[]]></block_content>
+    </child>
+    <child>
+        <block_name>block27-0</block_name>
+		<type>separator</type>
+		<position>2</position>
+        <setting><![CDATA[{"custom_class":"col-xs-12","separator_type":"white-space","border_type":"full","border_style":"style1","border_icon":"","text_content":"","margin_top":"15","margin_bottom":"15"}]]></setting>
+		<col>12</col>
+		<custom_class><![CDATA[]]></custom_class>
+        <block_content><![CDATA[]]></block_content>
+    </child>
+    <child>
+        <block_name>block27-1</block_name>
+		<type>separator</type>
+		<position>2</position>
+        <setting><![CDATA[{"custom_class":"col-xs-12","separator_type":"white-space","border_type":"full","border_style":"style1","border_icon":"","text_content":"","margin_top":"15","margin_bottom":"15"}]]></setting>
+		<col>12</col>
+		<custom_class><![CDATA[]]></custom_class>
+        <block_content><![CDATA[]]></block_content>
+    </child>
+    <child>
+        <block_name>block27-2</block_name>
+		<type>separator</type>
+		<position>2</position>
+        <setting><![CDATA[{"custom_class":"col-xs-12","separator_type":"white-space","border_type":"full","border_style":"style1","border_icon":"","text_content":"","margin_top":"15","margin_bottom":"15"}]]></setting>
+		<col>12</col>
+		<custom_class><![CDATA[]]></custom_class>
+        <block_content><![CDATA[]]></block_content>
+    </child>
+</layout>

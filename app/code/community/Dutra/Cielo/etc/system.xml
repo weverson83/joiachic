@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<config>
+	<sections>
+		<payment translate="label" module="payment">
+			<groups>
+				<dutra_cielo translate="label">
+					<label><![CDATA[Cielo]]></label>
+					<sort_order>999</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<active translate="label">
+							<label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+						<environment translate="label">
+							<label>Environment</label>
+							<frontend_type>select</frontend_type>
+							<source_model>dutra_cielo/source_environment</source_model>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</environment>
+						<title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</title>
+						<cctypes translate="label">
+							<label>Credit Card Types</label>
+							<frontend_type>multiselect</frontend_type>
+							<source_model>dutra_cielo/source_paymenttype</source_model>
+							<sort_order>4</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<can_be_empty>1</can_be_empty>
+						</cctypes>
+						<maxinstallments translate="label">
+							<label>Maximum Installments</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>5</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</maxinstallments>
+						<mininstallmentsvalue>
+							<label>Minimum Installment Value</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>6</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>						
+						</mininstallmentsvalue>
+						<installmenttype>
+							<label>Installment Type</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>dutra_cielo/source_installmenttype</source_model>
+                            <sort_order>7</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</installmenttype>						
+						<affiliationnumber>
+							<label>Affiliation Number</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>8</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</affiliationnumber>
+						<affiliationkey>
+							<label>Affiliation Key</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>9</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</affiliationkey>					
+						<payment_action>
+							<label>Payment Action</label>
+							<frontend_type>select</frontend_type>
+							<source_model>dutra_cielo/source_paymentaction</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</payment_action>					
+						<order_status>
+							<label>Order Status</label>
+							<frontend_type>select</frontend_type>
+							<source_model>dutra_cielo/source_orderstatus</source_model>
+							<sort_order>11</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</order_status>	
+						<active_log translate="label">
+							<label>Active log</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>12</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active_log>				
+					</fields>
+				</dutra_cielo>
+			</groups>
+		</payment>
+	</sections>
+</config>

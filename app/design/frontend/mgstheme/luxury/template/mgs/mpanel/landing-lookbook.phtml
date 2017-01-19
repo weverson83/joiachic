@@ -1,0 +1,23 @@
+<?php if (!Mage::registry('current_category')) return ?>
+<?php $_categories = $this->getCurrentChildCategories() ?>
+<?php $_count = is_array($_categories)?count($_categories):$_categories->count(); ?>
+<?php if($_count): ?>
+<div class="row">
+	<div class="collection-lookbook text-colour-white link-colour-white">
+		<?php foreach ($_categories as $_category): ?>
+			<?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
+			<?php if($_category->getIsActive()): ?>
+			<div class="lookbook-content" style="background-image: url('<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>catalog/category/<?php echo $_category->getThumbnail() ?>');">
+				<div class="text-lookbook">
+					<h2><a class="grid-name" href="<?php echo $this->getCategoryUrl($_category) ?>"><?php echo $this->escapeHtml($_category->getName()) ?></a></h2>
+					<p><?php echo $_category->getDescription(); ?><!--span class="category-product-count">(<?php echo $this->__('%s products',$_category->getProductCount()) ?>)</span--></p>
+					<div class="view-more button-colour-white">
+						<button type="button" onclick="setLocation('<?php echo $this->getCategoryUrl($_category) ?>')" class="btn btn-lg btn-default"><?php echo $this->__('Shop Now') ?></button>
+					</div>
+				</div>
+			</div>
+			<?php endif; ?>
+		<?php endforeach ?>
+	</div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,101 @@
+<?php $collection = $this->getTestimonials() ?>
+<?php $rtl = $this->helper('mpanel')->getThemeSettings();?>
+<?php 
+	if($this->getViewMode()){
+		$viewMode = $this->getViewMode();
+	}
+	else{
+		$viewMode = 'grid';
+	}
+?>
+
+<?php if(count($collection)>0): ?>
+	<div class="testimonial-container testimonial-widget <?php if($viewMode != 'grid'): ?>sidebar-testimonial<?php endif ?>">
+		<?php if($this->getTitle()!=''): ?>
+			<div class="carousel_wrapper">
+				<div class="title-content">
+					<h3><?php echo $this->getTitle() ?></h3>
+				</div>
+			</div>
+		<?php endif ?>
+		<?php if($viewMode=='grid'): ?>
+			<div class="slider-for col-md-10 col-md-push-1 col-sm-12 col-xs-12">
+				<?php foreach($collection as $_item): ?>
+					<div class="testimonial-content text-center">
+						<div class="client-say">
+							<p><?php echo $_item->getContent() ?></p>
+						</div>
+					</div>
+				<?php endforeach ?>
+			</div>
+			<div class="slider-nav col-md-4 col-md-push-4  col-sm-6 col-sm-push-3 col-xs-12">
+				<?php foreach($collection as $_item): ?>
+					<?php if($_item->getAvatar()): ?>
+						<div class="thumbnail-author text-center">							
+							<div class="img"><img class="img-responsive" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>testimonial/<?php echo $_item->getAvatar() ?>" alt=""></div>
+							<div class="name-author">
+								<p class="name text-uppercase"><strong>______&nbsp;<?php echo $_item->getName() ?>&nbsp;______</strong></p>
+								<p class="possition"><span><?php echo $_item->getInformation() ?></span></p>	
+							</div>							
+						</div>
+					<?php endif;?>
+				<?php endforeach ?>
+			</div>
+			<div class="clear"></div>
+			<script type="text/javascript">
+			mgsjQuery(document).ready(function() {
+				mgsjQuery('.slider-for').slick({
+					slidesToShow: 1,
+					slidesToScroll: 1,
+					arrows: false,
+					fade: false,
+					rtl:<?php if($rtl['right_to_left'] == '1'):?> true <?php else: ?> false <?php endif;?>,
+					swipeToSlide: true,
+					asNavFor: '.slider-nav'
+				});
+				mgsjQuery('.slider-nav').slick({
+					slidesToShow: 3,
+					slidesToScroll: 1,
+					asNavFor: '.slider-for',
+					centerMode: true,
+					dots: false,
+					arrows: false,					
+					focusOnSelect: true,
+					rtl:<?php if($rtl['right_to_left'] == '1'):?> true <?php else: ?> false <?php endif;?>,
+					centerPadding: '0px'
+				});
+			});
+			</script>
+		<?php else: ?>
+			<div class="text-center">
+				<div id="testimonial-sidebar">
+					<?php foreach($collection as $_item): ?>
+						<div class="item">
+							<div class="testimonial-content text-center">
+								<div class="client-say">
+									<p><?php echo substr($_item->getContent(),0,150) ?></p>
+								</div>
+							</div>
+							<?php if($_item->getAvatar()): ?>
+								<div class="thumbnail-author text-center">							
+									<div class="img"><img class="img-responsive" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA); ?>testimonial/<?php echo $_item->getAvatar() ?>" alt=""></div>
+									<div class="name-author">
+										<p class="name text-uppercase"><strong>______&nbsp;<?php echo $_item->getName() ?>&nbsp;______</strong></p>
+										<p class="possition"><span><?php echo $_item->getInformation() ?></span></p>	
+									</div>							
+								</div>
+							<?php endif;?>
+						</div>
+					<?php endforeach ?>
+				</div>
+			</div>
+			<script type="text/javascript">
+				initSliderBanner("testimonial-sidebar",1,false,false,true,false,<?php if($rtl['right_to_left'] == '1'):?> true <?php else: ?> false <?php endif;?>)
+			</script>
+		<?php endif ?>
+	</div>
+<?php else: ?>
+<div class="alert alert-danger">
+	<p><?php echo $this->__('There are no testimonials matching the selection.') ?></p>
+</div>
+<?php endif ?>

@@ -1,0 +1,23 @@
+<?php $portfolios = $this->getPortfolios() ?>
+<div class="row portfolio-container">
+	<?php if(count($portfolios)>0): ?>
+		<?php foreach($portfolios as $portfolio): ?>
+			<div class="col-md-4 col-sm-4 col-xs-12">
+				<div class="portfolio-top-content">
+					<a href="<?php echo $portfolio->getAddress(); ?>"><img src="<?php echo $this->helper('portfolio')->getThumbnail($portfolio)?>" alt="" class="img-responsive"/></a>
+					<span class="hover-info">
+						<span class="fa fa-search"></span>
+						<span class="project"><?php echo $portfolio->getServices() ?></span>
+						<span class="categories"><?php echo $this->helper('portfolio')->getCategoriesText($portfolio)?></span>
+					</span>
+				</div>
+				<div class="portfolio-bottom-content">
+					<h4><a href="<?php echo $portfolio->getAddress(); ?>"><?php echo $portfolio->getName() ?></a></h4>
+					<p class="category-link"><?php echo $this->helper('portfolio')->getCategoriesLink($portfolio)?></p>
+				</div>
+			</div>
+		<?php endforeach ?>
+	<?php else: ?>
+		<p class="note-msg"><?php echo $this->__('There are no portfolios matching the selection.') ?></p>
+	<?php endif ?>
+</div>
