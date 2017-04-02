@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Newsletter
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -44,6 +44,14 @@ class Mage_Newsletter_SubscriberController extends Mage_Core_Controller_Front_Ac
             $email              = (string) $this->getRequest()->getPost('email');
 
             try {
+
+                $news = Mage::getModel('newsletter/subscriber')
+                                        ->loadByEmail($email);
+
+                if ($news->getId()) {
+                    Mage::throwException($this->__('E-mail informado já cadastrado.'));
+                }    
+
                 if (!Zend_Validate::is($email, 'EmailAddress')) {
                     Mage::throwException($this->__('Please enter a valid email address.'));
                 }
@@ -67,6 +75,46 @@ class Mage_Newsletter_SubscriberController extends Mage_Core_Controller_Front_Ac
                 }
                 else {
                     $session->addSuccess($this->__('Thank you for your subscription.'));
+
+                    if (Mage::getStoreConfig('promocodesec/promocodeg/active')) {
+                    
+                        $promoName = Mage::getStoreConfig('promocodesec/promocodeg/promocode');
+                        $modelcollection = Mage::getModel('salesrule/rule')
+                                            ->getCollection()
+                                            ->addFieldToFilter('is_active', 1)
+                                            ->addFieldToFilter('name', $promoName);
+                                            
+                        $newCollection = array();
+                        $newCollection = $modelcollection->getData();
+
+                        $ruleName = $newCollection[0]['name'];        
+                        $promocode = $newCollection[0]['code'];               
+
+                        if($ruleName) {             
+
+                            try {                                
+                                $subject = Mage::getStoreConfig('promocodesec/promocodeg/subject');
+                                $emailTemplate  = Mage::getModel('core/email_template')->loadDefault('notifynewcustomer');
+                                $emailTemplateVariables = array();                            
+                                $emailTemplateVariables['customer_email'] = $email;
+                                $emailTemplateVariables['promo_code'] = $promocode;
+                                $processedTemplate = $emailTemplate->getProcessedTemplate($emailTemplateVariables);
+                            
+                                $mail = Mage::getModel('core/email')
+                                        ->setToEmail($email)
+                                        ->setBody(utf8_decode($processedTemplate))
+                                        ->setSubject($subject)
+                                        ->setFromName(utf8_decode(Mage::app()->getStore()->getStoreName()))
+                                        ->setType('html');
+
+                                $mail->setFromName(Mage::getStoreConfig('trans_email/ident_support/name'));
+                                $mail->setFromEmail('admin@joiachic.com.br');
+                                $mail->send();
+                            } catch (Exception $e) {                
+                                Mage::logException($e);
+                            } 
+                        }
+                    }
                 }
             }
             catch (Mage_Core_Exception $e) {

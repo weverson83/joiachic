@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Admin
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -68,13 +68,17 @@ class Mage_Admin_Model_Block extends Mage_Core_Model_Abstract
     }
 
     /**
-     * Check is block with such type allowed for parsing via blockDirective method
+     * Check is block with such type allowed for parsinf via blockDirective method
      *
-     * @param string $type
-     * @return bool
+     * @param $type
+     * @return int
      */
     public function isTypeAllowed($type)
     {
-        return Mage::helper('admin/block')->isTypeAllowed($type);
+        /** @var Mage_Admin_Model_Resource_Block_Collection $collection */
+        $collection = Mage::getResourceModel('admin/block_collection');
+        $collection->addFieldToFilter('block_name', array('eq' => $type))
+            ->addFieldToFilter('is_allowed', array('eq' => 1));
+        return $collection->load()->count();
     }
 }

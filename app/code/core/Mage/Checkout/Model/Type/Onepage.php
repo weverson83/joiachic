@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage_Checkout
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -362,7 +362,6 @@ class Mage_Checkout_Model_Type_Onepage
                         ->setShippingMethod($shippingMethod)
                         ->setCollectShippingRates(true);
                     $this->getCheckout()->setStepData('shipping', 'complete', true);
-                    $this->_setCartCouponCode();
                     break;
             }
         }
@@ -592,8 +591,6 @@ class Mage_Checkout_Model_Type_Onepage
         if (($validateRes = $address->validate())!==true) {
             return array('error' => 1, 'message' => $validateRes);
         }
-
-        $this->_setCartCouponCode();
 
         $this->getQuote()->collectTotals()->save();
 
@@ -948,18 +945,5 @@ class Mage_Checkout_Model_Type_Onepage
             $orderId = $order->getIncrementId();
         }
         return $orderId;
-    }
-
-    /**
-     * Sets cart coupon code from checkout to quote
-     *
-     * @return $this
-     */
-    protected function _setCartCouponCode()
-    {
-        if ($couponCode = $this->getCheckout()->getCartCouponCode()) {
-            $this->getQuote()->setCouponCode($couponCode);
-        }
-        return $this;
     }
 }
