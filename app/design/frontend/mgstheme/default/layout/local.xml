@@ -130,6 +130,7 @@
 		</reference>
 		
 		<reference name="footer">
+			<action method="setCacheLifetime" />
 			<action method="setTemplate" ifconfig="mpanel/general/enabled">
                 <template>mgs/mpanel/footer.phtml</template>
             </action>

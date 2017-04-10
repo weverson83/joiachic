@@ -20,7 +20,7 @@
  *
  * @category    design
  * @package     base_default
- * @copyright   Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 /* @var $this Mage_Catalog_Block_Product_Compare_List */
@@ -84,7 +84,20 @@
                 <?php $_i=0 ?>
                 <?php foreach($this->getItems() as $_item): ?>
                 <?php if($_i++%10==0): ?>
-                <th><span class="nobr"><?php echo $_attribute->getStoreLabel() ?></span></th>
+                <th><span class="nobr">
+                    <?php 
+                        if ($_attribute->getStoreLabel() == 'Description') {
+                            echo 'Descrição ';
+                        }
+                        else if ($_attribute->getStoreLabel() == 'Short Description') {
+                            echo 'Descrição Resumida '.'&nbsp;&nbsp;';
+                        }else{
+                            echo $_attribute->getStoreLabel();
+                        }
+
+                    ?>                        
+                    </span>
+                </th>
                 <?php endif; ?>
                 <td>
                     <?php switch ($_attribute->getAttributeCode()) {

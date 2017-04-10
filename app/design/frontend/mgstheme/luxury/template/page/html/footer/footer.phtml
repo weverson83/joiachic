@@ -55,12 +55,10 @@
 						</div>
 					</div>
 				</div>
-				
 				<div class="col-md-3 middle-block">
 					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('luxury-product-tags')->toHtml();	
 					?>
-				</div>			
-                
+				</div>			 
             </div>
         </div>
     </section>
@@ -70,16 +68,35 @@
 				<div class="col-md-12 col-xs-12 col-sm-12">
 					<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('panel_newsletter')->toHtml();?>
 				</div>
-                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-                    <address class="copy">
-                        <span id="design-footer-copyright-text"><?php echo $this->getCopyright() ?></span>
-                    </address>
-                </div>
-                <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-                    <div class="pull-right payment">
-                        <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('panel_payment_icons')->toHtml(); ?>
-                    </div>
-                </div>
+				<span id="design-footer-copyright-text"><?php echo $this->getCopyright() ?></span>
+				<div class="row">
+					<div class="row-fluid">
+						<div style="width: 120px; height:95px; float: left; margin-left: 20px; margin: center">
+		        			<address class="copy">
+		                    	<a id="seloEbit" href="http://www.ebit.com.br/#joia-chic" target="_blank" onclick="redir(this.href);"></a> <script type="text/javascript" id="getSelo" src="https://imgs.ebit.com.br/ebitBR/selo-ebit/js/getSelo.js?80181"; style="border: 0px;width: 50px;"> </script>
+		                	</address>
+		        		</div>
+		        		<div style="width: 120px; height:95px; float: left; margin: center">
+			                <a href="http://abcomm.org/certificado.php?url=joiachic.com.br" target="_blank">
+								<img src="http://abcomm.com.br/selo.php" width="75" border="0" title="Empresa Associada ABCOM - ABComm - Associação Brasileira de Comércio Eletrônico" style="margin-left: 20px;">
+							</a>
+						</div>
+		                <div style="width: 120px; height:95px; float: left; margin: center">
+		                	<a href="http://www.google.com/safebrowsing/diagnostic?site=http://www.joiachic.com.br/" target="_blank">
+		                	<img src="http://www.joiachic.com.br/media/wysiwyg/google-safe-browsing.png" height="40" style= "margin-left: 20px; 
+		                	height: 35px; margin-top: 20px;" align="center"></a>
+		                </div>
+		                <div style="width: 120px; height:95px; float: left; margin: center">
+		                	<img src="http://www.joiachic.com.br/media/wysiwyg/Lets_Encrypt2.jpg" align="middle" 
+		                	style="margin-left: 20px;width: 80px;height: 60px;margin-top: 10px;">	
+		                </div>
+					</div>
+	                <div style="width: auto;float: right;margin-right: 30px;margin-top: 10px;margin-left: 20px;">
+		                <div class="pull-right payment">
+		                    <?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('panel_payment_icons')->toHtml(); ?>
+		                </div>
+		            </div>
+				</div>
             </div>
         </div>
     </section>
