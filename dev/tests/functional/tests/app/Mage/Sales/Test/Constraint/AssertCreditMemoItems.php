@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -29,7 +29,6 @@ namespace Mage\Sales\Test\Constraint;
 use Mage\Sales\Test\Page\Adminhtml\SalesCreditMemoView;
 use Mage\Sales\Test\Page\Adminhtml\SalesCreditMemo;
 use Magento\Mtf\ObjectManager;
-use Magento\Mtf\System\Event\EventManagerInterface;
 
 /**
  * Assert credit memo items on credit memo view page.
@@ -63,17 +62,15 @@ class AssertCreditMemoItems extends AbstractAssertItems
     /**
      * @constructor
      * @param ObjectManager $objectManager
-     * @param EventManagerInterface $eventManager
      * @param SalesCreditMemo $creditMemoIndex
      * @param SalesCreditMemoView $orderCreditMemoView
      */
     public function __construct(
         ObjectManager $objectManager,
-        EventManagerInterface $eventManager,
         SalesCreditMemo $creditMemoIndex,
         SalesCreditMemoView $orderCreditMemoView
     ) {
-        parent::__construct($objectManager, $eventManager);
+        parent::__construct($objectManager);
         $this->salesTypePage = $creditMemoIndex;
         $this->salesTypeViewPage = $orderCreditMemoView;
     }

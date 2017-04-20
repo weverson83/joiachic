@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -50,10 +50,7 @@ class Register extends Form
      */
     public function registerCustomer(Customer $customer)
     {
-        $customerData = $customer->getData();
-        unset($customerData['address']);
-        $mapping = $this->dataMapping($customerData);
-        $this->_fill($mapping);
+        $this->fill($customer);
         $address = $customer->getDataFieldConfig('address')['source']->getAddresses()[0];
         $this->fillAddress($address);
         $this->_rootElement->find($this->submit)->click();

@@ -20,14 +20,13 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 namespace Mage\Adminhtml\Test\Block\Catalog\Product\Edit\Tab\Configurable;
 
 use Magento\Mtf\Block\Block;
-use Magento\Mtf\Client\Locator;
 
 /**
  * Simple associated product block.
@@ -55,7 +54,6 @@ class SimpleAssociatedProduct extends Block
      */
     public function clickCreateEmpty()
     {
-        $this->browser->find(".//h4[text()='Create Simple Associated Product']",  Locator::SELECTOR_XPATH)->hover();
         $this->_rootElement->find($this->createEmpty)->click();
     }
 

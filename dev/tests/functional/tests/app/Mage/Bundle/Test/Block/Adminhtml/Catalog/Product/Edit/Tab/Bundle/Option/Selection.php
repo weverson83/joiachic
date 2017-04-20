@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -34,12 +34,6 @@ use Magento\Mtf\Block\Form;
 class Selection extends Form
 {
     /**
-     * Data for unset as non-using in mapping
-     *
-     * @var array
-     */
-    protected $unsetElementsData = ['sku', 'name'];
-    /**
      * Fill data to product row.
      *
      * @param array $fields
@@ -47,7 +41,7 @@ class Selection extends Form
      */
     public function fillProductRow(array $fields)
     {
-        $mapping = $this->dataMapping($this->unsetElements($fields));
+        $mapping = $this->dataMapping($fields);
         $this->_fill($mapping);
     }
 
@@ -59,7 +53,7 @@ class Selection extends Form
      */
     public function getProductRow(array $fields)
     {
-        $mapping = $this->dataMapping($this->unsetElements($fields));
+        $mapping = $this->dataMapping($fields);
         $newFields = $this->_getData($mapping);
         $newFields['sku'] = $this->getProductSku($mapping['getProductSku']);
         $newFields['name'] = $this->getProductName($mapping['getProductName']);
@@ -91,14 +85,5 @@ class Selection extends Form
         $productName = $this->_rootElement->find($nameField['selector'], $nameField['strategy'])->getText();
         preg_match('@(.*)\n@', $productName, $matches);
         return isset($matches[1]) ? $matches[1] : '';
-    }
-
-    protected function unsetElements(array $fields)
-    {
-        foreach($this->unsetElementsData as $value) {
-            unset($fields[$value]);
-        }
-
-        return $fields;
     }
 }

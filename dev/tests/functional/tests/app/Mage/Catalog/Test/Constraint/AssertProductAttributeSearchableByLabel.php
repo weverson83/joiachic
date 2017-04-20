@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -82,7 +82,7 @@ class AssertProductAttributeSearchableByLabel extends AbstractConstraint
         $filter = '';
         $attributesFillData = $product->getAttributes();
         $attributeOptions = $attribute->getOptions();
-        foreach ($attributesFillData['dataset'] as $optionsFillData) {
+        foreach ($attributesFillData['preset'] as $optionsFillData) {
             foreach ($optionsFillData as $optionKey) {
                 $optionKey = str_replace('option_key_', '', $optionKey);
                 $filter .= isset($attributeOptions[$optionKey]['view'])

@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -129,7 +129,7 @@ class CreateProductSubStep extends AbstractSubStep
     protected function getCreationData($creationType)
     {
         return [
-            'dataset' => $this->configurableOptionsEditData['createProduct'][$creationType]['dataset'],
+            'preset' => $this->configurableOptionsEditData['createProduct'][$creationType]['preset'],
             'data' => [
                 'attributes_data' => [
                     'attributes' => $this->currentAttributes,
@@ -160,15 +160,7 @@ class CreateProductSubStep extends AbstractSubStep
     {
         return $this->objectManager->create(
             'Mage\Catalog\Test\Fixture\ConfigurableProduct\ConfigurableOptions',
-            [
-                'data' => $data,
-                'params' => [
-                    'is_required' => '0',
-                    'group' => 'configurable',
-                    'source' => 'Mage\Catalog\Test\Fixture\ConfigurableProduct\ConfigurableOptions',
-                    'repository' => 'Mage\Catalog\Test\Repository\CatalogProductConfigurable\ConfigurableOptions'
-                ]
-            ]
+            ['data' => $data]
         );
     }
 }

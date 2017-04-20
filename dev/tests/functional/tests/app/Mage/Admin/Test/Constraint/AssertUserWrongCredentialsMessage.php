@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -51,18 +51,18 @@ class AssertUserWrongCredentialsMessage extends AbstractConstraint
      * Verify incorrect credentials message while login to admin.
      *
      * @param AdminAuthLogin $adminAuth
-     * @param User $user
+     * @param User $customAdmin
      * @return void
      */
-    public function processAssert(AdminAuthLogin $adminAuth, User $user)
+    public function processAssert(AdminAuthLogin $adminAuth, User $customAdmin)
     {
         $adminAuth->open();
-        $adminAuth->getLoginBlock()->loginToAdminPanel($user->getData());
+        $adminAuth->getLoginBlock()->loginToAdminPanel($customAdmin->getData());
 
         \PHPUnit_Framework_Assert::assertEquals(
-            static::INVALID_CREDENTIALS_MESSAGE,
+            self::INVALID_CREDENTIALS_MESSAGE,
             $adminAuth->getMessagesBlock()->getErrorMessages(),
-            'Message "' . static::INVALID_CREDENTIALS_MESSAGE . '" is not visible.'
+            'Message "' . self::INVALID_CREDENTIALS_MESSAGE . '" is not visible.'
         );
     }
 

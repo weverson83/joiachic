@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -36,7 +36,7 @@ use Magento\Mtf\Fixture\FixtureInterface;
 class StoreId implements FixtureInterface
 {
     /**
-     * Prepared dataset data.
+     * Prepared dataSet data.
      *
      * @var array
      */
@@ -65,7 +65,7 @@ class StoreId implements FixtureInterface
     public function __construct(FixtureFactory $fixtureFactory, array $data, array $params = [])
     {
         $this->params = $params;
-        $storeData =  isset($data['dataset']) ? ['dataset' => $data['dataset']] : [];
+        $storeData =  isset($data['dataSet']) ? ['dataSet' => $data['dataSet']] : [];
         if (isset($data['data'])) {
             $storeData = array_merge($storeData, $data);
         }

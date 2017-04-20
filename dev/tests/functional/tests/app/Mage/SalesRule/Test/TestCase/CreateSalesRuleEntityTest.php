@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -146,14 +146,14 @@ class CreateSalesRuleEntityTest extends Injectable
     /**
      * Create products.
      *
-     * @param array $productsdatasets
+     * @param array $productsDataSets
      * @return array
      */
-    protected function createProducts(array $productsdatasets)
+    protected function createProducts(array $productsDataSets)
     {
         $products = [];
-        foreach ($productsdatasets as $dataset){
-            $product = $this->fixtureFactory->createByCode('catalogProductSimple', ['dataset' => $dataset]);
+        foreach ($productsDataSets as $dataSet){
+            $product = $this->fixtureFactory->createByCode('catalogProductSimple', ['dataSet' => $dataSet]);
             $product->persist();
             $products[] = $product;
         }

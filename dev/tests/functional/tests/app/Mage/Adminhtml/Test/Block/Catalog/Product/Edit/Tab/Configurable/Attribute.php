@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -50,11 +50,9 @@ class Attribute extends Form
      */
     public function fillAttribute(array $attribute)
     {
-        $attributeMapping = [];
-        $attributeMapping['frontend_label'] = $attribute['frontend_label'];
         $options = $attribute['options'];
-//        unset($attribute['options']);
-        $mapping = $this->dataMapping($attributeMapping);
+        unset($attribute['options']);
+        $mapping = $this->dataMapping($attribute);
         $this->_fill($mapping);
         $this->fillOptions($options);
     }
@@ -67,11 +65,9 @@ class Attribute extends Form
      */
     public function getAttribute(array $attribute)
     {
-        $attributeMapping = [];
-        $attributeMapping['frontend_label'] = $attribute['frontend_label'];
         $options = $attribute['options'];
-//        unset($attribute['options']);
-        $mapping = $this->dataMapping($attributeMapping);
+        unset($attribute['options']);
+        $mapping = $this->dataMapping($attribute);
 
         return array_merge($this->_getData($mapping), ['options' => $this->getOptions($options)]);
     }
@@ -91,9 +87,7 @@ class Attribute extends Form
         ];
         foreach ($options as $option) {
             $option = array_intersect_key($option, array_flip($optionFields));
-            $optionName = $option['admin'];
-            unset($option['admin']);
-            $this->getItemOption($optionName)->fillOption($option);
+            $this->getItemOption($option['admin'])->fillOption($option);
         }
     }
 
@@ -113,11 +107,9 @@ class Attribute extends Form
         ];
         foreach ($options as $key => $option) {
             $option = array_intersect_key($option, array_flip($optionFields));
-            $optionName = $option['admin'];
-            unset($option['admin']);
             $result[$key] = array_merge(
-                $this->getItemOption($optionName)->getOption($option),
-                ['admin' => $optionName]
+                $this->getItemOption($option['admin'])->getOption($option),
+                ['admin' => $option['admin']]
             );
         }
 

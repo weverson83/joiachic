@@ -20,21 +20,28 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 namespace Mage\Catalog\Test\Fixture\CatalogProductSimple;
 
 use Mage\Catalog\Test\Fixture\CatalogCategory;
-use Magento\Mtf\Fixture\DataSource;
 use Magento\Mtf\Fixture\FixtureFactory;
+use Magento\Mtf\Fixture\FixtureInterface;
 
 /**
  * Create and return Category.
  */
-class CategoryIds extends DataSource
+class CategoryIds implements FixtureInterface
 {
+    /**
+     * Names and Ids of the created categories.
+     *
+     * @var array
+     */
+    protected $data;
+
     /**
      * Fixtures of category.
      *
@@ -62,7 +69,7 @@ class CategoryIds extends DataSource
     ) {
         $this->params = $params;
 
-        if (!empty($data['category']) && empty($data['dataset'])) {
+        if (!empty($data['category']) && empty($data['presets'])) {
             /** @var CatalogCategory $category */
             $category = $data['category'];
             if (!$category->hasData('id')) {
@@ -70,10 +77,10 @@ class CategoryIds extends DataSource
             }
             $this->data[] = $category->getName();
             $this->categories[] = $category;
-        } elseif (isset($data['dataset'])) {
-            $dataset = explode(',', $data['dataset']);
-            foreach ($dataset as $preset) {
-                $category = $fixtureFactory->createByCode('catalogCategory', ['dataset' => $preset]);
+        } elseif (isset($data['presets'])) {
+            $presets = explode(',', $data['presets']);
+            foreach ($presets as $preset) {
+                $category = $fixtureFactory->createByCode('catalogCategory', ['dataSet' => $preset]);
                 $category->persist();
 
                 /** @var CatalogCategory $category */
@@ -85,6 +92,39 @@ class CategoryIds extends DataSource
         if (!empty($this->categories) && count($this->categories) == 1) {
             $this->productCategory = $this->categories[0];
         }
+    }
+
+    /**
+     * Persist custom selections products.
+     *
+     * @return void
+     */
+    public function persist()
+    {
+        //
+    }
+
+    /**
+     * Return prepared data set.
+     *
+     * @param string|null $key
+     * @return array
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    public function getData($key = null)
+    {
+        return $this->data;
+    }
+
+    /**
+     * Return data set configuration settings.
+     *
+     * @return array
+     */
+    public function getDataConfig()
+    {
+        return $this->params;
     }
 
     /**

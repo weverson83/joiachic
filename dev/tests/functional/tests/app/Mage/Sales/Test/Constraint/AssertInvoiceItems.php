@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -29,7 +29,6 @@ namespace Mage\Sales\Test\Constraint;
 use Mage\Sales\Test\Page\Adminhtml\SalesInvoiceView;
 use Mage\Sales\Test\Page\Adminhtml\SalesInvoice;
 use Magento\Mtf\ObjectManager;
-use Magento\Mtf\System\Event\EventManagerInterface;
 
 /**
  * Assert invoice items on invoice view page.
@@ -63,17 +62,15 @@ class AssertInvoiceItems extends AbstractAssertItems
     /**
      * @constructor
      * @param ObjectManager $objectManager
-     * @param EventManagerInterface $eventManager
      * @param SalesInvoice $invoiceIndex
      * @param SalesInvoiceView $orderInvoiceView
      */
     public function __construct(
         ObjectManager $objectManager,
-        EventManagerInterface $eventManager,
         SalesInvoice $invoiceIndex,
         SalesInvoiceView $orderInvoiceView
     ) {
-        parent::__construct($objectManager, $eventManager);
+        parent::__construct($objectManager);
         $this->salesTypePage = $invoiceIndex;
         $this->salesTypeViewPage = $orderInvoiceView;
     }

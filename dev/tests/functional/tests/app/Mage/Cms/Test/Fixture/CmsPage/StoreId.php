@@ -20,22 +20,35 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 namespace Mage\Cms\Test\Fixture\CmsPage;
 
 use Mage\Adminhtml\Test\Fixture\Store;
-use Magento\Mtf\Fixture\DataSource;
 use Magento\Mtf\Fixture\FixtureFactory;
 use Magento\Mtf\Fixture\FixtureInterface;
 
 /**
  * Prepare StoreId for Cms Page.
  */
-class StoreId extends DataSource
+class StoreId implements FixtureInterface
 {
+    /**
+     * Prepared dataSet data.
+     *
+     * @var array
+     */
+    protected $data;
+
+    /**
+     * Data set configuration settings.
+     *
+     * @var array
+     */
+    protected $params;
+
     /**
      * Store fixture.
      *
@@ -52,9 +65,9 @@ class StoreId extends DataSource
     public function __construct(FixtureFactory $fixtureFactory, array $data, array $params = [])
     {
         $this->params = $params;
-        if (isset($data['dataset'])) {
-            foreach ($data['dataset'] as $dataset) {
-                $store = $fixtureFactory->createByCode('store', ['dataset' => $dataset]);
+        if (isset($data['dataSet'])) {
+            foreach ($data['dataSet'] as $dataSet) {
+                $store = $fixtureFactory->createByCode('store', ['dataSet' => $dataSet]);
                 /** @var Store $store */
                 if (!$store->getStoreId()) {
                     $store->persist();
@@ -63,6 +76,39 @@ class StoreId extends DataSource
                 $this->data[] = $store->getGroupId() . '/' . $store->getName();
             }
         }
+    }
+
+    /**
+     * Persist fixture.
+     *
+     * @return void
+     */
+    public function persist()
+    {
+        //
+    }
+
+    /**
+     * Return prepared data set.
+     *
+     * @param string|null $key [optional]
+     * @return mixed
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    public function getData($key = null)
+    {
+        return $this->data;
+    }
+
+    /**
+     * Return data set configuration settings.
+     *
+     * @return array
+     */
+    public function getDataConfig()
+    {
+        return $this->params;
     }
 
     /**

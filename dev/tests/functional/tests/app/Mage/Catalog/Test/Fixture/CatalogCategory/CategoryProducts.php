@@ -20,27 +20,41 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 namespace Mage\Catalog\Test\Fixture\CatalogCategory;
 
-use Magento\Mtf\Fixture\DataSource;
+use Magento\Mtf\Fixture\FixtureInterface;
 use Magento\Mtf\Fixture\FixtureFactory;
 use Mage\Catalog\Test\Fixture\CatalogCategory;
 
 /**
  * Prepare products for category.
  */
-class CategoryProducts extends DataSource
+class CategoryProducts implements FixtureInterface
 {
+    /**
+     * Prepared dataSet data.
+     *
+     * @var array|null
+     */
+    protected $data;
+
     /**
      * Array products fixtures.
      *
      * @var array
      */
     protected $products = [];
+
+    /**
+     * Fixture params.
+     *
+     * @var array
+     */
+    protected $params;
 
     /**
      * @constructor
@@ -54,11 +68,11 @@ class CategoryProducts extends DataSource
         if (isset($data['data']) && isset($data['products'])) {
             $this->data = $data['data'];
             $this->products = $data['products'];
-        } elseif (isset($data['dataset'])) {
-            $products = explode(',', $data['dataset']);
+        } elseif (isset($data['dataSet'])) {
+            $products = explode(',', $data['dataSet']);
             foreach ($products as $value) {
                 $explodeValue = explode('::', $value);
-                $product = $fixtureFactory->createByCode($explodeValue[0], ['dataset' => $explodeValue[1]]);
+                $product = $fixtureFactory->createByCode($explodeValue[0], ['dataSet' => $explodeValue[1]]);
                 if (!$product->getId()) {
                     $product->persist();
                 }
@@ -67,6 +81,40 @@ class CategoryProducts extends DataSource
             }
         }
     }
+
+    /**
+     * Persist attribute options.
+     *
+     * @return void
+     */
+    public function persist()
+    {
+        //
+    }
+
+    /**
+     * Return prepared data set.
+     *
+     * @param string|null $key [optional]
+     * @return array|null
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    public function getData($key = null)
+    {
+        return $this->data;
+    }
+
+    /**
+     * Return data set configuration settings.
+     *
+     * @return array
+     */
+    public function getDataConfig()
+    {
+        return $this->params;
+    }
+
     /**
      * Return products.
      *

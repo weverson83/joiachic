@@ -20,21 +20,35 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 namespace Mage\Checkout\Test\Fixture\CheckoutAgreement;
 
 use Mage\Adminhtml\Test\Fixture\Store;
-use Magento\Mtf\Fixture\DataSource;
 use Magento\Mtf\Fixture\FixtureFactory;
+use Magento\Mtf\Fixture\FixtureInterface;
 
 /**
  * Prepare Stores preset.
  */
-class Stores extends DataSource
+class Stores implements FixtureInterface
 {
+    /**
+     * Prepared dataSet data.
+     *
+     * @var array
+     */
+    protected $data;
+
+    /**
+     * Data set configuration settings.
+     *
+     * @var array
+     */
+    protected $params;
+
     /**
      * Array of stores fixtures.
      *
@@ -51,9 +65,9 @@ class Stores extends DataSource
     public function __construct(FixtureFactory $fixtureFactory, array $data, array $params = [])
     {
         $this->params = $params;
-        if (isset($data['datasets'])) {
-            foreach ($data['datasets'] as $store) {
-                $store = $fixtureFactory->createByCode('store', ['dataset' => $store]);
+        if (isset($data['dataSets'])) {
+            foreach ($data['dataSets'] as $store) {
+                $store = $fixtureFactory->createByCode('store', ['dataSet' => $store]);
                 /** @var Store $store */
                 if (!$store->getStoreId()) {
                     $store->persist();
@@ -62,6 +76,37 @@ class Stores extends DataSource
                 $this->data[] = $store->getGroupId() . '/' . $store->getName();
             }
         }
+    }
+
+    /**
+     * Persist stores.
+     *
+     * @return void
+     */
+    public function persist()
+    {
+        //
+    }
+
+    /**
+     * Return prepared data set.
+     *
+     * @param string|null $key [optional]
+     * @return mixed
+     */
+    public function getData($key = null)
+    {
+        return $this->data;
+    }
+
+    /**
+     * Return data set configuration settings.
+     *
+     * @return array
+     */
+    public function getDataConfig()
+    {
+        return $this->params;
     }
 
     /**

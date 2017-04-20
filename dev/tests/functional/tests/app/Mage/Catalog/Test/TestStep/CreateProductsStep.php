@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -79,14 +79,14 @@ class CreateProductsStep implements TestStepInterface
     public function run()
     {
         $products = [];
-        $productsdatasets = explode(',', $this->products);
-        foreach ($productsdatasets as $key => $productdataset) {
-            list($fixtureClass, $dataset) = $this->resolveProductFixture($productdataset);
+        $productsDataSets = explode(',', $this->products);
+        foreach ($productsDataSets as $key => $productDataSet) {
+            list($fixtureClass, $dataSet) = $this->resolveProductFixture($productDataSet);
             $data = isset($this->data[$key]) ? $this->data[$key] : [];
             /** @var InjectableFixture[] $products */
             $products[$key] = $this->fixtureFactory->createByCode(
                 $fixtureClass,
-                ['dataset' => $dataset, 'data' => $data]
+                ['dataSet' => $dataSet, 'data' => $data]
             );
             if ($products[$key]->hasData('id') === false) {
                 $products[$key]->persist();
@@ -97,16 +97,16 @@ class CreateProductsStep implements TestStepInterface
     }
 
     /**
-     * Get product fixture type and dataset.
+     * Get product fixture type and dataSet.
      *
-     * @param string $productdataset
+     * @param string $productDataSet
      * @return array
      */
-    protected function resolveProductFixture($productdataset)
+    protected function resolveProductFixture($productDataSet)
     {
-        $productdataset = explode('::', $productdataset);
-        $fixtureClass = trim($productdataset[0]);
-        $dataset = isset($productdataset[1]) ? trim($productdataset[1]) : '';
-        return [$fixtureClass, $dataset];
+        $productDataSet = explode('::', $productDataSet);
+        $fixtureClass = trim($productDataSet[0]);
+        $dataSet = isset($productDataSet[1]) ? trim($productDataSet[1]) : '';
+        return [$fixtureClass, $dataSet];
     }
 }

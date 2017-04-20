@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -29,7 +29,6 @@ namespace Mage\Adminhtml\Test\Block\Widget;
 use Magento\Mtf\Client\Element\SimpleElement as Element;
 use Magento\Mtf\Client\Locator;
 use Magento\Mtf\Fixture\FixtureInterface;
-use Magento\Mtf\Fixture\InjectableFixture;
 use Magento\Mtf\Block\Form;
 
 /**
@@ -129,34 +128,45 @@ class FormTabs extends Form
         foreach ($tabs as $tabName => $tabFields) {
             $tabElement = $this->getTabElement($tabName);
             $this->openTab($tabName);
-            $tabElement->fillFormTab($tabFields, $context);
+            $tabElement->fillFormTab(array_merge($tabFields, $this->unassignedFields), $context);
+            $this->updateUnassignedFields($tabElement);
         }
         if (!empty($this->unassignedFields)) {
-            $this->fillMissedFields();
+            $this->fillMissedFields($tabs);
         }
 
         return $this;
     }
 
     /**
+     * Update array with fields which aren't assigned to any tab.
+     *
+     * @param Tab $tabElement
+     * @return void
+     */
+    protected function updateUnassignedFields(Tab $tabElement)
+    {
+        $this->unassignedFields = array_diff_key(
+            $this->unassignedFields,
+            array_intersect_key($this->unassignedFields, $tabElement->setFields)
+        );
+    }
+
+    /**
      * Fill fields which weren't found on filled tabs.
      *
+     * @param array $tabs
      * @throws \Exception
+     *
      * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
-    protected function fillMissedFields()
+    protected function fillMissedFields(array $tabs)
     {
-        foreach ($this->tabs as $tabName => $tabData) {
+        foreach (array_diff_key($this->tabs, $tabs) as $tabName => $tabData) {
             $tabElement = $this->getTabElement($tabName);
             if ($this->openTab($tabName)) {
-                $mapping = $tabElement->dataMapping($this->unassignedFields);
-                foreach ($mapping as $fieldName => $data) {
-                    $element = $tabElement->_rootElement->find($data['selector'], $data['strategy'], $data['input']);
-                    if ($element->isVisible()) {
-                        $element->setValue($data['value']);
-                        unset($this->unassignedFields[$fieldName]);
-                    }
-                }
+                $tabElement->fillFormTab($this->unassignedFields, $this->_rootElement);
+                $this->updateUnassignedFields($tabElement);
                 if (empty($this->unassignedFields)) {
                     break;
                 }
@@ -244,7 +254,7 @@ class FormTabs extends Form
             $attributes['value'] = $value;
             if (array_key_exists('group', $attributes) && $attributes['group'] != 'null') {
                 $tabs[$attributes['group']][$field] = $attributes;
-            } elseif (!array_key_exists('group', $attributes) && ($field != 'attribute_id')) {
+            } elseif (!array_key_exists('group', $attributes)) {
                 $this->unassignedFields[$field] = $attributes;
             }
         }

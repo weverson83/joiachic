@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -31,7 +31,6 @@ use Mage\Adminhtml\Test\Block\Widget\Grid;
 use Mage\Sales\Test\Fixture\Order;
 use Mage\Sales\Test\Page\Adminhtml\SalesOrderIndex;
 use Mage\Sales\Test\Page\Adminhtml\SalesOrderView;
-use Magento\Mtf\System\Event\EventManagerInterface;
 
 /**
  * Abstract assert that sales entity is present in the sales entity tab with correct data.
@@ -55,17 +54,15 @@ abstract class AbstractAssertSalesEntityInSalesEntityTab extends AbstractAssertS
     /**
      * @constructor
      * @param ObjectManager $objectManager
-     * @param EventManagerInterface $eventManager
      * @param SalesOrderView $salesOrderView
      * @param SalesOrderIndex $orderIndex
      */
     public function __construct(
         ObjectManager $objectManager,
-        EventManagerInterface $eventManager,
         SalesOrderView $salesOrderView,
         SalesOrderIndex $orderIndex
     ) {
-        parent::__construct($objectManager, $eventManager);
+        parent::__construct($objectManager);
         $this->salesOrderView = $salesOrderView;
         $this->orderIndex = $orderIndex;
     }

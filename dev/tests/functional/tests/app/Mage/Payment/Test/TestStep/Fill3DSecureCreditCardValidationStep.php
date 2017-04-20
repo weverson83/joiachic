@@ -20,14 +20,14 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 namespace Mage\Payment\Test\TestStep;
 
 use Mage\Checkout\Test\Page\CheckoutOnepage;
-use Mage\Payment\Test\Fixture\ValidationPassword;
+use Mage\Payment\Test\Fixture\Cc;
 use Magento\Mtf\TestStep\TestStepInterface;
 use Magento\Mtf\ObjectManager;
 
@@ -46,19 +46,19 @@ class Fill3DSecureCreditCardValidationStep implements TestStepInterface
     /**
      * Cc fixture.
      *
-     * @var ValidationPassword
+     * @var Cc
      */
-    protected $validationPassword;
+    protected $cc;
 
     /**
      * @constructor
      * @param CheckoutOnepage $checkoutOnepage
-     * @param ValidationPassword $validationPassword
+     * @param array $payment
      */
-    public function __construct(CheckoutOnepage $checkoutOnepage, ValidationPassword $validationPassword)
+    public function __construct(CheckoutOnepage $checkoutOnepage, array $payment)
     {
         $this->checkoutOnepage = $checkoutOnepage;
-        $this->validationPassword = $validationPassword;
+        $this->cc = $payment['cc'];
     }
 
     /**
@@ -69,7 +69,7 @@ class Fill3DSecureCreditCardValidationStep implements TestStepInterface
     public function run()
     {
         $centinelForm = $this->checkoutOnepage->getReviewBlock()->getCentinelForm();
-        $centinelForm->fillPass($this->validationPassword);
+        $centinelForm->fillCc($this->cc);
         $centinelForm->submitCode();
     }
 }

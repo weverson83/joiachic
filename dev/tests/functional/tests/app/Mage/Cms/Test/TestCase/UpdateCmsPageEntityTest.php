@@ -20,14 +20,13 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 namespace Mage\Cms\Test\TestCase;
 
 use Mage\Cms\Test\Fixture\CmsPage;
-use Mage\Cms\Test\Fixture\CmsPageMultiStore;
 use Mage\Cms\Test\Page\Adminhtml\CmsPageEdit;
 use Mage\Cms\Test\Page\Adminhtml\CmsPageIndex;
 use Magento\Mtf\Fixture\FixtureFactory;
@@ -76,14 +75,14 @@ class UpdateCmsPageEntityTest extends Injectable
      *
      * @param CmsPageIndex $cmsIndex
      * @param CmsPageEdit $cmsEdit
-     * @param CmsPageMultiStore $cmsOriginal
+     * @param CmsPage $cmsOriginal
      * @param FixtureFactory $factory
      * @return array
      */
     public function __inject(
         CmsPageIndex $cmsIndex,
         CmsPageEdit $cmsEdit,
-        CmsPageMultiStore $cmsOriginal,
+        CmsPage $cmsOriginal,
         FixtureFactory $factory
     ) {
         $cmsOriginal->persist();
@@ -97,11 +96,11 @@ class UpdateCmsPageEntityTest extends Injectable
     /**
      * Update CMS Page test.
      *
-     * @param CmsPageMultiStore $cms
-     * @param CmsPageMultiStore $cmsOriginal
+     * @param CmsPage $cms
+     * @param CmsPage $cmsOriginal
      * @return array
      */
-    public function test(CmsPageMultiStore $cms, CmsPageMultiStore $cmsOriginal)
+    public function test(CmsPage $cms, CmsPage $cmsOriginal)
     {
         // Steps
         $this->cmsIndex->open();

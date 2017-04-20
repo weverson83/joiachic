@@ -20,7 +20,7 @@
  *
  * @category    Mage
  * @package     Mage
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -52,6 +52,14 @@ if (defined('COMPILER_INCLUDE_PATH')) {
 }
 
 Varien_Autoload::register();
+
+/** AUTOLOADER PATCH **/
+if (file_exists($autoloaderPath = BP . DS . '../vendor/autoload.php') ||
+    file_exists($autoloaderPath = BP . DS . 'vendor/autoload.php')
+) {
+    require $autoloaderPath;
+}
+/** AUTOLOADER PATCH **/
 
 /**
  * Main Mage hub class
@@ -170,7 +178,7 @@ final class Mage
         return array(
             'major'     => '1',
             'minor'     => '9',
-            'revision'  => '3',
+            'revision'  => '2',
             'patch'     => '2',
             'stability' => '',
             'number'    => '',

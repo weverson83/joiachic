@@ -20,23 +20,30 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 namespace Mage\Catalog\Test\Fixture\CatalogAttributeSet;
 
-use Magento\Mtf\Fixture\DataSource;
+use Magento\Mtf\Fixture\FixtureInterface;
 use Magento\Mtf\Fixture\FixtureFactory;
 use Mage\Catalog\Test\Fixture\CatalogAttributeSet;
 
 /**
  * Preset for skeleton set.
  *  Data keys:
- *  - dataset
+ *  - dataSet
  */
-class SkeletonSet extends DataSource
+class SkeletonSet implements FixtureInterface
 {
+    /**
+     * Attribute Set name.
+     *
+     * @var string
+     */
+    protected $data;
+
     /**
      * New Attribute Set.
      *
@@ -53,8 +60,8 @@ class SkeletonSet extends DataSource
     public function __construct(FixtureFactory $fixtureFactory, array $params, array $data = [])
     {
         $this->params = $params;
-        if (isset($data['dataset']) && $data['dataset'] !== '-') {
-            $parentSet = $fixtureFactory->createByCode('catalogAttributeSet', ['dataset' => $data['dataset']]);
+        if (isset($data['dataSet']) && $data['dataSet'] !== '-') {
+            $parentSet = $fixtureFactory->createByCode('catalogAttributeSet', ['dataSet' => $data['dataSet']]);
             if (!$parentSet->hasData('attribute_set_id')) {
                 $parentSet->persist();
             }
@@ -65,6 +72,29 @@ class SkeletonSet extends DataSource
     }
 
     /**
+     * Persist attribute options.
+     *
+     * @return void
+     */
+    public function persist()
+    {
+        //
+    }
+
+    /**
+     * Return prepared data set.
+     *
+     * @param string|null $key
+     * @return mixed
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    public function getData($key = null)
+    {
+        return $this->data;
+    }
+
+    /**
      * Get Attribute Set.
      *
      * @return array
@@ -72,5 +102,15 @@ class SkeletonSet extends DataSource
     public function getAttributeSet()
     {
         return $this->attributeSet;
+    }
+
+    /**
+     * Return data set configuration settings.
+     *
+     * @return array
+     */
+    public function getDataConfig()
+    {
+        return $this->params;
     }
 }

@@ -20,14 +20,13 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 namespace Mage\Catalog\Test\Fixture\CatalogProductSimple;
 
-use Magento\Mtf\Fixture\DataSource;
-use Magento\Mtf\Repository\RepositoryFactory;
+use Magento\Mtf\Fixture\FixtureInterface;
 
 /**
  * Class for Fpt preset.
@@ -35,19 +34,73 @@ use Magento\Mtf\Repository\RepositoryFactory;
  * Data keys:
  *  - preset (Price options preset name)
  */
-class Fpt extends DataSource
+class Fpt implements FixtureInterface
 {
     /**
      * @constructor
-     * @param RepositoryFactory $repositoryFactory
      * @param array $params
      * @param array $data [optional]
      */
-    public function __construct(RepositoryFactory $repositoryFactory, array $params, array $data = [])
+    public function __construct(array $params, array $data = [])
     {
         $this->params = $params;
-        if (isset($data['dataset']) && isset($this->params['repository'])) {
-            $this->data = $repositoryFactory->get($this->params['repository'])->get($data['dataset']);
+        if (isset($data['preset'])) {
+            $this->data = $this->getPreset($data['preset']);
         }
+    }
+
+    /**
+     * Persists prepared data into application.
+     *
+     * @return void
+     */
+    public function persist()
+    {
+        //
+    }
+
+    /**
+     * Return prepared data set.
+     *
+     * @param string $key [optional]
+     * @return mixed
+     */
+    public function getData($key = null)
+    {
+        return $this->data;
+    }
+
+    /**
+     * Return data set configuration settings.
+     *
+     * @return string
+     */
+    public function getDataConfig()
+    {
+        return $this->params;
+    }
+
+    /**
+     * Get fpt preset for product fixture.
+     *
+     * @param string $name
+     * @return array|null
+     */
+    protected function getPreset($name)
+    {
+        $presets = [
+            'one_fpt_for_all_states' => [
+                [
+                    'price' => 10,
+                    'website' => 'All Websites [USD]',
+                    'country_name' => 'United States',
+                    'state_name' => '*',
+                ],
+            ],
+        ];
+        if (!isset($presets[$name])) {
+            return null;
+        }
+        return $presets[$name];
     }
 }

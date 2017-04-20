@@ -20,14 +20,13 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 namespace Mage\Catalog\Test\Fixture\Cart;
 
 use Mage\Catalog\Test\Fixture\CatalogProductSimple;
-use Magento\Mtf\Fixture\DataSource;
 use Magento\Mtf\Fixture\FixtureInterface;
 
 /**
@@ -38,8 +37,15 @@ use Magento\Mtf\Fixture\FixtureInterface;
  *
  * @SuppressWarnings(PHPMD.NPathComplexity)
  */
-class Item extends DataSource
+class Item implements FixtureInterface
 {
+    /**
+     * Prepared dataSet data.
+     *
+     * @var array
+     */
+    protected $data = [];
+
     /**
      * @constructor
      * @param FixtureInterface $product
@@ -74,5 +80,38 @@ class Item extends DataSource
             : 1;
 
         $this->data = $cartItem;
+    }
+
+    /**
+     * Persist fixture.
+     *
+     * @return void
+     */
+    public function persist()
+    {
+        //
+    }
+
+    /**
+     * Return prepared data set.
+     *
+     * @param string $key [optional]
+     * @return mixed
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    public function getData($key = null)
+    {
+        return $this->data;
+    }
+
+    /**
+     * Return data set configuration settings.
+     *
+     * @return string
+     */
+    public function getDataConfig()
+    {
+        //
     }
 }

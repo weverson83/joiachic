@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MagicentoSettings">
+    <option name="pathToMage" value="$PROJECT_DIR$/app/Mage.php" />
+    <option name="enabled" value="false" />
+    <option name="rewriteConflicts" value="catalog/product_image (Welance_Kraken_Model_Product_Image | OnePica_ImageCdn_Model_Catalog_Product_Image), enterprise_cms/config (MageWorx_SeoCrossLinks_Model_Rewrite_Enterprise_CmsConfig | MageWorx_SeoBase_Model_Rewrite_Enterprise_CmsConfig), core/messages (Lesti_Fpc_Core_Block_Messages | MGS_Mpanel_Block_Messages)" />
+    <option name="pathsToMagentoSerialized" value="$PROJECT_DIR$" />
+    <option name="modmanProjectChecked" value="true" />
+  </component>
+</project>

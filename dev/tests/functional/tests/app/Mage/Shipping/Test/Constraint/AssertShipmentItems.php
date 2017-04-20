@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -30,7 +30,6 @@ use Mage\Sales\Test\Constraint\AbstractAssertItems;
 use Mage\Shipping\Test\Page\Adminhtml\SalesShipmentView;
 use Mage\Shipping\Test\Page\Adminhtml\SalesShipment;
 use Magento\Mtf\ObjectManager;
-use Magento\Mtf\System\Event\EventManagerInterface;
 
 /**
  * Assert shipment items on shipment view page.
@@ -51,17 +50,15 @@ class AssertShipmentItems extends AbstractAssertItems
     /**
      * @constructor
      * @param ObjectManager $objectManager
-     * @param EventManagerInterface $eventManager
      * @param SalesShipment $shipmentIndex
      * @param SalesShipmentView $orderShipmentView
      */
     public function __construct(
         ObjectManager $objectManager,
-        EventManagerInterface $eventManager,
         SalesShipment $shipmentIndex,
         SalesShipmentView $orderShipmentView
     ) {
-        parent::__construct($objectManager, $eventManager);
+        parent::__construct($objectManager);
         $this->salesTypePage = $shipmentIndex;
         $this->salesTypeViewPage = $orderShipmentView;
     }

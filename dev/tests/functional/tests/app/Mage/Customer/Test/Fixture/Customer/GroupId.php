@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -65,9 +65,9 @@ class GroupId implements FixtureInterface
     public function __construct(FixtureFactory $fixtureFactory, array $params, array $data = [])
     {
         $this->params = $params;
-        if (isset($data['dataset'])) {
+        if (isset($data['dataSet'])) {
             /** @var CustomerGroup $customerGroup */
-            $customerGroup = $fixtureFactory->createByCode('customerGroup', ['dataset' => $data['dataset']]);
+            $customerGroup = $fixtureFactory->createByCode('customerGroup', ['dataSet' => $data['dataSet']]);
             if (!$customerGroup->hasData('customer_group_id')) {
                 $customerGroup->persist();
             }

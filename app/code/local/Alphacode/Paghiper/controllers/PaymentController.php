@@ -191,7 +191,7 @@ class Alphacode_Paghiper_PaymentController extends Mage_Core_Controller_Front_Ac
         $params = array(
           'id_plataforma' => $orderId,
           'email_loja' => Mage::getStoreConfig('payment/paghiper/merchant_email'),
-          'urlRetorno' => 'http://dev.alphacode.com.br/index.php/paghiper/payment/callback/',
+          'urlRetorno' => $_SERVER['HTTP_HOST'] . '/index.php/paghiper/payment/callback/',
           'vencimentoBoleto' => $maturity_date,
           'email' => $address->email,
           'nome' => $address->firstname . ' ' . $address->lastname,

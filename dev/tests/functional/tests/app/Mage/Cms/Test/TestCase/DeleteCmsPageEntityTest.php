@@ -20,14 +20,13 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 namespace Mage\Cms\Test\TestCase;
 
 use Mage\Cms\Test\Fixture\CmsPage;
-use Mage\Cms\Test\Fixture\CmsPageMultiStore;
 use Mage\Cms\Test\Page\Adminhtml\CmsPageIndex;
 use Mage\Cms\Test\Page\Adminhtml\CmsPageEdit;
 use Magento\Mtf\TestCase\Injectable;
@@ -78,10 +77,10 @@ class DeleteCmsPageEntityTest extends Injectable
     /**
      * Delete CMS Page.
      *
-     * @param CmsPageMultiStore $cmsPage
+     * @param CmsPage $cmsPage
      * @return void
      */
-    public function test(CmsPageMultiStore $cmsPage)
+    public function test(CmsPage $cmsPage)
     {
         // Preconditions
         $cmsPage->persist();

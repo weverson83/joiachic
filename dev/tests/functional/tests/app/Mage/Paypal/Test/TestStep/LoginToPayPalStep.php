@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -84,15 +84,14 @@ class LoginToPayPalStep implements TestStepInterface
      */
     public function run()
     {
-        $reviewBlockIsPresent = false;
-        $sleepingTime = 0;
-        while (!$reviewBlockIsPresent and $sleepingTime <= 60)
-        {
-            sleep(1);
-            $reviewBlockIsPresent = $this->paypalPage->getReviewBlock()->isVisible()
-            or $this->paypalPage->getOldReviewBlock()->isVisible();
-            $sleepingTime++;
-        }
+        $browser = $this->browser;
+        $selector = $this->loader;
+        $browser->waitUntil(
+            function () use ($browser, $selector) {
+                $element = $browser->find($selector);
+                return $element->isVisible() == false ? true : null;
+            }
+        );
         /** Log out from previous session. */
         $reviewBlock = $this->paypalPage->getReviewBlock()->isVisible()
             ? $this->paypalPage->getReviewBlock()

@@ -20,21 +20,34 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
 namespace Mage\SalesRule\Test\Fixture\SalesRule;
 
-use Mage\Adminhtml\Test\Fixture\Website;
-use Magento\Mtf\Fixture\DataSource;
 use Magento\Mtf\Fixture\FixtureFactory;
+use Magento\Mtf\Fixture\FixtureInterface;
+use Mage\Adminhtml\Test\Fixture\Website;
 
 /**
  * Prepare WebsiteIds for SalesRule.
  */
-class WebsiteIds extends DataSource
+class WebsiteIds implements FixtureInterface
 {
+    /**
+     * Prepared dataSet data.
+     *
+     * @var string
+     */
+    protected $data;
+
+    /**
+     * Data set configuration settings.
+     *
+     * @var array
+     */
+    protected $params;
 
     /**
      * Websites fixtures.
@@ -52,8 +65,8 @@ class WebsiteIds extends DataSource
     public function __construct(FixtureFactory $fixtureFactory, array $params, $data = [])
     {
         $this->params = $params;
-        foreach ($data as $dataset) {
-            $website = $fixtureFactory->createByCode('website', ['dataset' => trim($dataset)]);
+        foreach ($data as $dataSet) {
+            $website = $fixtureFactory->createByCode('website', ['dataSet' => trim($dataSet)]);
             /** @var Website $website */
             if (!$website->hasData('website_id')) {
                 $website->persist();
@@ -61,6 +74,39 @@ class WebsiteIds extends DataSource
             $this->websites[] = $website;
             $this->data[] = $website->getName();
         }
+    }
+
+    /**
+     * Persist attribute options.
+     *
+     * @return void
+     */
+    public function persist()
+    {
+        //
+    }
+
+    /**
+     * Return prepared data set.
+     *
+     * @param string|null $key [optional]
+     * @return array
+     *
+     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     */
+    public function getData($key = null)
+    {
+        return $this->data;
+    }
+
+    /**
+     * Return data set configuration settings.
+     *
+     * @return array
+     */
+    public function getDataConfig()
+    {
+        return $this->params;
     }
 
     /**

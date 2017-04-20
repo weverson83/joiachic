@@ -19,7 +19,7 @@
  *
  * @category    Mage
  * @package     js
- * @copyright   Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 var directPost = Class.create();
@@ -150,17 +150,20 @@ directPost.prototype = {
             $(this.iframeId).hide();
             this.resetLoadWaiting();
         }
-        alert(msg.stripTags().toString());
+        alert(msg);
     },
 
     returnQuote : function() {
         var url = this.orderSaveUrl.replace('place', 'returnQuote');
         new Ajax.Request(url, {
             onSuccess : function(transport) {
-                var response = transport.responseJSON || transport.responseText.evalJSON(true) || {};
-
+                try {
+                    response = eval('(' + transport.responseText + ')');
+                } catch (e) {
+                    response = {};
+                }
                 if (response.error_message) {
-                    alert(response.error_message.stripTags().toString());
+                    alert(response.error_message);
                 }
                 $(this.iframeId).show();
                 switch (this.controller) {
@@ -218,25 +221,27 @@ directPost.prototype = {
         if (transport.status == 403) {
             checkout.ajaxFailure();
         }
-        var response = transport.responseJSON || transport.responseText.evalJSON(true) || {};
+        try {
+            response = eval('(' + transport.responseText + ')');
+        } catch (e) {
+            response = {};
+        }
 
         if (response.success && response.directpost) {
             this.orderIncrementId = response.directpost.fields.x_invoice_num;
             var paymentData = {};
             for ( var key in response.directpost.fields) {
-                if(response.directpost.fields.hasOwnProperty(key)) {
-                    paymentData[key] = response.directpost.fields[key];
-                }
+                paymentData[key] = response.directpost.fields[key];
             }
             var preparedData = this.preparePaymentRequest(paymentData);
             this.sendPaymentRequest(preparedData);
         } else {
             var msg = response.error_messages;
-            if (Object.isArray(msg)) {
+            if (typeof (msg) == 'object') {
                 msg = msg.join("\n");
             }
             if (msg) {
-                alert(msg.stripTags().toString());
+                alert(msg);
             }
 
             if (response.update_section) {
@@ -307,15 +312,17 @@ directPost.prototype = {
     },
 
     saveAdminOrderSuccess : function(data) {
-        var response = transport.responseJSON || transport.responseText.evalJSON(true) || {};
+        try {
+            response = eval('(' + data + ')');
+        } catch (e) {
+            response = {};
+        }
 
         if (response.directpost) {
             this.orderIncrementId = response.directpost.fields.x_invoice_num;
             var paymentData = {};
             for ( var key in response.directpost.fields) {
-                if(response.directpost.fields.hasOwnProperty(key)) {
-                    paymentData[key] = response.directpost.fields[key];
-                }
+                paymentData[key] = response.directpost.fields[key];
             }
             var preparedData = this.preparePaymentRequest(paymentData);
             this.sendPaymentRequest(preparedData);
@@ -325,11 +332,11 @@ directPost.prototype = {
             }
             if (response.error_messages) {
                 var msg = response.error_messages;
-                if (Object.isArray(msg)) {
+                if (typeof (msg) == 'object') {
                     msg = msg.join("\n");
                 }
                 if (msg) {
-                    alert(msg.stripTags().toString());
+                    alert(msg);
                 }
             }
         }

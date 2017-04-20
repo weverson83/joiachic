@@ -20,7 +20,7 @@
  *
  * @category    Tests
  * @package     Tests_Functional
- * @copyright  Copyright (c) 2006-2017 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @copyright  Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
  * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
  */
 
@@ -43,21 +43,21 @@ class CreateNewOrderViaCurlStep implements TestStepInterface
     protected $fixtureFactory;
 
     /**
-     * Order dataset.
+     * Order dataSet.
      *
      * @var string
      */
-    protected $orderdataset;
+    protected $orderDataSet;
 
     /**
      * @constructor
      * @param FixtureFactory $fixtureFactory
-     * @param string $orderdataset
+     * @param string $orderDataSet
      */
-    public function __construct(FixtureFactory $fixtureFactory, $orderdataset)
+    public function __construct(FixtureFactory $fixtureFactory, $orderDataSet)
     {
         $this->fixtureFactory = $fixtureFactory;
-        $this->dataset = $orderdataset;
+        $this->dataSet = $orderDataSet;
     }
 
     /**
@@ -68,7 +68,7 @@ class CreateNewOrderViaCurlStep implements TestStepInterface
     public function run()
     {
         /** @var Order $order */
-        $order = $this->fixtureFactory->createByCode('order', ['dataset' => $this->orderdataset]);
+        $order = $this->fixtureFactory->createByCode('order', ['dataSet' => $this->orderDataSet]);
         $order->persist();
 
         return ['order' => $order];
