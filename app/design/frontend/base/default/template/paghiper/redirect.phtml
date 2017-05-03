@@ -7,7 +7,6 @@
             <p>Número do pedido</p>
             <div class="order-id"><img class="check" src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/media/paghiper/order_check.png"><?php echo $response['bankSlipInfo']['idPlataforma']; ?></div>
         </div>
-        <img class="logo-paghiper" src="http://<?php echo $_SERVER['HTTP_HOST']; ?>/media/paghiper/logo.gif"/>
     </div>
     <div class="box-info-bank-slip">
         <div class="title">Boleto Bancário</div>
@@ -23,7 +22,7 @@
         </center>
     </div>
     <center>
-        <iframe src="<?php echo $response['bankSlipInfo']['urlPagamento']; ?>" width="100%" height="250"></iframe>
+        <iframe border="0" style="border: 0px; background-color: #fff;" src="<?php echo $response['bankSlipInfo']['urlPagamento']; ?>" width="100%" height="1000"></iframe>
     </center>
 </div>
 <style type="text/css">

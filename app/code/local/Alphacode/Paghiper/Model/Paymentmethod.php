@@ -69,7 +69,8 @@ class Alphacode_Paghiper_Model_Paymentmethod extends Mage_Payment_Model_Method_A
  
     if ($errorMsg) 
     {
-	Mage::throwException($errorMsg);
+	    Mage::getSingleton('core/session')->addError($errorMsg);
+        Mage::throwException($errorMsg);
     }
  
     return $this;

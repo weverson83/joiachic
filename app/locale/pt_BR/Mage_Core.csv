@@ -4,43 +4,44 @@
 "Featured Products","Produtos em Destaque"
 "Avaiability: <span class=\"color-theme\">In stock</span>","Disponibilidade: <span class=\"color-theme\">Em estoque</span>"
 "Avaiability: <span class=\"color-theme\">Out of stock</span>","Disponibilidade: <span class=\"color-theme\">Sem estoque</span>"
-"You May Also Like","Talvez vocêtamb�m goste"
-Logout Success,Deslogado com sucesso
-Login or Create Account,Entrar ou criar conta
+"You May Also Like","Talvez vocêtamb�m goste"
+"Logout Success","Deslogado com sucesso"
+"Login or Create Account","Entrar ou criar conta"
 "Hello, Welcome to your account.","Olá, bem vindo a sua conta."
 "Forgot Your Password","Esqueci minha senha"
-Are you sure you would like to remove this item from the shopping cart?,Deseja remover este item do carrinho?
-My Product Question,Minhas perguntas de produtos
-My Questions,Minhas Perguntas
-You have placed no questions.,Voc&ecirc; n&atilde;o fez nenhuma pergunta
-My Answers,Minhas Respostas
-You have placed no answers.,Voc&ecirc; n&atilde;o deu nenhuma resposta
-Product details and comment,Detalhes do produto e coment&aacute;rios
-%s has been added to your wishlist. 
-Sign Up Today And You\'ll Be Able To,Cadastre-se agora e voc&ecirc; poder&aacute;
-Your order has been received.,Seu pedido foi recebido.
-Success,Sucesso
-Confirm Your Order,Confirme seu pedido
-PRODUCT NAME,Nome do Produto
-UNIT PRICE,Preço Unitário
-QUANTITY,Quantidade
-Ship to same Address,Enviar para o mesmo endereço
-You\'ve just added this product to the cart:,Vocêacaba de adicionar este produto ao carrinho:
-You\'ve just deleted this product to the cart:,Vocêacaba deremover este produtodao carrinho
-Load more,Carregar mais
-Continue shopping,Continuar comprando
-Go to cart page,Ir para o carrinho
-Close (Esc),Fechar (Esc)
-Sale,Promo��o
-New,Novidade
-View Detail,Ver detalhes
-View More,Ver Mais
-Enter your email for stay the know,Informe seu email para receber novidades
-Days,Dias
-Hours,Horas,
-Secs,Segs
-Quickview,Visualizar
-Featured Products,Produtos em destaque
+"Are you sure you would like to remove this item from the shopping cart?","Deseja remover este item do carrinho?"
+"My Product Question","Minhas perguntas de produtos"
+"My Questions","Minhas Perguntas"
+"You have placed no questions.","Você não fez nenhuma pergunta"
+"My Answers","Minhas Respostas"
+"You have placed no answers.","Você não deu nenhuma resposta"
+"Product details and comment,"Detalhes do produto e comentários"
+"%s has been added to your wishlist.","%s foi adicionado a lista de desejos"
+"Sign Up Today And You\'ll Be Able To","Cadastre-se agora e voc&ecirc; poder&aacute;"
+"Your order has been received.","Seu pedido foi recebido."
+"Success","Sucesso"
+"Email Address","Email"
+"Confirm Your Order","Confirme seu pedido"
+"PRODUCT NAME","Nome do Produto"
+"UNIT PRICE","Preço Unitário"
+"QUANTITY","Quantidade"
+"Ship to same Address","Enviar para o mesmo endereço"
+"You\'ve just added this product to the cart:","Você acaba de adicionar este produto ao carrinho:"
+"You\'ve just deleted this product to the cart:","Você acaba de remover este produtodao carrinho:"
+"Load more","Carregar mais"
+"Continue shopping","Continuar comprando"
+"Go to cart page","Ir para o carrinho"
+"Close (Esc)","Fechar (Esc)"
+"Sale","Promoção"
+"New","Novidade"
+"View Detail","Ver detalhes"
+"View More","Ver Mais"
+"Enter your email for stay the know","Informe seu email para receber novidades"
+"Days","Dias"
+"Hours","Horas"
+"Secs","Segs"
+"Quickview","Visualizar"
+"Featured Products","Produtos em destaque"
 "%s","%s"
 "%s already exist.","%s já existe."
 "%s already exists.","%s já existe."
@@ -402,3 +403,4 @@ Featured Products,Produtos em destaque
 "Your order cannot be completed at this time as there is no shipping methods available for it. Please make necessary changes in your shipping address.","Seu pedido não pode ser completado neste momento pois não existem formas de entrega disponíveis. Faça as alterações necessárias no seu endereço de entrega."
 "Your session has been expired, you will be relogged in now.","Sua sessão expirou, você precisa efetuar login novamente."
 "database ""%s""","banco de dados ""%s"""
+

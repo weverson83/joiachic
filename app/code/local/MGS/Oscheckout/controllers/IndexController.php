@@ -255,7 +255,7 @@ class MGS_Oscheckout_IndexController extends Mage_Core_Controller_Front_Action {
         $quote = $this->getOnepage()->getQuote();
         $shipping = $quote->getShippingAddress();
         $billing = $quote->getBillingAddress();
-        $billingCountryId = $billing_data['country_id'];
+        $billingCountryId = 'BR'; //$billing_data['country_id'];
         $this->getOnepage()->getQuote()->getShippingAddress()->setCountryId($billingCountryId)->setCollectShippingRates(true);
         $billing->setCountryId($billingCountryId)->save();
         $shipping->setSameAsBilling(true)->save();
