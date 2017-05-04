@@ -26,7 +26,7 @@ class Alphacode_Paghiper_Model_Paymentmethod extends Mage_Payment_Model_Method_A
   protected function getTaxvat()
   {
     if (isset($_POST['billing']['taxvat'])) {
-	return $_POST['billint']['taxvat'];
+	return $_POST['billing']['taxvat'];
     }
 
     return Mage::getSingleton('customer/session')->getCustomer()->getTaxvat();
@@ -50,18 +50,18 @@ class Alphacode_Paghiper_Model_Paymentmethod extends Mage_Payment_Model_Method_A
       $errorMsg = $this->_getHelper()->__("Valor mínimmo para pagamento boleto: " . $this->reais(Mage::getStoreConfig('payment/paghiper/minimum_value'))) . ".\n";
     }
        
-    if (!$info->getCustomFieldOne()){
+    if (!$this->getTaxvat()){
       $errorCode = 'invalid_data';
       $errorMsg = $this->_getHelper()->__("CPF/CNPJ é obrigatório.\n");
     }
 
-    if (strlen($info->getCustomFieldOne()) > 11){
-      if (!$this->cnpj($info->getCustomFieldOne())){
+    if (strlen($this->getTaxvat()) > 11){
+      if (!$this->cnpj($this->getTaxvat())){
         $errorCode = 'invalid_data';
         $errorMsg = $this->_getHelper()->__("CPF ou CNPJ inválido!" . $info->getCustomFieldOne() ."\n");
       }
     } else {
-      if (!$this->cpf($info->getCustomFieldOne())){
+      if (!$this->cpf($this->getTaxvat())){
         $errorCode = 'invalid_data';
         $errorMsg = $this->_getHelper()->__("CPF ou CNPJ inválido!" . $info->getCustomFieldOne() ."\n");
       }
