@@ -195,6 +195,11 @@ class Dutra_Cielo_Model_Cielo extends Mage_Payment_Model_Method_Cc
         $transaction->setIsClosed(false);
         $transaction->save();
 
+        $order = $payment->getOrder();
+        if ($order) {
+            $order->queueNewOrderEmail();
+        }
+
         return $this;
     }
 
