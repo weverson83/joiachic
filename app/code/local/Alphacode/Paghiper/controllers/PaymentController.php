@@ -29,8 +29,9 @@ class Alphacode_Paghiper_PaymentController extends Mage_Core_Controller_Front_Ac
 
         $this->getLayout()->getBlock('content')->append($block);
 
-        $orderId = $this->getRequest()->get("orderId");
-        $order = Mage::getModel('sales/order')->loadByIncrementId($orderId);
+        $order = new Mage_Sales_Model_Order();
+        $orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+        $order->loadByIncrementId($orderId);
         $order->queueNewOrderEmail();
 
         $this->renderLayout();
